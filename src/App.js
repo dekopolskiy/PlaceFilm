@@ -1,7 +1,8 @@
 import './App.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Section from './components/Section';
+import Comments from './components/Comments/Comments';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Section from './components/Section/Section';
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <div className='wrapper'>
       <Header/>
       <Section/>
+      <Comments/>
       <Footer/>
       </div>
     </div>

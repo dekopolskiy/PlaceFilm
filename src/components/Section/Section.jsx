@@ -1,8 +1,9 @@
+import Fifa from '../Categories/Fifa/FIFA'
+import Nba from '../Categories/Nba/NBA'
+import Nhl from '../Categories/Nhl/NHL'
+import Ufc from '../Categories/Ufc/UFC'
 import styles from './Section.module.css'
-const { default: Fifa } = require("./Categories/FIFA")
-const { default: Nba } = require("./Categories/NBA")
-const { default: Nhl } = require("./Categories/NHL")
-const { default: Ufc } = require("./Categories/UFC")
+
 
 
 const Section = () => {

@@ -1,5 +1,5 @@
 
-import background from './images_logo/nba.jpg'
+import background from '../images_logo/nba.jpg'
 
 const Nba = () => {
     return (

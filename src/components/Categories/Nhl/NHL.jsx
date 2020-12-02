@@ -1,4 +1,4 @@
-import logo from './images_logo/nhl_logo.jpg'
+import logo from '../images_logo/nhl_logo.jpg'
 
 
 const Nhl = () => {

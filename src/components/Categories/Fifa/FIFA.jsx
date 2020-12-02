@@ -1,5 +1,5 @@
 import styles from './FIFA.module.css'
-import logo from './images_logo/fifa_logo.jpg'
+import logo from '../images_logo/fifa_logo.jpg'
 
 const Fifa = () => {
     return (
