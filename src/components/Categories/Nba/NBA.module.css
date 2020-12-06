@@ -1,0 +1,6 @@
+.nba {
+    grid-column:4;
+    border: 1px solid white;
+    text-align: center;
+    grid-row: 2 / 4;
+}
