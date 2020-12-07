@@ -1,5 +1,18 @@
 header{
     background: #2D2D2D;
     color: white;
-    height: 50px;
+    display: grid;
+    grid-template-columns: 6fr repeat(3, 1fr);
+    grid-template-rows: 50px;
+}
+
+header div{
+    border: 1px solid white;
+}
+header a{
+    color: white;
+    text-decoration: none;
+}
+.log_in{
+    grid-column: 2;
 }

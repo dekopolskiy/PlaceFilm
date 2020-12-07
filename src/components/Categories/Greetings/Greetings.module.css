@@ -1,5 +1,6 @@
-.welcome{
+.greetings{
     grid-column: 2 / 5;
     text-align: center;
     padding: 25px;
 }
+

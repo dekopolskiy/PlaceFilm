@@ -4,7 +4,7 @@ import logo from '../images_logo/fifa_logo_black.jpg'
 const Fifa = () => {
     return (
         <div className={styles.fifa}>
-            <a href='#'>FIFA</a>
+            <a href='/fifa'>FIFA</a>
             <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Nemo, nostrum quis. Sequi, laudantium? Neque, ullam.

@@ -1,7 +1,7 @@
-import styles from './Welcome.module.css'
-const Welcome = () => {
+import styles from './Greetings.module.css'
+const Greetings = () => {
     return (
-        <div class={styles.welcome}>
+        <div class={styles.greetings}>
             Stay Healthy
             <h1>Get A Perfect Body</h1>
                 Far far away, behind the word mountains,
@@ -12,4 +12,4 @@ const Welcome = () => {
         </div>
     )
 }
-export default Welcome;
+export default Greetings;

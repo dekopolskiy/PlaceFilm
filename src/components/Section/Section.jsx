@@ -1,18 +1,20 @@
 import Fifa from '../Categories/Fifa/FIFA'
 import Nba from '../Categories/Nba/NBA'
 import Nhl from '../Categories/Nhl/NHL'
-import Welcome from '../Categories/Welcome/Welcome'
+import Greetings from '../Categories/Greetings/Greetings'
 import styles from './Section.module.css'
+import { Route } from 'react-router-dom'
+import Page_fifa from '../../pages/Page_fifa/Page_fifa'
 
 
 
 const Section = () => {
     return (
         <div className={styles.section}>
-            <Welcome />
-            <Fifa />
-            <Nba />
-            <Nhl />
+            <Greetings />
+            <Fifa/>
+            <Nba/>
+            <Nhl/>
         </div>
     )
 }
