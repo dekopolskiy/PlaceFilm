@@ -1,15 +1,15 @@
 import styles from './FIFA.module.css'
-import logo from '../images_logo/fifa_logo_black.jpg'
 
 const Fifa = () => {
     return (
         <div className={styles.fifa}>
-            <a href='/fifa'>FIFA</a>
+            <br />
+            <img src='https://flexiblog-agency.netlify.app/static/90a14b9d2337e448de6a033b1c83c93b/03323/image.webp'
+            width='290' height='200'/>
             <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Nemo, nostrum quis. Sequi, laudantium? Neque, ullam.
-            Magnam reiciendis alias consequatur inventore vitae dolore ad,
-            molestiae id quasi, provident temporibus saepe in.
+            Markdown Language Sample Blog
+            Markd is a lightweight markup language with 
+            plain-text-formatting syntax. Its design allows it to…
             </p>
         </div>
     )

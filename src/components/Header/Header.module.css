@@ -2,17 +2,23 @@ header{
     background: #2D2D2D;
     color: white;
     display: grid;
-    grid-template-columns: 6fr repeat(3, 1fr);
+    grid-template-columns: 9fr repeat(4, 1fr);
     grid-template-rows: 50px;
 }
 
 header div{
-    border: 1px solid white;
+    text-align: center;
+    padding-top: 15px;
 }
 header a{
     color: white;
     text-decoration: none;
 }
-.log_in{
+.comments{
     grid-column: 2;
+}
+
+.selected{
+    color:pink;
+    text-shadow: 1px 1px 5px pink;
 }

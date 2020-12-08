@@ -1,12 +1,14 @@
 
 
+
 const Log_in = () => {
     return (
         <div>
-            Registration
+            LOg in
         </div>
+
     )
 }
 
 
-export default Log_in
+export default Log_in;

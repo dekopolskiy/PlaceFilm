@@ -1,17 +1,17 @@
 
-import background from '../images_logo/nba.jpg'
 import styles from './NBA.module.css'
 
 const Nba = () => {
     return (
         <div className={ styles.nba}>
-        <a href='#'>NBA</a>
-        <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Nemo, nostrum quis. Sequi, laudantium? Neque, ullam. 
-        Magnam reiciendis alias consequatur inventore vitae dolore ad, 
-        molestiae id quasi, provident temporibus saepe in.
-        </p>
+           <br />
+            <img src='https://flexiblog-agency.netlify.app/static/d26d38bc3b4f390d1fb445ded2771158/03323/image.webp'
+            width='290' height='200'/>
+            <p>
+            Markdown Language Sample Blog
+            Markd is a lightweight markup language with 
+            plain-text-formatting syntax. Its design allows it to…
+            </p>
         </div>
     )
 }

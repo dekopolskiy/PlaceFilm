@@ -1,6 +1,9 @@
 .nba {
     grid-column:4;
-    border: 1px solid white;
+    background: #FFFFFF;
     text-align: center;
     grid-row: 2 / 4;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5)
 }

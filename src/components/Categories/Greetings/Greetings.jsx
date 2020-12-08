@@ -1,4 +1,5 @@
 import styles from './Greetings.module.css'
+
 const Greetings = () => {
     return (
         <div class={styles.greetings}>
