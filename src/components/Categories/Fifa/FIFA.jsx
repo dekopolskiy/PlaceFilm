@@ -1,16 +1,12 @@
+import Category from '../Category/Category'
 import styles from './FIFA.module.css'
 
 const Fifa = () => {
     return (
         <div className={styles.fifa}>
-            <br />
-            <img src='https://flexiblog-agency.netlify.app/static/90a14b9d2337e448de6a033b1c83c93b/03323/image.webp'
-            width='290' height='200'/>
-            <p>
-            Markdown Language Sample Blog
-            Markd is a lightweight markup language with 
-            plain-text-formatting syntax. Its design allows it to…
-            </p>
+            <Category src='https://photodune.img.customer.envatousercontent.com/files%2F283826049%2F_8533150.jpg?w=600&fit=max&mark=https%3A%2F%2Fassets.shopfront.envato-static.com%2Fimages%2Fwatermarks-19012018.png&markalign=top%2Cleft&markpad=0&markfit=crop&fm=pjpg&q=40&s=87ca15474c9ada8e40f93d19f9e27f5d'
+            text='Markdown Language Sample Blog Markd is a lightweight markup language with
+            plain-text-formatting syntax. Its design allows it to…' />
         </div>
     )
 }

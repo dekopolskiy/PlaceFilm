@@ -2,19 +2,22 @@ import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css'
 
 
-const Header = () => {
+const Header_elem = (props) => {
+    return (
+        <div className={ props.style }>
+            <NavLink to={ props.path } activeClassName={styles.selected}>{ props.name }</NavLink>
+        </div>
+    )
+}
 
+const Header = () => {
     return (
         <header>
-            <div class={styles.comments}>
-                <NavLink to='/comments' activeClassName={styles.selected}>Messages</NavLink>
-            </div>
-            <div class={styles.log_in}>
-                <NavLink to='/log_in' activeClassName={styles.selected}>Log in</NavLink>
-            </div>
-            <div class={styles.log_out}>
-                <NavLink to='/log_out' activeClassName={styles.selected}>Log out</NavLink></div>
-            <div class={styles.account}><NavLink to='/account' activeClassName={styles.selected}>Account</NavLink></div>
+            <Header_elem style={styles.logo} path='/section' name='MN'/>
+            <Header_elem style={styles.comments} path='/comments' name='Messages'/>
+            <Header_elem style={styles.log_in} path='/log_in' name='Log in'/>
+            <Header_elem style={styles.log_out} path='/log_out' name='Log out'/>
+            <Header_elem style={styles.account} path='/account' name='Account'/>
         </header>
     )
 }

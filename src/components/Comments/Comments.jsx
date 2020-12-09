@@ -2,37 +2,40 @@ import { NavLink } from 'react-router-dom'
 import styles from './Comments.module.css'
 import One_comment from './One_comment'
 
-const Comments = () => {
+const User = (props) => {
+    return (
+        <div>
+            <NavLink to={'comments/' + props.id}>{props.nameUser}</NavLink>
+        </div>
+    )
+}
+
+//Database json users
+let jsonDatabaseUser = [
+    { id: 1, nameUser:'Ivan'},
+    { id: 2, nameUser:'Aleksey'},
+    { id: 3, nameUser:'Fedor'},
+    { id: 4, nameUser:'Dmitry'},
+    { id: 5, nameUser:'Smerdyakov'}
+]
+
+
+//map Database_users
+let users_map = jsonDatabaseUser.map(( item ) => <User id={item.id} name={item.nameUser} /> )
+
+let Comments = () => {
     return (
         <div>
             <div class={styles.comments}>
-            <h2>Messages</h2>
+                <h2>Messages</h2>       
                 <div className={styles.users}>
-                <div><NavLink to='/comments/ivan' activeClassName={styles.selected}>Ivan</NavLink></div>
-                <div><NavLink to='/comments/aleksei' activeClassName={styles.selected}>Aleksei</NavLink></div>
-                <div><NavLink to='/comments/fedor' activeClassName={styles.selected}>Fedor</NavLink></div>
-                <div><NavLink to='/comments/dmitry' activeClassName={styles.selected}>Dmitry</NavLink></div>
-                <div><NavLink to='/comments/smerdyakov' activeClassName={styles.selected}>Smerdyakov</NavLink></div>
+                    {users_map}
+                    {console.log(users_map)}
                 </div>
                 <div className={styles.messages}>
-                    <One_comment name='first' date='20:11 7 December 2020' value='
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Cupiditate numquam voluptas iste, qui ratione distinctio 
-            expedita accusantium cum ducimus, quos nostrum provident. Laudantium,
-            asperiores dolore perspiciatis fuga eligendi architecto ipsum!'
-                    />
-                    <One_comment name='second' date='20:11 7 December 2020' value='
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Cupiditate numquam voluptas iste, qui ratione distinctio 
-            expedita accusantium cum ducimus, quos nostrum provident. Laudantium,
-            asperiores dolore perspiciatis fuga eligendi architecto ipsum!'
-                    />
-                    <One_comment name='third' date='20:11 7 December 2020' value='
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Cupiditate numquam voluptas iste, qui ratione distinctio 
-            expedita accusantium cum ducimus, quos nostrum provident. Laudantium,
-            asperiores dolore perspiciatis fuga eligendi architecto ipsum!'
-                    />
+                    <One_comment name='first' value='Hi!!!'/>
+                    <One_comment name='second' value='How are you?'/>
+                    <One_comment name='third' value='Do you speak english?'/>
                 </div>
             </div>
         </div>

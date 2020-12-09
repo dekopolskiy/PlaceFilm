@@ -13,12 +13,11 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Header />
-        <Route path='/' component={Section} />
-        <Route path='/section' component={Section} />
-        <Route path='/comments' component={Comments} />
-        <Route path='/log_in' component={Log_in} />
-        <Route path='/log_out' component={Log_out} />
-        <Route path='/account' component={Account} />
+        <Route path='/section' exact component={Section} />
+        <Route path='/comments' exact component={Comments} />
+        <Route path='/log_in' exact component={Log_in} />
+        <Route path='/log_out' exact component={Log_out} />
+        <Route path='/account' exact component={Account} />
         <Footer />
       </div>
     </BrowserRouter>
