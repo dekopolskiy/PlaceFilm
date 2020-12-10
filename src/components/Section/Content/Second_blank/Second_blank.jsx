@@ -1,9 +1,9 @@
 import Category from '../Category/Category'
-import styles from './NBA.module.css'
+import styles from './Second_blank.module.css'
 
 
 
-const Nba = () => {
+const Second_blank = () => {
     return (
         <div className={styles.nba}>
             <Category src='https://previews.customer.envatousercontent.com/files/289886676/267_T13A4543.jpg' 
@@ -15,4 +15,4 @@ const Nba = () => {
 }
 
 
-export default Nba
+export default Second_blank
