@@ -1,6 +1,6 @@
 .greetings{
-    grid-column: 2 / -2;
     text-align: center;
-    padding: 25px;
+    padding: 35px;
+    font-weight: 300;
 }
 

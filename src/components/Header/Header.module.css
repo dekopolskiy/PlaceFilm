@@ -1,14 +1,14 @@
 header{
-    background: #2D2D2D;
+    background: #111113;
     color: white;
     display: grid;
     grid-template-columns: 1fr 8fr repeat(4, 1fr);
-    grid-template-rows: 50px;
+    grid-template-rows: 40px;
 }
 
 header div{
     text-align: center;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 header a{
     color: white;
@@ -19,8 +19,8 @@ header a{
 }
 
 .selected{
-    color:pink;
-    text-shadow: 1px 1px 5px pink;
+    color: #446611;
+    text-shadow: 1px 1px 5px #446611;
 }
 
 .logo{

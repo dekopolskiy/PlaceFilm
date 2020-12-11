@@ -1,16 +1,34 @@
 
 .section {
     width: 1280px;
-    display: grid;
-    grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 1fr;
-    grid-template-rows: 200px 90px 200px 70px;
-    grid-column-gap: 6px;
-    padding: 2px;
-    background: #F8F8F8;
+    /*background:#191A1D;*/
+    background-image: url(https://lh3.googleusercontent.com/proxy/dvkjdPCshpZkgSF4G9xw4OCOLyu3YY-wE9bJ9S2LjHx5Gc2hpH_Ue4YxbIuSg_TYVCZWZERvSheiwW8LAulR3ORrcdFN63Dv6byxrIg3jTXeh2110LYUNbWv);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #F5F5F5;
+    margin-bottom: 20px;
 }
-
-
 .section div{
-    border-radius: 15px;
 }
+.postFilm{
+    width: 1000px;
+    margin: 0 auto;
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-row-gap: 35px;
+    grid-column-gap:15px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.postFilm div{
+    box-shadow: 1px -1px 3px white;
+    background:#191A1D;
+    border-radius: 5px;
+}
+
 
