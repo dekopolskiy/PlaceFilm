@@ -2,7 +2,7 @@ const Category = (props) => {
     return (
         <div>
             <img src= {props.src}
-                width='290' height='200' />
+                width='180' height='220' />
             <p>
                 {props.text}
             </p>

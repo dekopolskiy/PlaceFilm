@@ -31,10 +31,10 @@ const App = () => {
       <div>
         <Header />
         <Route path='/section'  component={Section} />
-        <Route path='/comments' render={ () => <Comments dataUsers={jsonUser} dataMessages={jsonMessages}/> } />
+        <Route path='/comments' exact render={ () => <Comments dataUsers={jsonUser} dataMessages={jsonMessages}/> } />
         <Route path='/log_in' component={Log_in} />
-        <Route path='/log_in' component={Log_out} />
-        <Route path='/log_in' component={Account} />
+        <Route path='/log_out' component={Log_out} />
+        <Route path='/account' component={Account} />
         <Footer />
       </div>
     </BrowserRouter>

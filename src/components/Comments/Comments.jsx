@@ -12,7 +12,7 @@ const User = (props) => {
 
 
 let Comments = (props) => {
-    //map server data
+    //map server data in props from App.js
     let users = props.dataUsers.map(( item ) => <User id={item.id} name={item.nameUser} />)
     let messages = props.dataMessages.map(( item ) => <One_comment name={item.name} value={item.value} />)
 
