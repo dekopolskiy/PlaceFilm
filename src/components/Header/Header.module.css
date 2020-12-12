@@ -3,12 +3,12 @@ header{
     color: white;
     display: grid;
     grid-template-columns: 1fr 8fr repeat(4, 1fr);
-    grid-template-rows: 40px;
+    grid-template-rows: 50px;
 }
 
 header div{
     text-align: center;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 header a{
     color: white;

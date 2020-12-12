@@ -4,7 +4,7 @@ const Block_film = (props) => {
     return (
         <div className={styles.filmPost}>
             <img src={props.pics}
-                width='240' height='280' />
+                width='225' height='315' />
             <p>
                 {props.name}
             </p>

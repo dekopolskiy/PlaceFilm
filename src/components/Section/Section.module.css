@@ -1,15 +1,11 @@
 
 .section {
-    width: 1280px;
-    /*background:#191A1D;*/
-    background-image: url(https://lh3.googleusercontent.com/proxy/dvkjdPCshpZkgSF4G9xw4OCOLyu3YY-wE9bJ9S2LjHx5Gc2hpH_Ue4YxbIuSg_TYVCZWZERvSheiwW8LAulR3ORrcdFN63Dv6byxrIg3jTXeh2110LYUNbWv);
-    background-repeat: no-repeat;
-    background-size: cover;
+    width:1280px;
+    overflow: hidden;
+    background:#191A1D;
     color: #F5F5F5;
-    margin-bottom: 20px;
 }
-.section div{
-}
+
 .postFilm{
     width: 1000px;
     margin: 0 auto;
@@ -17,7 +13,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
-    grid-row-gap: 35px;
+    grid-row-gap: 15px;
     grid-column-gap:15px;
     text-align: center;
     text-transform: uppercase;
@@ -25,10 +21,15 @@
     font-weight: 300;
 }
 
-.postFilm div{
-    box-shadow: 1px -1px 3px white;
-    background:#191A1D;
-    border-radius: 5px;
+
+.film_selection{
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    overflow: hidden;
+    border:1px solid #424242;
+    border-radius: 4px;
 }
-
-
+.film_selection img {
+    width: 500px;
+    height: 100%;
+}

@@ -6,3 +6,15 @@
     box-shadow: 1px 1px 15px white;;
     transition: 0.1s ease;
 }
+
+
+.filmPost{
+    border: 1px solid #424242;
+    background:#121213;
+    border-radius: 5px;
+}
+
+.filmPost img{
+    margin-top: 5px;
+    border: 1px solid #424242;
+}

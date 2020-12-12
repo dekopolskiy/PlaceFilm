@@ -1,0 +1,14 @@
+.main_film{
+    font-weight: 300;
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+
+.main_film img{
+    height: 500px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
