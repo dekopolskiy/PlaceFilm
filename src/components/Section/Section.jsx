@@ -11,7 +11,7 @@ const Section = (props) => {
             <Main_film />
             <div className={styles.postFilm}>
                 <div className={styles.film_selection}>
-                    <img src='https://www.kinopoisk.ru/im/poster/3/3/1/kinopoisk.ru-The-Sopranos-3311800--o--.jpg'/>
+                    <img src='https://st.kp.yandex.net/im/poster/3/4/2/kinopoisk.ru-Vikings-3427081.jpg'/>
                 </div>
                 {mapPics}
             </div>
