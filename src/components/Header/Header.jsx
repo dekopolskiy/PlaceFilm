@@ -13,7 +13,7 @@ const Header_elem = (props) => {
 const Header = () => {
     return (
         <header>
-            <Header_elem style={styles.logo} path='/section' name='MN'/>
+            <Header_elem style={styles.logo} path='/content' name='MN'/>
             <Header_elem style={styles.comments} path='/comments' name='Messages'/>
             <Header_elem style={styles.log_in} path='/log_in' name='Log in'/>
             <Header_elem style={styles.log_out} path='/log_out' name='Log out'/>

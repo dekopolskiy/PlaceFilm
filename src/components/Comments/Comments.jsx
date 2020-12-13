@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import styles from './Comments.module.css'
 import One_comment from './One_comment'
+import React from 'react';
+
 
 const User = (props) => {
     return (
@@ -11,10 +13,20 @@ const User = (props) => {
 }
 
 
+let usr_link = React.createRef(); //1 cоздаешь ссылку на элемент
+
+
+
+
 let Comments = (props) => {
-    //map server data in props from App.js
-    let users = props.dataUsers.map(( item ) => <User id={item.id} name={item.nameUser} />)
-    let messages = props.dataMessages.map(( item ) => <One_comment name={item.name} value={item.value} />)
+    //map server data in props from State.js
+    let users = props.state.jsonUser.map((item) => <User id={item.id} name={item.nameUser} />)
+    let messages = props.state.jsonMessages.map((item) => <One_comment name={item.name} value={item.value} />)
+    
+    let addUSER = () => {
+        let text = usr_link.current.value;//3 по клику есть ли значение в ссылке
+        props.addUsr(text);
+    }
 
     return (
         <div>
@@ -26,6 +38,12 @@ let Comments = (props) => {
                 <div className={styles.messages}>
                     {messages}
                 </div>
+            {/*____________ ADD USER,ADD MESSAGE ____________*/}
+                <div>
+                    <textarea ref={usr_link}></textarea> {/*2 присваиваешь ссылку к элементу*/}
+                    <button onClick={ addUSER }>add User</button>
+                </div>
+
             </div>
         </div>
     )

@@ -1,8 +1,10 @@
+import { rerender } from "./rerender";
 
 
 
 
 let State = {
+    mainFilm: {name: 'True Detective', img: "https://lostfilm.info/images/poster/545/5445957.jpg"},
     picsImg: [
         { name: 'Game of Thrones', img: 'https://cs8.pikabu.ru/post_img/2016/02/26/5/1456467431143385925.jpg' },
         { name: 'Hannibal', img: 'https://i.pinimg.com/originals/a2/bb/1b/a2bb1baf7980f787120cb732176e2e57.png' },
@@ -24,6 +26,15 @@ let State = {
     ],
 }
 
+
+export let addUsr = (prop) => {
+    let user = {
+        id: 6,
+        nameUser: prop,
+    }
+    State.jsonUser.push(user);
+    rerender(State, addUsr)
+}
 
 
 export default State;

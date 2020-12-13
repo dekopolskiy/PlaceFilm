@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Comments from './components/Comments/Comments';
 import Footer from './components/Footer/Footer';
@@ -12,17 +12,20 @@ import Content from './components/Content/Content';
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div>
         <Header />
-        <Route path='/section'  render={ () => <Content picsImg={ props.picsImg } />} />
-        <Route path='/comments' exact render={ () => <Comments dataUsers={props.jsonUser} dataMessages={props.jsonMessages}/> } />
+        {/*Если где-то произойдет переход с помощью Navlink to='path'
+          то Route отследит путь Navlink, соотнесет со своим,
+          и выведет подходящую компоненту
+        */}
+        <Route path='/content'  render={ () => <Content state={ props.state } />} />
+        {/* render чтобы пробросить props */}
+        <Route path='/comments' exact render={ () => <Comments state={props.state} addUsr={props.addUsr}/> } />
         <Route path='/log_in' component={Log_in} />
         <Route path='/log_out' component={Log_out} />
         <Route path='/account' component={Account} />
         <Footer />
       </div>
-    </BrowserRouter>
   );
 }
 
