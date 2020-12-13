@@ -1,20 +1,16 @@
-
-
-
-
 .filmPost:hover{
-    box-shadow: 1px 1px 15px white;;
     transition: 0.1s ease;
+    box-shadow: 1px 1px 25px rgb(5, 5, 5);
 }
 
 
 .filmPost{
-    border: 1px solid #424242;
-    background:#121213;
-    border-radius: 5px;
+    box-shadow: 1px 1px 15px rgb(5, 5, 5);;
+
+    background:#e7e7e9;
 }
 
 .filmPost img{
-    margin-top: 5px;
+    margin-top: 10px;
     border: 1px solid #424242;
 }
