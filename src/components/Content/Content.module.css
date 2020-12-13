@@ -1,0 +1,20 @@
+
+.content {
+    width:1280px;
+    overflow: hidden;
+    background:#f4f4f5;
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr 1fr 1fr 70px;
+    grid-gap:15px;
+}
+
+.postFilm{
+    grid-column-gap: 10px;
+    background: #F4F4F5;
+    grid-column: 2/6;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 315px;
+    grid-auto-rows: 315px;
+    grid-row-gap: 25px;
+}

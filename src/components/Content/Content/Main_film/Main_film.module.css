@@ -1,0 +1,11 @@
+.main_film{
+    grid-column: 1 / -1;
+    overflow: hidden;
+    height: 290px;
+}
+
+
+.main_film img{
+    width: 100%;
+}
+

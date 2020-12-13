@@ -1,0 +1,17 @@
+
+.filmPost img:hover{
+    transition: 1s ease;
+    width: 110%;
+    height: 110%;
+}
+
+
+.filmPost{
+    overflow: hidden;
+    box-shadow: 1px 1px 15px rgb(5, 5, 5);;
+}
+
+.filmPost img{
+    width: 100%;
+    height: 100%; 
+}
