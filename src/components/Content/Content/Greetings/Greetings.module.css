@@ -1,0 +1,11 @@
+.greetings{
+    background: #0E0E0E;
+    color:white;
+    text-align: center;
+    grid-column:3/5;
+    padding-top: 85px;
+    font-size: 20px;
+    height: 350px;
+    font-weight: 300;
+    box-sizing: border-box;
+}
