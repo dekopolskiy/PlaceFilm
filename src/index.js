@@ -1,6 +1,6 @@
 import { rerender } from "./rerender";
-import State, { addUsr } from './State';
+import State from './State';
 
 
 
-rerender(State, addUsr);
+rerender(State);

@@ -20,7 +20,7 @@ const App = (props) => {
         */}
         <Route path='/content'  render={ () => <Content state={ props.state } />} />
         {/* render чтобы пробросить props */}
-        <Route path='/comments' exact render={ () => <Comments state={props.state} addUsr={props.addUsr}/> } />
+        <Route path='/comments' exact render={ () => <Comments state={props.state}/> } />
         <Route path='/log_in' component={Log_in} />
         <Route path='/log_out' component={Log_out} />
         <Route path='/account' component={Account} />

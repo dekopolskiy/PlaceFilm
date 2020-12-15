@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import styles from './Comments.module.css'
 import One_comment from './One_comment'
 import React from 'react';
+import { rerender } from '../../rerender';
 
 
 const User = (props) => {
@@ -23,11 +24,17 @@ let Comments = (props) => {
     let users = props.state.jsonUser.map((item) => <User id={item.id} name={item.nameUser} />)
     let messages = props.state.jsonMessages.map((item) => <One_comment name={item.name} value={item.value} />)
     
-    let addUSER = () => {
+    let addUnit = () => {
         let text = usr_link.current.value;//3 по клику есть ли значение в ссылке
-        props.addUsr(text);
+        props.state.test = '';
+        props.state.addUser(77, text);
     }
 
+    let onChng = () => {
+        props.state.test = usr_link.current.value;
+        props.state.rend();
+    }
+    
     return (
         <div>
             <div className={styles.comments}>
@@ -40,8 +47,8 @@ let Comments = (props) => {
                 </div>
             {/*____________ ADD USER,ADD MESSAGE ____________*/}
                 <div>
-                    <textarea ref={usr_link}></textarea> {/*2 присваиваешь ссылку к элементу*/}
-                    <button onClick={ addUSER }>add User</button>
+                    <textarea ref={usr_link} onChange={onChng} value={props.state.test}></textarea> {/*2 присваиваешь ссылку к элементу*/}
+                    <button onClick={ addUnit }>add User</button>
                 </div>
 
             </div>

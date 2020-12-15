@@ -6,12 +6,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 
-export let rerender = (obj, func) => {
-
+export let rerender = (obj) => {
     ReactDOM.render(
         <BrowserRouter>
             <React.StrictMode>
-                <App state={obj} addUsr={func}/>
+                <App state={obj}/>
             </React.StrictMode>
         </BrowserRouter>,
         document.getElementById('root')
