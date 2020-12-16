@@ -1,10 +1,10 @@
 import styles from './Main_film.module.css'
 
 
-const Main_film = () => {
+const Main_film = (props) => {
     return (
         <div class={styles.main_film}>
-            <img src="https://lostfilm.info/images/poster/545/5445957.jpg"/>
+            <img src={props.film.img}/>
         </div>
     )
 }

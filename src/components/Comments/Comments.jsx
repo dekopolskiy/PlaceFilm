@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import styles from './Comments.module.css'
 import One_comment from './One_comment'
 import React from 'react';
-import { rerender } from '../../rerender';
 
 
 const User = (props) => {
@@ -27,12 +26,12 @@ let Comments = (props) => {
     let addUnit = () => {
         let text = usr_link.current.value;//3 по клику есть ли значение в ссылке
         props.state.test = '';
-        props.state.addUser(77, text);
+        props.addUser(77, text);
     }
 
     let onChng = () => {
         props.state.test = usr_link.current.value;
-        props.state.rend();
+        props.renderApp();
     }
     
     return (

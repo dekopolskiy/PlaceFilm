@@ -7,25 +7,30 @@ import Account from './components/Header/Pages_header/Account/Account';
 import Log_in from './components/Header/Pages_header/Log_in/Log_in';
 import Log_out from './components/Header/Pages_header/Log_out/Log_out';
 import Content from './components/Content/Content';
+import { renderApp } from './State';
 
 
 
 const App = (props) => {
   return (
-      <div>
-        <Header />
-        {/*Если где-то произойдет переход с помощью Navlink to='path'
+    <div>
+      <Header />
+      {/*Если где-то произойдет переход с помощью Navlink to='path'
           то Route отследит путь Navlink, соотнесет со своим,
           и выведет подходящую компоненту
         */}
-        <Route path='/content'  render={ () => <Content state={ props.state } />} />
-        {/* render чтобы пробросить props */}
-        <Route path='/comments' exact render={ () => <Comments state={props.state}/> } />
-        <Route path='/log_in' component={Log_in} />
-        <Route path='/log_out' component={Log_out} />
-        <Route path='/account' component={Account} />
-        <Footer />
-      </div>
+      <Route path='/content' render={() => <Content state={props.state} />} />
+      {/* render чтобы пробросить props */}
+      <Route path='/comments' exact render={() => <Comments state={props.state}
+        addUser={props.addUser}
+        renderApp={props.renderApp} />
+      }
+      />
+      <Route path='/log_in' component={Log_in} />
+      <Route path='/log_out' component={Log_out} />
+      <Route path='/account' component={Account} />
+      <Footer />
+    </div>
   );
 }
 

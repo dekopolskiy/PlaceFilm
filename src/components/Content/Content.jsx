@@ -13,7 +13,8 @@ const Content = (props) => {
     let mapPics = props.state.picsImg.map(item => <Block_film name={item.name} pics={item.img} />)
     return (
         <div className={styles.content}>
-            <Main_film />
+               <Greetings />
+            <Main_film film={props.state.mainFilm}/>
             <Greetings />
             <div className={styles.listSerials}>
                 {mapPics}
