@@ -10,11 +10,11 @@ import Greetings from './Greetings/Greetings'
 */}
 const Content = (props) => {
 
-    let mapPics = props.state.picsImg.map(item => <Block_film name={item.name} pics={item.img} />)
+    let mapPics = props.store.state.picsImg.map(item => <Block_film name={item.name} pics={item.img} />)
     return (
         <div className={styles.content}>
                <Greetings />
-            <Main_film film={props.state.mainFilm}/>
+            <Main_film film={props.store.state.mainFilm}/>
             <Greetings />
             <div className={styles.listSerials}>
                 {mapPics}
