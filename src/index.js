@@ -12,14 +12,16 @@ export let rerender = () => {
     ReactDOM.render(
         <BrowserRouter>
             <React.StrictMode>
-                <App store={store}/>
+                <App state = {store.getState()} 
+                     dispatch = {store.dispatch.bind(store)}
+                />
             </React.StrictMode>
         </BrowserRouter>,
         document.getElementById('root')
     );
 }
 
-store.observeFunc(rerender); //1.передаем определение функции в функцию
+store.createCallback(rerender); //1.передаем определение функции в функцию
 //этим избегаем лишнего импорта в state.js 
 //и после добавления данных в state отрисовываем с помощью rerender
 

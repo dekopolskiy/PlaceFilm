@@ -1,5 +1,5 @@
 let store = {
-    state: {
+    _state: {
         mainFilm: { name: 'True Detective', img: "https://lostfilm.info/images/poster/545/5445957.jpg" },
         picsImg: [
             { name: 'Game of Thrones', img: 'https://cs8.pikabu.ru/post_img/2016/02/26/5/1456467431143385925.jpg' },
@@ -20,18 +20,49 @@ let store = {
             { id: 4, nameUser: 'Dmitry' },
             { id: 5, nameUser: 'Smerdyakov' }
         ],
-        test: '',
+        temp: '',
     },
-    renderApp: () => { },
-    addUser: function(key, value) { 
-        this.state.jsonUser.push({ id: key, nameUser: value }) ;
-        this.renderApp();
+    getState() {
+        return this._state;
     },
-    observeFunc: function(callback) {
-         this.renderApp = callback 
+
+    rerenderApp() { },
+    createCallback(renderApp) {
+        this.rerenderApp = renderApp;
+    },
+
+    /*___________ADD SOMETHING____________*/
+    addUser(key, value) {
+        this._state.jsonUser.push({ id: key, nameUser: value });
+        this.rerenderApp();
+    },
+    addSerialPost(key, value) {
+        this._state.picsImg.push({
+            name: key,
+            img: value,
+        });
+        this.rerenderApp();
+    },
+
+    /*____________DiSPATCH_______________*/
+    dispatch(action) {
+        if (action.type === 'ADD-USER') {
+            this._state.jsonUser.push({
+                id: action.key,
+                nameUser: action.value
+            });
+            this.rerenderApp();
+        } else if (action.type === 'ADD-SERIAL-POST') {
+            debugger;
+            this._state.picsImg.push({
+                name: action.key,
+                img: action.value,
+            });
+            this.rerenderApp();
+        } else if (action.type === 'RERENDER-APP') {
+            this.rerenderApp();
+        }
     }
-
-
 }
 
 

@@ -20,20 +20,20 @@ let usr_link = React.createRef(); //1 cоздаешь ссылку на элем
 
 let Comments = (props) => {
     //map server data in props from State.js
-    let users = props.store.state.jsonUser.map((item) => <User id={item.id} name={item.nameUser} />)
-    let messages = props.store.state.jsonMessages.map((item) => <One_comment name={item.name} value={item.value} />)
-    
+    let users = props.state.jsonUser.map((item) => <User id={item.id} name={item.nameUser} />)
+    let messages = props.state.jsonMessages.map((item) => <One_comment name={item.name} value={item.value} />)
+
     let addUnit = () => {
         let text = usr_link.current.value;//3 по клику есть ли значение в ссылке
-        props.store.state.test = '';
-        props.store.addUser(77, text);
+        props.state.temp = '';
+        props.dispatch({ type: 'ADD-USER', key: 77, value: text });
     }
 
     let onChng = () => {
-        props.store.state.test = usr_link.current.value;
-        props.store.renderApp();
+        props.state.temp = usr_link.current.value;
+        props.dispatch({ type: 'RERENDER-APP' });
     }
-    
+
     return (
         <div>
             <div className={styles.comments}>
@@ -44,10 +44,10 @@ let Comments = (props) => {
                 <div className={styles.messages}>
                     {messages}
                 </div>
-            {/*____________ ADD USER,ADD MESSAGE ____________*/}
+                {/*____________ ADD USER,ADD MESSAGE ____________*/}
                 <div>
-                    <textarea ref={usr_link} onChange={onChng} value={props.store.state.test}></textarea> {/*2 присваиваешь ссылку к элементу*/}
-                    <button onClick={ addUnit }>add User</button>
+                    <textarea ref={usr_link} onChange={onChng} value={props.state.temp}></textarea> {/*2 присваиваешь ссылку к элементу*/}
+                    <button onClick={addUnit}>add User</button>
                 </div>
 
             </div>
