@@ -20,11 +20,13 @@ const App = (props) => {
         */}
       <Route path='/content' render={() => <Content 
         state = {props.state}
-        dispatch = {props.dispatch}/>} />
-      {/* render чтобы пробросить props */}
+        dispatch = {props.dispatch}
+        temp = {props.temp}/>} />
+      {/* render чтобы пробросить объект props */}
       <Route path='/comments' exact render={() => <Comments
         state = {props.state}
-        dispatch = {props.dispatch} />
+        dispatch = {props.dispatch}
+        temp = {props.temp} />
       }
       />
       <Route path='/log_in' component={Log_in} />

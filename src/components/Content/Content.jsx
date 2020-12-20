@@ -10,11 +10,11 @@ import Greetings from './Greetings/Greetings'
 */}
 const Content = (props) => {
 
-    let mapPics = props.state.picsImg.map(item => <Block_film name = {item.name} pics = {item.img} />)
+    let mapPics = props.state.listSerials.map(item => <Block_film name = {item.name} pics = {item.img} />)
     return (
         <div className = {styles.content}>
             <Greetings />
-            <Main_film film = {props.state.mainFilm} />
+            <Main_film film = {props.state.mainPoster} />
             <Greetings />
             <div className = {styles.listSerials}>
                 {mapPics}
@@ -22,6 +22,7 @@ const Content = (props) => {
             <Add_serial
                 state = {props.state}
                 dispatch = {props.dispatch}
+                temp = {props.temp}
             />
         </div>
     )

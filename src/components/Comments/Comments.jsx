@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom'
 import styles from './Comments.module.css'
 import One_comment from './One_comment'
 import React from 'react';
+import AddUserToCom from './AddUserToCom/AddUserToCom';
+import AddMessageToCom from './AddMessageToCom/AddMessageToCom';
 
 
 const User = (props) => {
@@ -12,27 +14,12 @@ const User = (props) => {
     )
 }
 
-
-let usr_link = React.createRef(); //1 cоздаешь ссылку на элемент
-
-
-
-
 let Comments = (props) => {
-    //map server data in props from State.js
-    let users = props.state.jsonUser.map((item) => <User id={item.id} name={item.nameUser} />)
-    let messages = props.state.jsonMessages.map((item) => <One_comment name={item.name} value={item.value} />)
 
-    let addUnit = () => {
-        let text = usr_link.current.value;//3 по клику есть ли значение в ссылке
-        props.state.temp = '';
-        props.dispatch({ type: 'ADD-USER', key: 77, value: text });
-    }
+    //map server data in props from store.js
+    let users = props.state.users.map((item) => <User id={item.id} name={item.nameUser} />)
+    let messages = props.state.messages.map((item) => <One_comment name={item.name} value={item.value} />)
 
-    let onChng = () => {
-        props.state.temp = usr_link.current.value;
-        props.dispatch({ type: 'RERENDER-APP' });
-    }
 
     return (
         <div>
@@ -45,11 +32,19 @@ let Comments = (props) => {
                     {messages}
                 </div>
                 {/*____________ ADD USER,ADD MESSAGE ____________*/}
-                <div>
-                    <textarea ref={usr_link} onChange={onChng} value={props.state.temp}></textarea> {/*2 присваиваешь ссылку к элементу*/}
-                    <button onClick={addUnit}>add User</button>
+                <div className={styles.addUser}>
+                    <AddUserToCom
+                        dispatch={props.dispatch}
+                        state={props.state}
+                        temp={props.temp}
+                    />
                 </div>
-
+                <div className={styles.addMessage}>
+                    <AddMessageToCom
+                        dispatch={props.dispatch}
+                        state={props.state}
+                        temp={props.temp} />
+                </div>
             </div>
         </div>
     )
