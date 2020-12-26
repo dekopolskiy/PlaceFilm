@@ -15,7 +15,6 @@ export let rendering = () => {
             <React.StrictMode>
                 <App state = {store.getState()} 
                      dispatch = {store.dispatch.bind(store)}
-                     temp = {store.temp} 
                 />
             </React.StrictMode>
         </BrowserRouter>,

@@ -3,24 +3,22 @@ import { actionAddMessage, actionRedrawingApp } from "../../../store";
 
 
 
-const AddUserToCom = (props) => {
+const AddMessageToCom = (props) => {
 
     /*___________USER ADD_________*/
     let addUnitOnClick = () => {
-        let text = props.temp.tempMessage;
-        props.temp.tempMessage = '';
-        props.dispatch(actionAddMessage(23, text));
+        props.dispatch(actionAddMessage(23, props.dialogs.newMessageBody));
     }
 
     let changeTempMessage = (e) => {
-        props.temp.tempMessage = e.target.value;
+        props.dialogs.newMessageBody = e.target.value;
         props.dispatch(actionRedrawingApp());
     }
 
 
     return (
         <div>
-            <textarea onChange={changeTempMessage} value={props.temp.tempMessage}></textarea>
+            <textarea onInput={changeTempMessage} value={props.dialogs.newMessageBody}></textarea>
             <button onClick={addUnitOnClick}>add Message</button>
         </div>
     )
@@ -28,4 +26,4 @@ const AddUserToCom = (props) => {
 
 
 
-export default AddUserToCom;
+export default AddMessageToCom;

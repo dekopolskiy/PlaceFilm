@@ -7,20 +7,18 @@ const AddUserToCom = (props) => {
 
     /*___________USER ADD_________*/
     let addUnitOnClick = () => {
-        let text = props.temp.tempUser;
-        props.temp.tempUser = '';
-        props.dispatch(actionAddUser(23, text));
+        props.dispatch(actionAddUser(23, props.dialogs.newUserBody));
     }
 
     let changeTempUser = (e) => {
-        props.temp.tempUser = e.target.value;
+        props.dialogs.newUserBody = e.target.value;
         props.dispatch(actionRedrawingApp());
     }
 
 
     return (
         <div>
-            <textarea onChange={changeTempUser} value={props.temp.tempUser}></textarea>
+            <textarea onInput={changeTempUser} value={props.dialogs.newUserBody}></textarea>
             <button onClick={addUnitOnClick}>add User</button>
         </div>
     )

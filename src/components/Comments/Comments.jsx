@@ -15,14 +15,15 @@ const User = (props) => {
 }
 
 let Comments = (props) => {
-
+    let pageDialogs = props.state.pageDialogs;
     //map server data in props from store.js
-    let users = props.state.users.map((item) => <User id={item.id} name={item.nameUser} />)
-    let messages = props.state.messages.map((item) => <One_comment name={item.name} value={item.value} />)
+    let users = pageDialogs.users.map((item) => <User id={item.id} name={item.nameUser} />)
+    let messages = pageDialogs.messages.map((item) => <One_comment name={item.name} value={item.value} />)
 
 
     return (
         <div>
+            {/*_______________RENDER__________________ */}
             <div className={styles.comments}>
                 <h2>Messages</h2>
                 <div className={styles.users}>
@@ -35,19 +36,19 @@ let Comments = (props) => {
                 <div className={styles.addUser}>
                     <AddUserToCom
                         dispatch={props.dispatch}
-                        state={props.state}
-                        temp={props.temp}
+                        dialogs={props.state.pageDialogs}
                     />
                 </div>
                 <div className={styles.addMessage}>
                     <AddMessageToCom
                         dispatch={props.dispatch}
-                        state={props.state}
-                        temp={props.temp} />
+                        dialogs={props.state.pageDialogs}
+                    />
                 </div>
             </div>
-        </div>
+        </div >
     )
+
 }
 
 

@@ -18,15 +18,15 @@ const App = (props) => {
           то Route отследит путь Navlink, соотнесет со своим,
           и выведет подходящую компоненту
         */}
-      <Route path='/content' render={() => <Content 
-        state = {props.state}
-        dispatch = {props.dispatch}
-        temp = {props.temp}/>} />
+      <Route path='/content' render={() => <Content
+        state={props.state}
+        dispatch={props.dispatch}
+      />} />
       {/* render чтобы пробросить объект props */}
       <Route path='/comments' exact render={() => <Comments
-        state = {props.state}
-        dispatch = {props.dispatch}
-        temp = {props.temp} />
+        state={props.state}
+        dispatch={props.dispatch}
+      />
       }
       />
       <Route path='/log_in' component={Log_in} />

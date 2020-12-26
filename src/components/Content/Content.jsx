@@ -9,20 +9,18 @@ import Greetings from './Greetings/Greetings'
     соответсвенно в массив компонент можно преобразовать простой массив
 */}
 const Content = (props) => {
-
-    let mapPics = props.state.listSerials.map(item => <Block_film name = {item.name} pics = {item.img} />)
+    let mapPics = props.state.pageContent.listSerials.map(item => <Block_film name={item.name} pics={item.img} />)
     return (
-        <div className = {styles.content}>
+        <div className={styles.content}>
             <Greetings />
-            <Main_film film = {props.state.mainPoster} />
+            <Main_film film={props.state.pageContent.mainPoster} />
             <Greetings />
-            <div className = {styles.listSerials}>
+            <div className={styles.listSerials}>
                 {mapPics}
             </div>
             <Add_serial
-                state = {props.state}
-                dispatch = {props.dispatch}
-                temp = {props.temp}
+                pageContent={props.state.pageContent}
+                dispatch={props.dispatch}
             />
         </div>
     )
