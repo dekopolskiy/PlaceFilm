@@ -40,8 +40,9 @@ let store = {
     },
 
     redrawingContent() { },//функция,которая будет переназначена
-    toCatchRender(rendering) {//после импорта в index.js в rerendering передаем отрисовку
+    subscribe(rendering) {//после импорта в index.js в rerendering передаем отрисовку
         this.redrawingContent = rendering;
+        //or rendering(this)
     },
 
     /*___________ADD SOMETHING____________*/
@@ -59,6 +60,7 @@ let store = {
 
     /*____________DiSPATCH_______________*/
     dispatch(action) {
+        debugger
         //чтобы не плодить кучу методов, объявлем один и прокидываем один,action-объект,
         //с обязательным полем {type: ....}
         this._state.pageContent = content_reducer(this._state.pageContent, action);
