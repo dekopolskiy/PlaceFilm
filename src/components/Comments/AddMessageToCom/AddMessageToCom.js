@@ -4,22 +4,20 @@ import { actionAddMessage, actionRedrawingApp } from "../../../store";
 
 
 const AddMessageToCom = (props) => {
-
-    /*___________USER ADD_________*/
-    let addUnitOnClick = () => {
-        props.dispatch(actionAddMessage(23, props.dialogs.newMessageBody));
+    debugger
+    let fullMessage = () => {
+            props.addFullMessage();
     }
 
-    let changeTempMessage = (e) => {
-        props.dialogs.newMessageBody = e.target.value;
-        props.dispatch(actionRedrawingApp());
+    let chunckMessage = (e) => {
+            props.updateChunckMessage(e.target.value);
     }
 
 
     return (
         <div>
-            <textarea onInput={changeTempMessage} value={props.dialogs.newMessageBody}></textarea>
-            <button onClick={addUnitOnClick}>add Message</button>
+            <textarea onInput={chunckMessage} value={props.temp}></textarea>
+            <button onClick={fullMessage}>add Message</button>
         </div>
     )
 }

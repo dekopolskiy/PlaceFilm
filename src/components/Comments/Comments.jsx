@@ -4,6 +4,7 @@ import One_comment from './One_comment'
 import React from 'react';
 import AddUserToCom from './AddUserToCom/AddUserToCom';
 import AddMessageToCom from './AddMessageToCom/AddMessageToCom';
+import AddMessageToComContainer from './AddMessageToCom/AddMessageToComContainer';
 
 
 const User = (props) => {
@@ -40,7 +41,7 @@ let Comments = (props) => {
                     />
                 </div>
                 <div className={styles.addMessage}>
-                    <AddMessageToCom
+                    <AddMessageToComContainer
                         dispatch={props.dispatch}
                         dialogs={props.state.pageDialogs}
                     />

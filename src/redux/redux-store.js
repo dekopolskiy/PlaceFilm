@@ -14,3 +14,14 @@ let redux_store = createStore(reducers);
 
 
 export default redux_store;
+
+
+/*
+1)Запуск redux_store
+2)Запуск reducers
+3)Запуск content_reducers и dialogs_reducers
+4)pageContent, PageDialogs проиинициализорваны, state заполнен
+5)передача state через props в react
+6)Соответственно названия pageContent и pageDialogs имеют значения
+если до этого использовал их без redux библиотеки
+*/
