@@ -24,4 +24,5 @@ export default redux_store;
 5)передача state через props в react
 6)Соответственно названия pageContent и pageDialogs имеют значения
 если до этого использовал их без redux библиотеки
+store.getState().pageContent.listSerials
 */
