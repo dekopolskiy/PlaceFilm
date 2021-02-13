@@ -1,8 +1,10 @@
+import { connect } from "react-redux";
+import AddUserToCom from "./AddUserToCom";
 
 
 
 
-const AddUserToCom = (props) => {
+const AddUserContainer = (props) => {
     let users = props.pageDialogs.users.map(item => <User id={item.id} name={item.nameUser} />)
 
     /*___________USER ADD_________*/
@@ -24,6 +26,21 @@ const AddUserToCom = (props) => {
     )
 }
 
+let mapStateToProps = (state) => {
+    return {
+        pageDialogs : state.pageDialogs
+    }
+}
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addUser: () => dispatch(actionAddUser(23, value)),
+        changeTemp: () => dispatch()
+    }
+}
+
+const AddUserContainerS = connect(mapStateToProps, mapDispatchToProps)(AddUserToCom)
 
 
-export default AddUserToCom;
+
+export default AddUserContainer;

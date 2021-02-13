@@ -5,7 +5,7 @@
 //приложения от логики формирования его визуального представления. 
 
 
-const AddMessageToComContainer = (props) => {
+const AddMessageContainer = (props) => {
     let addMessage = () => {
         props.dispatch(actionAddMessage(23, props.dialogs.newMessageBody));
     }
@@ -23,4 +23,4 @@ const AddMessageToComContainer = (props) => {
 
 
 
-export default AddMessageToComContainer;
+export default AddMessageContainer;

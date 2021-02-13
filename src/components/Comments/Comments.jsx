@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import styles from './Comments.module.css'
-import One_comment from './One_comment'
 import React from 'react';
+import AddUserContainer from './AddUserToCom/AddUserContainer';
+import AddMessageContainer from './AddMessageToCom/AddMessageContainer';
 
 
 
@@ -13,33 +14,17 @@ const User = (props) => {
     )
 }
 
-let Comments = props => {
-    //map server data in props from store.js
-    let users = props.pageDialogs.users.map(item => <User id={item.id} name={item.nameUser} />)
-    let messages = props.pageDialogs.messages.map(item => <One_comment name={item.name} value={item.value} />)
-
+let Comments = () => {
     return (
         <div>
             {/*_______________RENDER__________________ */}
             <div className={styles.comments}>
                 <h2>Messages</h2>
                 <div className={styles.users}>
-                    {users}
+                    <AddUserContainer />
                 </div>
                 <div className={styles.messages}>
-                    {messages}
-                </div>
-                {/*____________ ADD USER,ADD MESSAGE ____________*/}
-                <div className={styles.addUser}>
-
-
-
-                </div>
-                <div className={styles.addMessage}>
-
-
-
-
+                    <AddMessageContainer />
                 </div>
             </div>
         </div >

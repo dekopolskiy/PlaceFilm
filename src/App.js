@@ -21,7 +21,7 @@ const App = (props) => {
     <div>
       <Header />
       <Route path='/content' component={ContentContainer} />
-      <Route exact path='/comments' render={() => <CommentsContainer/>} />
+      <Route exact path='/comments' render={() => <Comments/>} />
       <Route path='/log_in' component={Log_in} />
       <Route path='/log_out' component={Log_out} />
       <Route path='/account' component={Account} />
