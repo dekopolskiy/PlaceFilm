@@ -1,4 +1,8 @@
 const ADD_SERIAL_POST = 'ADD-SERIAL-POST';
+const UPDATE_SERIAL_POST = 'UPDATE-SERIAL-POST'
+
+//store.getState().pageContent.listSerials
+
 
 let initial = {
         mainPoster: { name: 'True Detective', img: "https://lostfilm.info/images/poster/545/5445957.jpg" },
@@ -21,6 +25,9 @@ const content_reducer = (state=initial, action) => {
             img: action.value,
         });
         state.newPosterBody = '';
+    } else if (action.type === UPDATE_SERIAL_POST) {
+        debugger
+        state.newPosterBody = action.value;
     }
     return state;
 }

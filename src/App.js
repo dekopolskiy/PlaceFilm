@@ -6,23 +6,22 @@ import Header from './components/Header/Header';
 import Account from './components/Header/Pages_header/Account/Account';
 import Log_in from './components/Header/Pages_header/Log_in/Log_in';
 import Log_out from './components/Header/Pages_header/Log_out/Log_out';
-import Content from './components/Content/Content';
+import ContentContainer from './components/Content/ContentContainer';
+import CommentsContainer from './components/Comments/CommentsContainer';
 
-
+/*Если где-то произойдет переход с помощью Navlink to='path'
+          то Route отследит путь Navlink, соотнесет со своим,
+          и выведет подходящую компоненту
+        */
+/* render чтобы пробросить объект props render={()=> <Log_in/> }*/
 
 const App = (props) => {
+
   return (
     <div>
       <Header />
-      {/*Если где-то произойдет переход с помощью Navlink to='path'
-          то Route отследит путь Navlink, соотнесет со своим,
-          и выведет подходящую компоненту
-        */}
-      <Route path='/content' render={() => <Content/>} />
-      {/* render чтобы пробросить объект props */}
-      <Route path='/comments' exact render={() => <Comments/>
-      }
-      />
+      <Route path='/content' component={ContentContainer} />
+      <Route exact path='/comments' render={() => <CommentsContainer/>} />
       <Route path='/log_in' component={Log_in} />
       <Route path='/log_out' component={Log_out} />
       <Route path='/account' component={Account} />
@@ -30,6 +29,8 @@ const App = (props) => {
     </div>
   );
 }
+
+
 
 
 export default App;

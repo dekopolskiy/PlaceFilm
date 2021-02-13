@@ -1,6 +1,8 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const ADD_USER = 'ADD-USER';
 
+//store.getState().pageDialogs.messages
+
 
 let initial = {
         messages: [

@@ -1,5 +1,3 @@
-import { actionAddMessage, actionRedrawingApp } from "../../../store";
-import AddMessageToCom from "./AddMessageToCom";
 
 //Иногда объём работы, за выполнение которой отвечает отдельный компонент, 
 //оказывается слишком большим, компоненту приходится решать слишком много задач.

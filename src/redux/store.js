@@ -9,13 +9,13 @@ let reducers = combineReducers({
 })
 
 
-let redux_store = createStore(reducers); 
+let store = createStore(reducers); 
 
 
 
-export default redux_store;
+export default store;
 
-
+//store.getState().pageContent.listSerials
 /*
 1)Запуск redux_store
 2)Запуск reducers

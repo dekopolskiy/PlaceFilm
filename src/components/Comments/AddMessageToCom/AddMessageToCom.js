@@ -1,5 +1,4 @@
 
-import { actionAddMessage, actionRedrawingApp } from "../../../store";
 
 
 //Презентационные должны знать только о том,что приходит в props

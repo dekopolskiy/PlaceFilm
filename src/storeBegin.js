@@ -68,11 +68,8 @@ let store = {
     }
 }
 
-
-export let actionRedrawingApp = () => { //экшены для того,чтобы UI не создавал сам объекты, UI импортирует эти 
+ //экшены для того,чтобы UI не создавал сам объекты, UI импортирует эти 
     //функции, и по нажатию на кнопку добавить в объект передаются данные textarea и тип того,что хотим сделать
-    return { type: 'REDRAWING-APP' }
-}
 
 
 export let actionAddUser = (id, text) => {
@@ -87,8 +84,17 @@ export let actionAddSerialPost = (name, text) => {
     return { type: 'ADD-SERIAL-POST', key: name, value: text }
 }
 
+export let actionUpdateUser = (value) => {
+    return { type: 'UPDATE-USER', value: value }
+}
 
+export let actionUpdateMessage = (value) => {
+    return { type: 'UPDATE-MESSAGE', value: value }
+}
+
+export let actionUpdateSerialPost = (value) => {
+    return { type: 'UPDATE-SERIAL-POST', value: value }
+}
 
 export default store;
 
-window.store = store;

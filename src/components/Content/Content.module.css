@@ -18,3 +18,9 @@
     grid-row-gap: 25px;
     grid-column-gap: 50px;
 }
+.add{
+    color:white;
+    border: 1px solid white;
+    grid-column: 2/4;
+    height: 50px;
+}
