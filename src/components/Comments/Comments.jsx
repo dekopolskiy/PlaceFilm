@@ -1,8 +1,6 @@
-import { NavLink } from 'react-router-dom'
 import styles from './Comments.module.css'
 import React from 'react';
-import AddUserContainer from './AddUserToCom/AddUserContainer';
-import AddMessageContainer from './AddMessageToCom/AddMessageContainer';
+import AddUserContainer from './AddUser/AddUserContainer';
 
 
 let Comments = () => {
@@ -12,7 +10,7 @@ let Comments = () => {
             <div className={styles.comments}>
                 <h2>Messages</h2>
                 <div className={styles.users}>
-                    <AddUserContainer />
+                <AddUserContainer/>
                 </div>
                 <div className={styles.messages}>
                 </div>

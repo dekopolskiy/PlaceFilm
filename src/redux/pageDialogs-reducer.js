@@ -2,8 +2,9 @@ const ADD_MESSAGE = 'ADD-MESSAGE';
 const ADD_USER = 'ADD-USER';
 const UPDATE_USER = 'UPDATE-USER';
 const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
-//store.getState().pageDialogs.messages
 
+
+//store.getState().pageDialogs.messages
 
 let initial = {
     messages: [
@@ -19,7 +20,7 @@ let initial = {
         { id: 4, nameUser: 'Dmitry' },
         { id: 5, nameUser: 'Smerdyakov' }
     ],
-    newUserBody: '',
+    newUserBody: 'dmitri',
 }
 //initial why? redux запускает reducers без нашего ведома первый раз автоматом
 //и на этой стадии необходимо дать начальные значения странице

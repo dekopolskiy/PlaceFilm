@@ -9,6 +9,8 @@ let mapStateToProps = state => {
     }
 }
 
+
+
 let mapDispatchToProps = dispatch => {
     return {
         addOneSerial: (name, value) => dispatch(actionAddSerialPost(name, value)), //dispatch запускает reducers, они обновляют state и отрисовывает UI заново

@@ -1,4 +1,3 @@
-
 import Block_film from './Block_film/Block_film'
 import Main_film from './Main_film/Main_film'
 import styles from './Content.module.css'
@@ -10,16 +9,12 @@ import Greetings from './Greetings/Greetings'
 
 
 const Content = (props) => {
-
+    console.log('content');
     let mapPics = props.pageContent.listSerials.map(item => <Block_film name={item.name} pics={item.img} />);
 
-    let addSerialPost = () => {
-        props.addOneSerial('sherlock', props.pageContent.newPosterBody);
-    }
-
-    let updatePost = (e) => {
-        props.updateForDrawing(e.target.value);
-    }
+    let addSerialPost = () => props.addOneSerial('sherlock', props.pageContent.newPosterBody);
+    
+    let updatePost = (e) => props.updateForDrawing(e.target.value);
 
     return (
         <div className={styles.content}>

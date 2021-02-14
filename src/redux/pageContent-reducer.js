@@ -5,6 +5,7 @@ const UPDATE_SERIAL_POST = 'UPDATE-SERIAL-POST'
 
 
 let initial = {
+        con: console.log('hello'),
         mainPoster: { name: 'True Detective', img: "https://lostfilm.info/images/poster/545/5445957.jpg" },
         listSerials: [
             { name: 'Game of Thrones', img: 'https://cs8.pikabu.ru/post_img/2016/02/26/5/1456467431143385925.jpg' },
@@ -18,7 +19,7 @@ let initial = {
 
 //initial why? redux запускает reducers без нашего ведома первый раз автоматом
 //и на этой стадии необходимо дать начальные значения странице
-const content_reducer = (state=initial, action) => {
+const content_reducer = (state = initial, action) => {
     if (action.type === ADD_SERIAL_POST) { //выполняется логика добавления в state и отрисовка заново
         state.listSerials.push({
             name: action.key,

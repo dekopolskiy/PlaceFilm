@@ -1,25 +1,22 @@
 import { connect } from "react-redux";
-import AddUserToCom from "./AddUserToCom";
-import {actionAddUser} from "../../../storeBegin"
-import { actionUpdateUser } from "../../../storeBegin";
-
-
+import { actionAddUser, actionUpdateUser } from "../../../storeBegin";
+import AddUser from "./AddUser";
 
 
 let mapStateToProps = (state) => {
     return {
-        pageDialogs : state.pageDialogs
+        pageDialogs : state.pageDialogs,
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
         addUser: (key, value) => dispatch(actionAddUser(key, value)),
-        updateUser: value => dispatch(actionUpdateUser(value))
+        updateUser: value => dispatch(actionUpdateUser(value)),
     }
 }
 
-const AddUserContainer = connect(mapStateToProps, mapDispatchToProps)(AddUserToCom);
+const AddUserContainer = connect(mapStateToProps, mapDispatchToProps)(AddUser);
 
 
 

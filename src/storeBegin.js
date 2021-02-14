@@ -5,7 +5,7 @@ const REDRAWING = 'REDRAWING-APP';
 
 
 
-let store = {
+let storeBegin = {
     _state: {//напрямую нельзя обращаться вне store.js,private,нельзя перезаписывать
         pageContent: {
             mainPoster: { name: 'True Detective', img: "https://lostfilm.info/images/poster/545/5445957.jpg" },
@@ -84,17 +84,17 @@ export let actionAddSerialPost = (name, text) => {
     return { type: 'ADD-SERIAL-POST', key: name, value: text }
 }
 
-export let actionUpdateUser = (value) => {
-    return { type: 'UPDATE-USER', value: value }
+export let actionUpdateUser = (symb) => {
+    return { type: 'UPDATE-USER', value: symb }
 }
 
-export let actionUpdateMessage = (value) => {
-    return { type: 'UPDATE-MESSAGE', value: value }
+export let actionUpdateMessage = (symb) => {
+    return { type: 'UPDATE-MESSAGE', value: symb }
 }
 
-export let actionUpdateSerialPost = (value) => {
-    return { type: 'UPDATE-SERIAL-POST', value: value }
+export let actionUpdateSerialPost = (symb) => {
+    return { type: 'UPDATE-SERIAL-POST', value: symb }
 }
 
-export default store;
+export default storeBegin;
 

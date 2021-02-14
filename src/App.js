@@ -14,13 +14,14 @@ import ContentContainer from './components/Content/ContentContainer';
         */
 /* render чтобы пробросить объект props render={()=> <Log_in/> }*/
 
-const App = (props) => {
-
+const App = () => {
   return (
     <div>
       <Header />
-      <Route path='/content' component={ContentContainer} />
-      <Route exact path='/comments' render={() => <Comments/>} />
+      <Route path='/content'
+             render={ () => <ContentContainer />} />
+      <Route path='/comments'
+             render={ () => <Comments /> } />
       <Route path='/log_in' component={Log_in} />
       <Route path='/log_out' component={Log_out} />
       <Route path='/account' component={Account} />
