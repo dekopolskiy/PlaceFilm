@@ -26,7 +26,6 @@ const content_reducer = (state=initial, action) => {
         });
         state.newPosterBody = '';
     } else if (action.type === UPDATE_SERIAL_POST) {
-        debugger
         state.newPosterBody = action.value;
     }
     return state;

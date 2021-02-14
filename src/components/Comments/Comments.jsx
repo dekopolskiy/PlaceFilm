@@ -5,15 +5,6 @@ import AddUserContainer from './AddUserToCom/AddUserContainer';
 import AddMessageContainer from './AddMessageToCom/AddMessageContainer';
 
 
-
-const User = (props) => {
-    return (
-        <div>
-            <NavLink to={'comments/' + props.id}>{props.name}</NavLink>
-        </div>
-    )
-}
-
 let Comments = () => {
     return (
         <div>
@@ -24,7 +15,6 @@ let Comments = () => {
                     <AddUserContainer />
                 </div>
                 <div className={styles.messages}>
-                    <AddMessageContainer />
                 </div>
             </div>
         </div >

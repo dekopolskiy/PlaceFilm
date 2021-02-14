@@ -1,25 +1,19 @@
+import OneUser from "../OneUser";
 
 
 
 
-const AddUserToCom = (props) => {
-    let users = props.pageDialogs.users.map(item => <User id={item.id} name={item.nameUser} />)
+const AddUserToCom = props => {
+    let users = props.pageDialogs.users.map(item => <OneUser id={item.id} name={item.nameUser}/>)
 
-    /*___________USER ADD_________*/
-    let addUnitOnClick = () => {
-        props.dispatch(actionAddUser(23, props.dialogs.newUserBody));
-    }
-
-    let changeTempUser = (e) => {
-        props.dialogs.newUserBody = e.target.value;
-        props.dispatch(actionRedrawingApp());
-    }
-
+    let addUnit = () => props.addUser(23, props.pageDialogs.newUserBody);
+    
+    let changeTemp = e => props.updateUser(e.target.value);
 
     return (
         <div>
-            <textarea onInput={changeTempUser} value={props.dialogs.newUserBody}></textarea>
-            <button onClick={addUnitOnClick}>add User</button>
+            <input type='text' onChange={changeTemp} value={props.pageDialogs.newUserBody}/>
+            <button onClick={addUnit}>add User</button>
         </div>
     )
 }

@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 //bind - чтобы не вызвать, а передать
 
 export let rendering = () => {
+    debugger
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>

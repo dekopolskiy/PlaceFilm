@@ -7,7 +7,6 @@ import Account from './components/Header/Pages_header/Account/Account';
 import Log_in from './components/Header/Pages_header/Log_in/Log_in';
 import Log_out from './components/Header/Pages_header/Log_out/Log_out';
 import ContentContainer from './components/Content/ContentContainer';
-import CommentsContainer from './components/Comments/CommentsContainer';
 
 /*Если где-то произойдет переход с помощью Navlink to='path'
           то Route отследит путь Navlink, соотнесет со своим,
@@ -29,7 +28,6 @@ const App = (props) => {
     </div>
   );
 }
-
 
 
 
