@@ -4,17 +4,17 @@ import OneUser from "../OneUser";
 
 
 const AddUser = props => {
-    console.log('AddUser')
-    //let users = props.pageDialogs.users.map(item => <OneUser id={item.id} name={item.nameUser}/>)
+    let users = props.users.map(item => <OneUser id={item.id} name={item.nameUser}/>)
 
-    //let addUnit = () => props.addUser(23, props.pageDialogs.newUserBody);
+    let addUnit = () => props.addUser(23, props.newUserBody);
     
     let changeTemp = e => props.updateUser(e.target.value);
 
     return (
         <div>
-            <input type='text' onChange={changeTemp} value={props.pageDialogs.newUserBody}/>
-           {/* <button onClick={addUnit}>add User</button>*/}
+            {users}
+            <input type='text' onChange={changeTemp} value={props.newUserBody}/>
+            <button onClick={addUnit}>add User</button>
         </div>
     )
 }

@@ -5,11 +5,11 @@ import Content from "./Content"
 
 let mapStateToProps = state => {
     return {
-        pageContent: state.pageContent,
+        listSerials: state.pageContent.listSerials,//отрисовка заново если меняется ссылка
+        newPosterBody: state.pageContent.newPosterBody,//отрисовка заново если меняется значение
+        mainPoster: state.pageContent.mainPoster //отрисовка заново если меняется значение
     }
 }
-
-
 
 let mapDispatchToProps = dispatch => {
     return {
@@ -40,3 +40,11 @@ export default ContentContainer;
 //props.pageContent, props.addOneSerial
 //6 в Provider отдали store, здесь получаем state
 //7 в props у Content получим pageContent, addOneSerial, updateForDrawing
+
+
+
+//connect имеет свой subscribe(render приложения), который отрисует заново ui если изменится state
+//после запуска connect, сравнивается значение listSerials(к примеру), если ссылка на объект(массив),не меняется, то 
+//значит объект не изменился, даже если внутри него добавились значения, отрисовки не произойдет
+//необходимо делать копию объекта, мы не имеем право менять сам state, только create copyState
+//ссылка или значения примитива меняется и отрисовывается все заново

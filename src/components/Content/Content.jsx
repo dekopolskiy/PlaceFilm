@@ -9,24 +9,23 @@ import Greetings from './Greetings/Greetings'
 
 
 const Content = (props) => {
-    console.log('content');
-    let mapPics = props.pageContent.listSerials.map(item => <Block_film name={item.name} pics={item.img} />);
+    let mapPics = props.listSerials.map(item => <Block_film name={item.name} pics={item.img} />);
 
-    let addSerialPost = () => props.addOneSerial('sherlock', props.pageContent.newPosterBody);
+    let addSerialPost = () => props.addOneSerial('sherlock', props.newPosterBody);
     
     let updatePost = (e) => props.updateForDrawing(e.target.value);
 
     return (
         <div className={styles.content}>
             <Greetings />
-            <Main_film film={props.pageContent.mainPoster} />
+            <Main_film film={props.mainPoster} />
             <Greetings />
             <div className={styles.listSerials}>
                 {mapPics}
             </div>
             <div className={styles.add}>
                 <span>add serial link</span><br />
-                <input type="text" onChange={updatePost} value={props.pageContent.newPosterBody}/>
+                <input type="text" onChange={updatePost} value={props.newPosterBody}/>
                 <button onClick={addSerialPost}>serial</button>
             </div>
         </div>
@@ -34,3 +33,13 @@ const Content = (props) => {
 }
 
 export default Content;
+
+
+//изменение символа
+//1. Сначала он меняется в store, затем отображение в UI, принцип REACT REDUX UI BLL
+//2. Значение изначально задаем из store
+//3. После нажатия клавиши событие onChange, запускает функцию updatePost
+//4. Чтобы высвободить компоненту от грязной работу, вызываем функцию колбэк полученную через props
+//Лишаем функцию возможности обращаться к state,dispatch
+//5. Вызывая колбэк функция переходит к dispatch(action)
+//6. dispatch принадлежит store, соответсвенно, dispatch(action) { запускает reducers, меняет state, и отрисовка заново}

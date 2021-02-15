@@ -5,7 +5,8 @@ import AddUser from "./AddUser";
 
 let mapStateToProps = (state) => {
     return {
-        pageDialogs : state.pageDialogs,
+        users : state.pageDialogs.users,//отрисовка заново если меняется ссылка
+        newUserBody : state.pageDialogs.newUserBody//отрисовка заново если меняется значение
     }
 }
 

@@ -4,8 +4,8 @@ const { default: dialogs_reducer } = require("./pageDialogs-reducer");
 
 
 let reducers = combineReducers({ 
-    pageContent: content_reducer, //1)инициализирует state 2)меняет state  
-    pageDialogs: dialogs_reducer, //1)инициализирует state 2)меняет state
+    pageContent: content_reducer, //1)инициализирует часть state 2)меняет часть state  
+    pageDialogs: dialogs_reducer, //1)инициализирует часть state 2)меняет часть state
 })
 
 
@@ -21,7 +21,7 @@ export default store;
 2)Запуск reducers
 3)Запуск content_reducers и dialogs_reducers
 4)pageContent, PageDialogs проиинициализорваны, state заполнен
-5)передача state через props в react
+5)передача state через функционал react-redux функции map и connect
 6)Соответственно названия pageContent и pageDialogs имеют значения
 если до этого использовал их без redux библиотеки
 store.getState().pageContent.listSerials

@@ -1,3 +1,5 @@
+import { act } from "react-dom/cjs/react-dom-test-utils.development";
+
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const ADD_USER = 'ADD-USER';
 const UPDATE_USER = 'UPDATE-USER';
@@ -24,21 +26,24 @@ let initial = {
 }
 //initial why? redux запускает reducers без нашего ведома первый раз автоматом
 //и на этой стадии необходимо дать начальные значения странице
-const dialogs_reducer = (state = initial, action) => {
-    if (action.type === ADD_USER) { //выполняется логика добавления в state и отрисовка заново
-        state.users.push({
-            id: action.key,
-            nameUser: action.value
-        });
-        state.newUserBody = '';
-    } else if (action.type === ADD_MESSAGE) { //выполняется логика добавления в state и отрисовка заново
+const dialogs_reducer = (state = initial, action) => {//initial это pageDialogs
+    if (action.type === ADD_USER) { 
+        return { //копия объекта, immutable, pure function
+            ...state,
+            users: [...state.users, {id:action.key, nameUser: action.value}],
+            newUserBody: '',
+        };
+    } else if (action.type === ADD_MESSAGE) { 
         state.messages.push({
             name: action.name,
             value: action.value,
         })
         state.newMessageBody = '';
     } else if (action.type === UPDATE_USER) {
-        state.newUserBody = action.value;
+        return {
+            ...state,
+            newUserBody: action.value
+        };
     } else if (action.type === UPDATE_MESSAGE) {
         state.newMessageBody = action.value;
     }
