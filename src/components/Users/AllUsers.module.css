@@ -1,0 +1,19 @@
+.img{
+    overflow: hidden;
+    width: 200px;
+    height: 300px;
+}
+
+
+.allUsers{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2px;
+}
+
+
+.blockUser{
+    padding: 20px;
+    border: 1px solid black;
+    background: #57575e;
+}

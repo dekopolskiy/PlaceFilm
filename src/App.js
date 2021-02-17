@@ -7,6 +7,7 @@ import Account from './components/Header/Pages_header/Account/Account';
 import Log_in from './components/Header/Pages_header/Log_in/Log_in';
 import Log_out from './components/Header/Pages_header/Log_out/Log_out';
 import ContentContainer from './components/Content/ContentContainer';
+import AllUsersContainer from './components/Users/AllUsersContainer';
 
 /*Если где-то произойдет переход с помощью Navlink to='path'
           то Route отследит путь Navlink, соотнесет со своим,
@@ -22,6 +23,8 @@ const App = () => {
              render={ () => <ContentContainer />} />
       <Route path='/comments'
              render={ () => <Comments /> } />
+      <Route path='/all_users'
+             render={ () => <AllUsersContainer />} />  
       <Route path='/log_in' component={Log_in} />
       <Route path='/log_out' component={Log_out} />
       <Route path='/account' component={Account} />
