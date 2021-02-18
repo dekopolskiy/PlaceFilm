@@ -1,0 +1,28 @@
+1) создать store.js
+2) создать allExample-reducer.js
+3) расписать начальные значения в allExample
+    const initial = { allValues : [1,2,3,4,5], 
+    передать в параметр функции const allExample_reducer = (state = initial, action) {
+        return state; и вернуть для дальнейшего использования
+    }
+4) в store.js имеем pageExample : allExample-reducer, соответсвенно в pageExample теперь имеем объект 
+расписанный в 3)
+т.к. запускается react, запускается store, значения инициализируются из reducers
+5) создаешь контейнер компоненту с помощью connect(mapStateToProps, mapDispatchToProps)(Copy)
+6) заполняешь const mapStateToProps = (state) => {
+    return {
+            allValues: state.pageExample.allValues // значение из store.js
+}}, const mapDispatchToProps = (dispatch) => {
+    return{
+        example: (key) => { dispatch({type: exampleType, key:key})}
+}}
+7) функция connect запустит их вместе с компонентой презентационной
+8) функции map получат целиком state и dispatch, в первой данные, во второй функции
+   для обращения к store, чтобы разгрузить презентационную компоненту
+9) в презентационной компоненте через props, получаем все, что вернули из mapStateToProps, mapDispatchToProps
+10) для обращения к функции props.example(key), dispatch прокинет этот объект в allExample_reducer.js
+11) создать switch внутри const allExample_reducer = (state, action) {
+    switch(){} и смотреть по полю type что пришло и обрабатывать исходный initial
+}
+12) обрабатывать initial необходимо создавая копию ...state (который равен initial по умолчанию)
+по правилу immutable
