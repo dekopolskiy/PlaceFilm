@@ -1,4 +1,5 @@
 import all_films_reducer from "./all_films_reducer";
+import collections_reducer from "./collections_reducer";
 
 const { createStore, combineReducers } = require("redux");
 const { default: content_reducer } = require("./content_reducer");
@@ -7,6 +8,7 @@ const { default: content_reducer } = require("./content_reducer");
 let reducers = combineReducers({ 
     contentRDC: content_reducer, //запускается store, запускается каждый reducer, возвращает часть state 
     all_filmsRDC: all_films_reducer,
+    collectionRDC: collections_reducer,
 })
 
 

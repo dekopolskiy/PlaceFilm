@@ -3,10 +3,10 @@ import './App.css';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Account from './components/Header/Pages_header/Account/Account';
-import Log_in from './components/Header/Pages_header/Log_in/Log_in';
 import Log_out from './components/Header/Pages_header/Log_out/Log_out';
 import ContentContainer from './components/Content/ContentContainer';
 import All_filmsContainer from './components/All_films/All_filmsContainer';
+import CollectionsContainer from './components/Collections/CollectionsContainer';
 
 /*Если где-то произойдет переход с помощью Navlink to='path'
           то Route отследит путь Navlink, соотнесет со своим,
@@ -22,7 +22,7 @@ const App = () => {
              render={ () => <ContentContainer />} />
       <Route path='/all_films'
              render={ () => <All_filmsContainer/>} />  
-      <Route path='/log_in' component={Log_in} />
+      <Route path='/collections' component={CollectionsContainer} />
       <Route path='/log_out' component={Log_out} />
       <Route path='/account' component={Account} />
       <Footer />

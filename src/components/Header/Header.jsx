@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <header>
             <Header_elem style={styles.logo} path='/content' name='MN'/>
-            <Header_elem style={styles.comments} path='/comments' name='Messages'/>
+            <Header_elem style={styles.comments} path='/collections' name='Collections'/>
             <Header_elem style={styles.log_in} path='/all_films' name='Movies'/>
             <Header_elem style={styles.log_out} path='/all' name='Log out'/>
             <Header_elem style={styles.account} path='/account' name='Account'/>
