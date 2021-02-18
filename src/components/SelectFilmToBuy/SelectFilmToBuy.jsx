@@ -1,7 +1,7 @@
-import styles from './AllUsers.module.css'
+import styles from './SelectFilmToBuy.module.css'
 
 
-const AllUsers = (props) => {
+const SelectFilmToBuy = (props) => {
     let all = props.allUsers.map((item) => {
         return (
             <div className={styles.blockUser}>
@@ -18,10 +18,6 @@ const AllUsers = (props) => {
                     }
                 </div>
             </div>
-
-
-
-
         )
     })
     return (
@@ -33,4 +29,4 @@ const AllUsers = (props) => {
 
 
 
-export default AllUsers;
+export default SelectFilmToBuy;

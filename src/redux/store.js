@@ -1,14 +1,12 @@
-import storage_users_reducer from "./storageUsers-reducer";
+import all_films_reducer from "./all_films_reducer";
 
 const { createStore, combineReducers } = require("redux");
-const { default: content_reducer } = require("./pageContent-reducer");
-const { default: dialogs_reducer } = require("./pageDialogs-reducer");
+const { default: content_reducer } = require("./content_reducer");
 
 
 let reducers = combineReducers({ 
-    pageContent: content_reducer, //запускается store, запускается каждый reducer, возвращает часть state 
-    pageDialogs: dialogs_reducer, 
-    pageUsers: storage_users_reducer,
+    contentRDC: content_reducer, //запускается store, запускается каждый reducer, возвращает часть state 
+    selectFilmRDC: all_films_reducer,
 })
 
 

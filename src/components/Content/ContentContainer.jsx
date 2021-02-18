@@ -4,10 +4,11 @@ import Content from "./Content"
 
 
 let mapStateToProps = state => {
+    //state приходит целиком, со всеми reducers
     return {
-        listSerials: state.pageContent.listSerials,//отрисовка заново если меняется ссылка
-        newPosterBody: state.pageContent.newPosterBody,//отрисовка заново если меняется значение
-        mainPoster: state.pageContent.mainPoster //отрисовка заново если меняется значение
+        listSerials: state.contentRDC.listSerials,//отрисовка заново если меняется ссылка
+        newPosterBody: state.contentRDC.newPosterBody,//отрисовка заново если меняется значение
+        mainPoster: state.contentRDC.mainPoster //отрисовка заново если меняется значение
     }
 }
 

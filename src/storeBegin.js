@@ -1,6 +1,4 @@
-import content_reducer from "./redux/pageContent-reducer";
-import dialogs_reducer from "./redux/pageDialogs-reducer";
-
+/*
 const REDRAWING = 'REDRAWING-APP';
 
 
@@ -45,8 +43,8 @@ let storeBegin = {
         //or rendering(this)
     },
 
-    /*___________ADD SOMETHING____________*/
-    /*addUser(key, value) {
+    
+    addUser(key, value) {
         this._state.jsonUser.push({ id: key, nameUser: value });
         this.rerenderApp();
     },
@@ -56,9 +54,8 @@ let storeBegin = {
             img: value,
         });
         this.rerenderApp();
-    },*/
+    },
 
-    /*____________DiSPATCH_______________*/
     dispatch(action) {
         //чтобы не плодить кучу методов, объявлем один и прокидываем один,action-объект,
         //с обязательным полем {type: ....}
@@ -67,7 +64,7 @@ let storeBegin = {
         this.redrawingContent();
     }
 }
-
+*/
  //экшены для того,чтобы UI не создавал сам объекты, UI импортирует эти 
     //функции, и по нажатию на кнопку добавить в объект передаются данные textarea и тип того,что хотим сделать
 
@@ -96,5 +93,4 @@ export let actionUpdateSerialPost = (symb) => {
     return { type: 'UPDATE-SERIAL-POST', value: symb }
 }
 
-export default storeBegin;
 
