@@ -1,10 +1,10 @@
-import styles from './SelectFilmToBuy.module.css'
+import styles from './All_films.module.css'
 
 
-const SelectFilmToBuy = (props) => {
-    let all = props.allUsers.map((item) => {
+const All_films = (props) => {
+    let all = props.all_films.map((item) => {
         return (
-            <div className={styles.blockUser}>
+            <div className={styles.blockFilm}>
                 <div>
                     <img src={item.avatarUrl} className={styles.img}></img>
                 </div>
@@ -21,7 +21,7 @@ const SelectFilmToBuy = (props) => {
         )
     })
     return (
-        <div className={styles.allUsers}>
+        <div className={styles.allFilms}>
             {all}
         </div>
     )
@@ -29,4 +29,4 @@ const SelectFilmToBuy = (props) => {
 
 
 
-export default SelectFilmToBuy;
+export default All_films;

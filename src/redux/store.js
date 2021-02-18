@@ -6,7 +6,7 @@ const { default: content_reducer } = require("./content_reducer");
 
 let reducers = combineReducers({ 
     contentRDC: content_reducer, //запускается store, запускается каждый reducer, возвращает часть state 
-    selectFilmRDC: all_films_reducer,
+    all_filmsRDC: all_films_reducer,
 })
 
 

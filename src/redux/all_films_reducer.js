@@ -3,7 +3,7 @@
 
 
 const initial = {
-    allFilms: [
+    all_films: [
         { id: 1, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 28 },
         { id: 2, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 38 },
         { id: 3, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 48 },
@@ -19,7 +19,7 @@ const all_films_reducer = (state = initial, action) => {
         case 'ADD-TO-CART':
             return {
                 ...state,
-                allFilms : state.allFilms.map((item) => {
+                all_films : state.all_films.map((item) => {
                     if (item.id == action.id) {
                         return {
                             ...item,
@@ -32,7 +32,7 @@ const all_films_reducer = (state = initial, action) => {
         case 'REMOVE-FROM-CART':
             return {
                 ...state,
-                allFilms : state.allFilms.map((item) => {
+                all_films : state.all_films.map((item) => {
                     if (item.id == action.id) {
                         return {
                             ...item,

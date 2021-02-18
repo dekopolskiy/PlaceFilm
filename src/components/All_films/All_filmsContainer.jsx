@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
-import SelectFilmToBuy from "./SelectFilmToBuy";
+import All_films from "./All_films";
 
 let mapStateToProps = state => {
     //state приходит целиком, со всеми reducers
     return {
-        allUsers: state.selectFilmRDC.allFilms,//отрисовка заново если меняется ссылка
+        all_films: state.all_filmsRDC.all_films,//отрисовка заново если меняется ссылка
         //сами выбираем, что будем видеть в этой компоненте, указывая нужный нам reducer из store.js
     }
 }
@@ -20,6 +20,6 @@ let mapDispatchToProps = dispatch => {
     }
 }
 
-const SelectFilmToBuyContainer = connect(mapStateToProps, mapDispatchToProps)(SelectFilmToBuy);
+const All_filmsContainer = connect(mapStateToProps, mapDispatchToProps)(All_films);
 
-export default SelectFilmToBuyContainer;
+export default All_filmsContainer;

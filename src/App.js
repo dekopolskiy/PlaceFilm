@@ -6,7 +6,7 @@ import Account from './components/Header/Pages_header/Account/Account';
 import Log_in from './components/Header/Pages_header/Log_in/Log_in';
 import Log_out from './components/Header/Pages_header/Log_out/Log_out';
 import ContentContainer from './components/Content/ContentContainer';
-import SelectFilmToBuyContainer from './components/SelectFilmToBuy/SelectFilmToBuyContainer';
+import All_filmsContainer from './components/All_films/All_filmsContainer';
 
 /*Если где-то произойдет переход с помощью Navlink to='path'
           то Route отследит путь Navlink, соотнесет со своим,
@@ -20,8 +20,8 @@ const App = () => {
       <Header />
       <Route path='/content'
              render={ () => <ContentContainer />} />
-      <Route path='/buy_film'
-             render={ () => <SelectFilmToBuyContainer />} />  
+      <Route path='/all_films'
+             render={ () => <All_filmsContainer/>} />  
       <Route path='/log_in' component={Log_in} />
       <Route path='/log_out' component={Log_out} />
       <Route path='/account' component={Account} />
