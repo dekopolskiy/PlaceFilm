@@ -16,7 +16,10 @@ let mapDispatchToProps = dispatch => {
         },
         removeFromCart: (id) => {
             dispatch({ type: 'REMOVE-FROM-CART', id: id })
-        }
+        },
+        setFilms: (films) => {
+            dispatch({ type: 'SET-FILMS', films: films })
+        },
     }
 }
 

@@ -3,14 +3,7 @@
 
 
 const initial = {
-    all_films: [
-        { id: 1, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 28 },
-        { id: 2, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 38 },
-        { id: 3, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 48 },
-        { id: 4, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 28 },
-        { id: 5, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 38 },
-        { id: 6, name: 'Однажды в голливуде', avatarUrl: 'https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg', cart: false, age: 48 },
-    ]
+    all_films: []
 }
 
 
@@ -42,6 +35,11 @@ const all_films_reducer = (state = initial, action) => {
                     return item;
                 })
             }
+        case 'SET-FILMS':
+            return {            
+                ...state,//Этим возвращаем то, что поменяет state, state инкапсулирован
+                all_films: [...action.films.all_films]
+            }
         default:
             return state;
     }
@@ -53,4 +51,5 @@ export default all_films_reducer;
 
 //функция редьюсер - это чистая функция, принимающая state и action, создающая копию по принципу immutable
 //и возвращая либо копию либо state если менять нечего
+//после чего меняет this.state.часть и заново рендерит приложение
 

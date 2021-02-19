@@ -7,14 +7,17 @@
 
 .allFilms{
     background: rgb(58, 57, 57);
-
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
 
 
-.blockFilm{
-    margin: 0 auto;
-    padding: 20px;
-    background: white;
+.allFilmsContent{
+    grid-column: 2;
 }
+
+.blockFilm{
+    padding: 20px;
+    background:#0e0e0e;
+}
+
