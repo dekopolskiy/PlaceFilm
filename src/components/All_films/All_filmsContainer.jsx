@@ -6,6 +6,7 @@ let mapStateToProps = state => {
     return {
         all_films: state.all_filmsRDC.all_films,//отрисовка заново если меняется ссылка
         //сами выбираем, что будем видеть в этой компоненте, указывая нужный нам reducer из store.js
+        cart: state.all_filmsRDC.cart,
     }
 }
 
@@ -17,8 +18,8 @@ let mapDispatchToProps = dispatch => {
         removeFromCart: (id) => {
             dispatch({ type: 'REMOVE-FROM-CART', id: id })
         },
-        setFilms: (films) => {
-            dispatch({ type: 'SET-FILMS', films: films })
+        setFilms: (films, cart) => {
+            dispatch({ type: 'SET-FILMS', films: films, cart: cart })
         },
     }
 }

@@ -10,6 +10,7 @@ const initial = {
 const all_films_reducer = (state = initial, action) => {
     switch (action.type) {
         case 'ADD-TO-CART':
+            debugger
             return {
                 ...state,
                 all_films : state.all_films.map((item) => {
@@ -20,7 +21,8 @@ const all_films_reducer = (state = initial, action) => {
                         }
                     }
                     return item;
-                })
+                }),
+                cart: ++state.cart,
             }
         case 'REMOVE-FROM-CART':
             return {
@@ -33,12 +35,14 @@ const all_films_reducer = (state = initial, action) => {
                         }
                     }
                     return item;
-                })
+                }),
+                cart: --state.cart,
             }
         case 'SET-FILMS':
             return {            
                 ...state,//Этим возвращаем то, что поменяет state, state инкапсулирован
-                all_films: [...action.films.all_films]
+                all_films: [...action.films.all_films],
+                cart: action.cart
             }
         default:
             return state;

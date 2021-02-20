@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setActors: (data) => {
-            dispatch({type: 'SET-ACTORS', data: data})
+            dispatch({ type: 'SET-ACTORS', data: data })
         }
     }
 }
@@ -21,3 +21,4 @@ const ActorsContainer = connect(mapStateToProps, mapDispatchToProps)(Actors)
 
 
 export default ActorsContainer;
+
