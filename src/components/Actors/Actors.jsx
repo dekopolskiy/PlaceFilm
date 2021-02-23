@@ -1,35 +1,55 @@
 import axios from "axios";
-import styles from './Actors.module.css'
-import { act } from "react-dom/test-utils";
+import styles from './Actors.module.css';
+import React from 'react';
 
 
-
-
-const Actors = (props) => {
-    if (props.items.length == 0) {
-        axios('https://social-network.samuraijs.com/api/1.0/users/')
-            .then(response => {
-                console.log(response.data.items)
-                props.setActors(response.data);// {items:[]}
-            }) 
+class Actors extends React.Component {
+    constructor(props) { //как в функции конструкторе, создал объект, присвоил все из this, вернул this
+        //отрабатывает один раз, методы из prototype вызываются сколько необходимо
+        super(props);
     }
 
+    render() {
+        let pages = [];
+        for (let i = 1; i <= this.props.pagesCount; i++) {
+            pages.push(i);
 
-    let actors = props.items.map(i => {
+        }
+
         return (
-            <div className={styles.every}>
-                {i.name}
+            <div>
+                {
+                    pages.map(i => {
+                        return (<span>{i}</span>)
+                    }
+                    )
+                }
+                <div className={styles.main}>
+                    {this.props.items.map(i => {
+                        return (
+                            <div className={styles.every}>
+                                {i.name}
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
-        )
-    })
 
-    return (
-        <div className={styles.main}>
-            {actors}
-        </div>
-    )
+        )
+    }
+
+    componentDidMount() {//объект создали, отрендерили, добавили в dom дерево, это Mount
+        axios('https://social-network.samuraijs.com/api/1.0/users/')
+            .then(response => this.props.setActors(response.data))
+    }
+
 }
 
 
 
 export default Actors;
+
+//Классовые компоненты имеют более широкий функционал чем функциональные
+//объект создается один раз и потом с ним ведется взаимодействие в отличие
+//от целой функциональной компоненты
+//объект создали в Container, записали в this.props все что возвращают map`ы

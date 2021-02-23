@@ -1,7 +1,8 @@
 
 
 const initial = {
-    items: []
+    items: [],
+    pagesCount: 6
 }
 
 const actors_reducer = (state = initial, action) => {
