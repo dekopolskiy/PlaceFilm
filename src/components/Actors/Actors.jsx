@@ -10,12 +10,6 @@ class Actors extends React.Component {
     }
 
     render() {
-        let pages = [];
-        for (let i = 1; i <= this.props.pagesCount; i++) {
-            pages.push(i);
-
-        }
-
         return (
             <div>
                 {
