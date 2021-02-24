@@ -10,20 +10,35 @@ class Actors extends React.Component {
     }
 
     render() {
+        let totalCountElements = parseInt(this.props.totalCount / 100);
+        let totalCountPages = Math.ceil(totalCountElements / this.props.pageSize);
+        console.log(totalCountPages)
+        let arr = [];
+        for (let i = 1; i <= totalCountPages; i++) {
+            arr.push(i);
+        }
+
         return (
             <div>
-                {
-                    pages.map(i => {
-                        return (<span>{i}</span>)
-                    }
-                    )
-                }
-                <div className={styles.main}>
-                    {this.props.items.map(i => {
+                <div>
+                    <div className={styles.main}>
+                        {this.props.items.map(i => {
+                            return (
+                                <div className={styles.every}>
+                                    <h3>{i.name}</h3>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div className={styles.pages}>
+                    {arr.map(i => {
                         return (
-                            <div className={styles.every}>
-                                {i.name}
-                            </div>
+                            <span className={i === this.props.currentPage ? styles.activeLink : null}
+                                onClick={() => {
+                                    this.props.setCurrentPage(i);
+                                    this.showNewPageUsers(i);
+                                }}>{i}</span>
                         )
                     })}
                 </div>
@@ -32,9 +47,18 @@ class Actors extends React.Component {
         )
     }
 
-    componentDidMount() {//объект создали, отрендерили, добавили в dom дерево, это Mount
-        axios('https://social-network.samuraijs.com/api/1.0/users/')
+
+    showNewPageUsers(page) {
+        axios(`https://social-network.samuraijs.com/api/1.0/users/?count=${this.props.pageSize}&page=${page}`)
             .then(response => this.props.setActors(response.data))
+    }
+
+    componentDidMount() {//объект создали, отрендерили, добавили в dom дерево, это Mount
+        axios(`https://social-network.samuraijs.com/api/1.0/users/?count=${this.props.pageSize}&page=${this.props.currentPage}`)
+            .then(response => {
+                this.props.setActors(response.data);
+                this.props.setTotalCount(response.data.totalCount)
+            })
     }
 
 }

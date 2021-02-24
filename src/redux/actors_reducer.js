@@ -2,7 +2,9 @@
 
 const initial = {
     items: [],
-    pagesCount: 6
+    currentPage: 1,
+    pageSize: 20,
+    totalCount: 0,
 }
 
 const actors_reducer = (state = initial, action) => {
@@ -11,6 +13,16 @@ const actors_reducer = (state = initial, action) => {
             return {
                 ...state,
                 items: [...action.data.items],
+            }
+        case 'SET-CURRENT-PAGE':
+            return {
+                ...state,
+                currentPage: action.page
+            }
+        case 'SET-TOTAL-COUNT':
+            return {
+                ...state,
+                totalCount: action.totalCount
             }
         default:
             return state;

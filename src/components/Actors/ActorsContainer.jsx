@@ -6,7 +6,10 @@ import Actors from "./Actors";
 const mapStateToProps = (state) => {
     return {
         items: state.actorsRDC.items,
-        pagesCount: state.actorsRDC.pagesCount,
+        currentPage: state.actorsRDC.currentPage,
+        pageSize: state.actorsRDC.pageSize,
+        totalCount: state.actorsRDC.totalCount,
+        
     }
 }
 
@@ -14,6 +17,12 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setActors: (data) => {
             dispatch({ type: 'SET-ACTORS', data: data })
+        },
+        setCurrentPage: (page) => {
+            dispatch({ type: 'SET-CURRENT-PAGE', page: page })
+        },
+        setTotalCount: (totalCount) => {
+            dispatch({ type: 'SET-TOTAL-COUNT', totalCount: totalCount })
         }
     }
 }
