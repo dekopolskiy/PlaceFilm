@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import Actors from "./Actors";
-
+import ActorsAPIContainer from "./ActorsAPIContainer";
+import { setTotalCount, setActors, setCurrentPage, onloadPage } from "../../actionCreator"
 
 
 const mapStateToProps = (state) => {
@@ -9,11 +9,33 @@ const mapStateToProps = (state) => {
         currentPage: state.actorsRDC.currentPage,
         pageSize: state.actorsRDC.pageSize,
         totalCount: state.actorsRDC.totalCount,
+        preloader: state.actorsRDC.preloader,
         
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+
+const ActorsContainer = connect(mapStateToProps, {
+        setTotalCount: setTotalCount,
+        onloadPage: onloadPage,
+        setCurrentPage: setCurrentPage,
+        setActors: setActors
+
+})(ActorsAPIContainer)
+
+
+export default ActorsContainer;
+
+//вместо второго параметра функции connect , mapDispatchtoProps, можно зарефакторить
+// так как она возвращает объект, можно этот объект создать самому и передать как параметр
+// по вызову connect сам подставит dispatch на все эти методы
+// dispatch(setTotalCount), а setTotalCount возвращает объект
+//connect и Provider лишают отрисовки приложения целиком, перерисовывается только часть
+//connect через Context API имеет доступ к store
+
+
+
+/*const mapDispatchToProps = (dispatch) => {
     return {
         setActors: (data) => {
             dispatch({ type: 'SET-ACTORS', data: data })
@@ -23,14 +45,11 @@ const mapDispatchToProps = (dispatch) => {
         },
         setTotalCount: (totalCount) => {
             dispatch({ type: 'SET-TOTAL-COUNT', totalCount: totalCount })
+        },
+        onloadPage: (param) => {
+            dispatch({ type: 'SET-PRELOADER', param: param })
         }
+    
     }
 }
-
-const ActorsContainer = connect(mapStateToProps, mapDispatchToProps)(Actors)
-
-
-export default ActorsContainer;
-
-
-//connect и Provider лишают отрисовки приложения целиком, перерисовывается только часть
+*/

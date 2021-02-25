@@ -5,6 +5,7 @@ const initial = {
     currentPage: 1,
     pageSize: 20,
     totalCount: 0,
+    preloader: true
 }
 
 const actors_reducer = (state = initial, action) => {
@@ -17,12 +18,17 @@ const actors_reducer = (state = initial, action) => {
         case 'SET-CURRENT-PAGE':
             return {
                 ...state,
-                currentPage: action.page
+                currentPage: action.page,
             }
         case 'SET-TOTAL-COUNT':
             return {
                 ...state,
-                totalCount: action.totalCount
+                totalCount: action.totalCount,
+            }
+        case 'SET-PRELOADER':
+            return {
+                ...state,
+                preloader: action.param,
             }
         default:
             return state;

@@ -6,10 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 
-
-//store.dispatch внутри с this, если передавть то контекст меняется
-//bind - чтобы не вызвать, а передать
-
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>

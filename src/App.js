@@ -19,11 +19,11 @@ const App = () => {
     <div>
       <Header />
       <Route path='/content'
-             render={ () => <ContentContainer />} />
+        render={() => <ContentContainer />} />
       <Route path='/all_films'
-             render={ () => <All_filmsContainer/>} />  
+        render={() => <All_filmsContainer />} />
       <Route path='/Actors'
-             render={ () => <ActorsContainer/>} />
+        render={() => <ActorsContainer />} />
       <Route path='/log_out' component={Log_out} />
       <Route path='/account' component={Account} />
       <Footer />

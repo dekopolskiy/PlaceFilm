@@ -33,3 +33,7 @@
     background: lightgray;
     transition: 0.1s all ease;
 }
+
+.img{
+    width: 30px;
+}
