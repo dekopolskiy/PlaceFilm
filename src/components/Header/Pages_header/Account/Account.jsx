@@ -2,10 +2,10 @@
 
 
 
-const Account = () => {
+const Account = (props) => {
     return (
         <div>
-            Account
+            {props.account.aboutMe}
         </div>
 
     )

@@ -1,6 +1,7 @@
 import styles from './Actors.module.css';
 import React from 'react';
 import preloader from '../../images/preloader.gif'
+import { NavLink } from 'react-router-dom';
 
 const Actors = (props) => {
 
@@ -20,9 +21,11 @@ const Actors = (props) => {
                     <div className={styles.main}>
                         {props.items.map(i => {
                             return (
+                                <NavLink to={`/account/${i.id}`}>
                                 <div className={styles.every}>
                                     <h3>{i.name}</h3>
                                 </div>
+                                </NavLink>
                             )
                         })}
                     </div>
@@ -49,4 +52,4 @@ export default Actors;
 //Классовые компоненты имеют более широкий функционал чем функциональные
 //объект создается один раз и потом с ним ведется взаимодействие в отличие
 //от целой функциональной компоненты
-//объект создали в Container, записали в props все что возвращают map`ы
+//объект создали в Container, записали в props все что возвращают map`ыы
