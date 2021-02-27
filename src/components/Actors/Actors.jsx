@@ -2,6 +2,8 @@ import styles from './Actors.module.css';
 import React from 'react';
 import preloader from '../../images/preloader.gif'
 import { NavLink } from 'react-router-dom';
+import defaultLogo from '../../images/user1.png'
+
 
 const Actors = (props) => {
 
@@ -24,7 +26,7 @@ const Actors = (props) => {
                                 <NavLink to={`/account/${i.id}`}>
                                 <div className={styles.every}>
                                     <h3>{i.name}</h3>
-                                    <img src={i.photos.large} alt=''/>
+                                    <img src={i.photos.large? i.photos.large : defaultLogo } alt='' width={200} height={200}/>
                                 </div>
                                 </NavLink>
                             )

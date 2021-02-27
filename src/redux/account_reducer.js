@@ -11,7 +11,6 @@ const initial = {
 const account_reducer = (state = initial, action) => {
     switch (action.type) {
         case 'SET-ACCOUNT':
-            console.log(action.obj)
             return {
                 ...state,
                 account: {...action.obj},

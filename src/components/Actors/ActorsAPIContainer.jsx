@@ -13,18 +13,18 @@ class ActorsAPIContainer extends React.Component {
     // не дает, приходится создавать костыли, поэтому классовый контейнер
     render() {
         return (
-            <Actors 
-            preloader={this.props.preloader}
-            totalCount={this.props.totalCount}
-            pageSize={this.props.pageSize}
-            items={this.props.items}
-            currentPage={this.props.currentPage}
-            setCurrentPage={this.props.setCurrentPage}
-            showNewPageUsers={this.showNewPageUsers.bind(this)} //т.к. метод объекта, а без bind отрывается контекст
+            <Actors
+                preloader={this.props.preloader}
+                totalCount={this.props.totalCount}
+                pageSize={this.props.pageSize}
+                items={this.props.items}
+                currentPage={this.props.currentPage}
+                setCurrentPage={this.props.setCurrentPage}
+                showNewPageUsers={this.showNewPageUsers.bind(this)} //т.к. метод объекта, а без bind отрывается контекст
             />
         )
     }
-    
+
     showNewPageUsers(page) {
         this.props.onloadPage(true);
         axios(`https://social-network.samuraijs.com/api/1.0/users/?count=${this.props.pageSize}&page=${page}`)
@@ -43,7 +43,6 @@ class ActorsAPIContainer extends React.Component {
                 this.props.setTotalCount(response.data.totalCount);
             })
     }
-
 }
 
 

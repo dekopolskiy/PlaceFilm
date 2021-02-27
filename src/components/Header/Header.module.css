@@ -2,7 +2,7 @@ header{
     background: #0E0E0E;
     color:white;
     display: grid;
-    grid-template-columns: 1fr 8fr repeat(4, 1fr);
+    grid-template-columns: 1fr 8fr repeat(3, 1fr);
     grid-template-rows: 40px;
     border-bottom: 1px solid rgb(168, 163, 163);
 }
@@ -26,4 +26,8 @@ header a{
 
 .logo{
     text-align: center;
+}
+
+.log_in{
+    border: 1px solid white;
 }
