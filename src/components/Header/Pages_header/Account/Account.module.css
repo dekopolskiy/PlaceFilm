@@ -1,0 +1,25 @@
+
+.account{
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+}
+
+.account div{
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.image{
+    grid-column: 1;
+}
+
+.name{
+    grid-column: 1;
+}
+
+.aboutMe{
+    grid-row: 1;
+    grid-column: 2;
+}
+
+

@@ -5,10 +5,6 @@ import Account from './Account';
 
 
 
-
-
-
-
 class AccountAPIContainer extends React.Component {
     
     render() {
@@ -18,7 +14,7 @@ class AccountAPIContainer extends React.Component {
     }
 
     componentDidMount() {
-        axios(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+        axios(`https://social-network.samuraijs.com/api/1.0/profile/15`)
         .then(response => {
             this.props.setAccount(response.data);
         })

@@ -10,7 +10,6 @@ const initial = {
 const all_films_reducer = (state = initial, action) => {
     switch (action.type) {
         case 'ADD-TO-CART':
-            debugger
             return {
                 ...state,
                 all_films : state.all_films.map((item) => {
