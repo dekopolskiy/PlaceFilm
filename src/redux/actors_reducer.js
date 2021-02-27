@@ -3,7 +3,7 @@
 const initial = {
     items: [],
     currentPage: 1,
-    pageSize: 20,
+    pageSize: 100,
     totalCount: 0,
     preloader: true
 }

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const Actors = (props) => {
 
-    let totalCountElements = parseInt(props.totalCount / 100);
+    let totalCountElements = parseInt(props.totalCount);
     let totalCountPages = Math.ceil(totalCountElements / props.pageSize);
 
     let arr = [];
@@ -24,6 +24,7 @@ const Actors = (props) => {
                                 <NavLink to={`/account/${i.id}`}>
                                 <div className={styles.every}>
                                     <h3>{i.name}</h3>
+                                    <img src={i.photos.large} alt=''/>
                                 </div>
                                 </NavLink>
                             )

@@ -14,7 +14,8 @@ class AccountAPIContainer extends React.Component {
     }
 
     componentDidMount() {
-        axios(`https://social-network.samuraijs.com/api/1.0/profile/15`)
+        let id = this.props.match.params.userId;
+        axios(`https://social-network.samuraijs.com/api/1.0/profile/${id}`)
         .then(response => {
             this.props.setAccount(response.data);
         })

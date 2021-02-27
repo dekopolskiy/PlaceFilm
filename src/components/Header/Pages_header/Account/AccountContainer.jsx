@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import AccountAPIContainer from "./AccountAPIContainer";
 
 
@@ -18,7 +19,10 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+let withRouterURL = withRouter(AccountAPIContainer);//вызов возвращает копию компоненты, но со способностью
+//парсить url
 
-const AccountContainer = connect(mapStateToProps, mapDispatchToProps)(AccountAPIContainer);
-
-export default AccountContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(withRouterURL);
+//(при import`e этого файла в App.js) при изменении адреса в адресной строке
+//сработает вызов connect => из store подтянутся state и dispatch => соединит их с компонентой
+//withRouterURL(Копия AccountAPIContainer)  

@@ -25,7 +25,7 @@ const App = () => {
       <Route path='/Actors'
         render={() => <ActorsContainer />} />
       <Route path='/log_out' component={Log_out} />
-      <Route path='/account' component={AccountContainer} />
+      <Route path='/account/:userId' component={AccountContainer} />
       <Footer />
     </div>
   );
