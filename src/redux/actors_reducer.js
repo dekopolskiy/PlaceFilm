@@ -5,7 +5,8 @@ const initial = {
     currentPage: 1,
     pageSize: 100,
     totalCount: 0,
-    preloader: true
+    preloader: true,
+    isFollow: false
 }
 
 const actors_reducer = (state = initial, action) => {
@@ -29,6 +30,16 @@ const actors_reducer = (state = initial, action) => {
             return {
                 ...state,
                 preloader: action.param,
+            }
+        case 'SET-FOLLOW-USER':
+            return {
+                ...state,
+                isFollow: true
+            }
+        case 'SET-UNFOLLOW-USER':
+            return {
+                ...state,
+                isFollow: false
             }
         default:
             return state;

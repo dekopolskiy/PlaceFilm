@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
         pageSize: state.actorsRDC.pageSize,
         totalCount: state.actorsRDC.totalCount,
         preloader: state.actorsRDC.preloader,
+        isFollow: state.actorsRDC.isFollow,
         
     }
 }
@@ -19,12 +20,14 @@ const ActorsContainer = connect(mapStateToProps, {
         setTotalCount: setTotalCount,
         onloadPage: onloadPage,
         setCurrentPage: setCurrentPage,
-        setActors: setActors
+        setActors: setActors,
 
 })(ActorsAPIContainer)
 
 
 export default ActorsContainer;
+
+
 
 //вместо второго параметра функции connect , mapDispatchtoProps, можно зарефакторить
 // так как она возвращает объект, можно этот объект создать самому и передать как параметр

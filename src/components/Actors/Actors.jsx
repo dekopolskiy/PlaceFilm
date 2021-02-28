@@ -6,7 +6,7 @@ import defaultLogo from '../../images/user1.png'
 
 
 const Actors = (props) => {
-
+    console.log(props)
     let totalCountElements = parseInt(props.totalCount);
     let totalCountPages = Math.ceil(totalCountElements / props.pageSize);
 
@@ -17,18 +17,23 @@ const Actors = (props) => {
 
     return (
         <div>
-            {props.preloader? <img src={preloader} className={styles.img} /> : null}
+            {props.preloader ? <img src={preloader} className={styles.img} /> : null}
             <div>
                 <div>
                     <div className={styles.main}>
                         {props.items.map(i => {
                             return (
-                                <NavLink to={`/account/${i.id}`}>
-                                <div className={styles.every}>
-                                    <h3>{i.name}</h3>
-                                    <img src={i.photos.large? i.photos.large : defaultLogo } alt='' width={200} height={200}/>
+                                <div>
+                                    <NavLink to={`/account/${i.id}`}>
+                                        <div className={styles.every}>
+                                            <h3>{i.name}</h3>
+                                            <img src={i.photos.large ? i.photos.large : defaultLogo} alt='' width={200} height={200} />
+                                        </div>
+                                    </NavLink>
+                                    {props.isFollow ?
+                                        <button onClick={() => { props.unfollowUser(i.id) }}>Unfollow</button> :
+                                        <button onClick={() => { props.followUser(i.id) }}>Follow</button>}
                                 </div>
-                                </NavLink>
                             )
                         })}
                     </div>

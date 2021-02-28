@@ -4,7 +4,7 @@
 const Login = (props) => {
     return (
         <div>
-            {props.isAuthorize? `HELLO ${props.email}`: 'YOU NOT AUTHORIZED'}
+            {props.isAuthorize? `HELLO ${props.login}`: 'YOU NOT AUTHORIZED'}
         </div>
 
     )
