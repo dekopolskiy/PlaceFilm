@@ -11,11 +11,7 @@ import { NavLink } from 'react-router-dom'
 
 const Content = (props) => {
     let mapPics = props.listSerials.map((item) => {
-        return <Block_film name={item.name} pics={item.img} />});
-
-    let addSerialPost = () => props.addOneSerial('sherlock', props.newPosterBody);
-    
-    let updatePost = (e) => props.updateForDrawing(e.target.value);
+        return <Block_film name={item.name} pics={item.img} />});    
 
     return (
         <div className={styles.content}>
@@ -27,8 +23,8 @@ const Content = (props) => {
             </div>
             <div className={styles.add}>
                 <span>add serial link</span><br />
-                <input type="text" onChange={updatePost} value={props.newPosterBody}/>
-                <button onClick={addSerialPost}>serial</button>
+                <input type="text" onChange={(e) => { props.updateForDrawing(e.target.value)} } value={props.newPosterBody}/>
+                <button onClick={() => { props.addOneSerial('sherlock', props.newPosterBody)} }>serial</button>
             </div>
         </div>
     )

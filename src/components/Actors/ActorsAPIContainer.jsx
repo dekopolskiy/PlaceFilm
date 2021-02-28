@@ -54,7 +54,7 @@ class ActorsAPIContainer extends React.Component {
         axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
             withCredentials: true,
             headers: {
-                "API-KEY": "f35a6a18-9825-4f5a-b4b1-fe529ffd8479"
+                "API-KEY": "46863c0e-deef-4610-a2f3-880014e38f6f"
             }
         })
             .then(response => {
@@ -69,14 +69,10 @@ class ActorsAPIContainer extends React.Component {
         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
             withCredentials: true,
             headers: {
-                "API-KEY": "f35a6a18-9825-4f5a-b4b1-fe529ffd8479"
+                "API-KEY": "46863c0e-deef-4610-a2f3-880014e38f6f"
             }
         })
-        .then(response => {
-            if(response.data.resultCode === 1) {
-                this.props.unfollowUser(id);
-            }
-        })
+        .then(response => this.props.unfollowUser(id))
     }
 }
 

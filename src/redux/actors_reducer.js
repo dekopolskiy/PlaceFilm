@@ -33,25 +33,27 @@ const actors_reducer = (state = initial, action) => {
         case 'FOLLOW-USER':
             return {
                 ...state,
-                items: state.items.map(i => {
+                items: [...state.items].map(i => {
                     if(i.id === action.id) {
                         return {
                             ...i,
                             followed: true
                         }
                     }
+                    return i
                 })
             }
         case 'UNFOLLOW-USER':
             return {
                 ...state,
-                items: state.items.map( i => {
+                items: [...state.items].map( i => {
                     if(i.id === action.id) {
                         return {
                             ...i,
                             followed: false
                         }
                     }
+                    return i
                 })
             }
         default:

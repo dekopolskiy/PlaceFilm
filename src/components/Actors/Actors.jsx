@@ -26,10 +26,10 @@ const Actors = (props) => {
                                     <NavLink to={`/account/${i.id}`}>
                                         <div className={styles.every}>
                                             <h3>{i.name}</h3>
-                                            <img src={i.photos.large ? i.photos.large : defaultLogo} alt='' width={200} height={200} />
+                                            <img src={i.photos.large ? i.photos.large : defaultLogo} alt='' width={100} height={100} />
                                         </div>
                                     </NavLink>
-                                    {i.followed ?
+                                    {i.followed? //true unfollow, false follow
                                         <button onClick={() => { props.unfollowUser(i.id) }}>UNFOLLOW</button> :
                                         <button onClick={() => { props.followUser(i.id) }}>FOLLOW</button>}
                                 </div>
