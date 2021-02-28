@@ -6,7 +6,6 @@ import defaultLogo from '../../images/user1.png'
 
 
 const Actors = (props) => {
-    console.log(props)
     let totalCountElements = parseInt(props.totalCount);
     let totalCountPages = Math.ceil(totalCountElements / props.pageSize);
 
@@ -30,9 +29,9 @@ const Actors = (props) => {
                                             <img src={i.photos.large ? i.photos.large : defaultLogo} alt='' width={200} height={200} />
                                         </div>
                                     </NavLink>
-                                    {props.isFollow ?
-                                        <button onClick={() => { props.unfollowUser(i.id) }}>Unfollow</button> :
-                                        <button onClick={() => { props.followUser(i.id) }}>Follow</button>}
+                                    {i.followed ?
+                                        <button onClick={() => { props.unfollowUser(i.id) }}>UNFOLLOW</button> :
+                                        <button onClick={() => { props.followUser(i.id) }}>FOLLOW</button>}
                                 </div>
                             )
                         })}

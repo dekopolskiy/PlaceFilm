@@ -6,7 +6,6 @@ const initial = {
     pageSize: 100,
     totalCount: 0,
     preloader: true,
-    isFollow: false
 }
 
 const actors_reducer = (state = initial, action) => {
@@ -31,15 +30,29 @@ const actors_reducer = (state = initial, action) => {
                 ...state,
                 preloader: action.param,
             }
-        case 'SET-FOLLOW-USER':
+        case 'FOLLOW-USER':
             return {
                 ...state,
-                isFollow: true
+                items: state.items.map(i => {
+                    if(i.id === action.id) {
+                        return {
+                            ...i,
+                            followed: true
+                        }
+                    }
+                })
             }
-        case 'SET-UNFOLLOW-USER':
+        case 'UNFOLLOW-USER':
             return {
                 ...state,
-                isFollow: false
+                items: state.items.map( i => {
+                    if(i.id === action.id) {
+                        return {
+                            ...i,
+                            followed: false
+                        }
+                    }
+                })
             }
         default:
             return state;

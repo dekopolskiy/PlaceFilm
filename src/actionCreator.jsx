@@ -21,3 +21,15 @@ export let onloadPage = (param) => {
     type: 'SET-PRELOADER', param: param
   }
 }
+
+export let followUser = (id) => {
+  return {
+    type: 'FOLLOW-USER', id: id
+  }
+}
+
+export let unfollowUser = (id) => {
+  return {
+    type: 'UNFOLLOW-USER', id: id
+  }
+}

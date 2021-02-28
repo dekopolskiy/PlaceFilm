@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ActorsAPIContainer from "./ActorsAPIContainer";
-import { setTotalCount, setActors, setCurrentPage, onloadPage } from "../../actionCreator"
+import { setTotalCount, setActors, setCurrentPage, onloadPage, followUser, unfollowUser } from "../../actionCreator"
 
 
 const mapStateToProps = (state) => {
@@ -10,8 +10,6 @@ const mapStateToProps = (state) => {
         pageSize: state.actorsRDC.pageSize,
         totalCount: state.actorsRDC.totalCount,
         preloader: state.actorsRDC.preloader,
-        isFollow: state.actorsRDC.isFollow,
-        
     }
 }
 
@@ -21,6 +19,8 @@ const ActorsContainer = connect(mapStateToProps, {
         onloadPage: onloadPage,
         setCurrentPage: setCurrentPage,
         setActors: setActors,
+        followUser: followUser,
+        unfollowUser: unfollowUser,
 
 })(ActorsAPIContainer)
 

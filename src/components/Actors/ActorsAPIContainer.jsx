@@ -14,7 +14,6 @@ class ActorsAPIContainer extends React.Component {
     render() {
         return (
             <Actors
-                isFollow={this.props.isFollow}
                 followUser={this.followUser.bind(this)}
                 unfollowUser={this.unfollowUser.bind(this)}
                 preloader={this.props.preloader}
@@ -54,18 +53,28 @@ class ActorsAPIContainer extends React.Component {
     followUser(id) {
         axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
             withCredentials: true,
-            headers : {
-            'API-KEY': '60a1b1ba-ecdc-4922-b34f-e9a4b2e5d79c'
-        }
+            headers: {
+                "API-KEY": "f35a6a18-9825-4f5a-b4b1-fe529ffd8479"
+            }
         })
-        .then(response => console.log(response.data.resultCode) )
-        
+            .then(response => {
+                if (response.data.resultCode === 0) { //follow in the api, and change items[id].follow in state
+                    this.props.followUser(id);
+                }
+            })
+
     }
+    
     unfollowUser(id) {
         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
-            withCredential: true,
+            withCredentials: true,
             headers: {
-                'API-KEY': '60a1b1ba-ecdc-4922-b34f-e9a4b2e5d79c'
+                "API-KEY": "f35a6a18-9825-4f5a-b4b1-fe529ffd8479"
+            }
+        })
+        .then(response => {
+            if(response.data.resultCode === 1) {
+                this.props.unfollowUser(id);
             }
         })
     }
