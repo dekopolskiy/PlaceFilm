@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from 'react';
+import { getUser, updateFollow, deleteFollow } from "../../API/axiosREST";
 import Actors from "./Actors";
 
 
@@ -29,50 +30,36 @@ class ActorsAPIContainer extends React.Component {
 
     showNewPageUsers(page) {
         this.props.onloadPage(true);
-        axios(`https://social-network.samuraijs.com/api/1.0/users/?count=${this.props.pageSize}&page=${page}`, {
-            withCredentials: true
-        })
-            .then(response => {
-                this.props.setActors(response.data);
+        getUser(this.props.pageSize, page)
+            .then(data => {
+                this.props.setActors(data);
                 this.props.onloadPage(false);
             })
     }
 
     componentDidMount() {//объект создали, отрендерили, добавили в dom дерево, это Mount
         this.props.onloadPage(true);
-        axios(`https://social-network.samuraijs.com/api/1.0/users/?count=${this.props.pageSize}&page=${this.props.currentPage}`, {
-            withCredentials: true
-        })
-            .then(response => {
-                this.props.setActors(response.data);
+        getUser(this.props.pageSize, this.props.currentPage)
+            .then(data => {
+                this.props.setActors(data);
                 this.props.onloadPage(false);
-                this.props.setTotalCount(response.data.totalCount);
+                this.props.setTotalCount(data.totalCount);
             })
     }
 
     followUser(id) {
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "46863c0e-deef-4610-a2f3-880014e38f6f"
-            }
-        })
-            .then(response => {
-                if (response.data.resultCode === 0) { //follow in the api, and change items[id].follow in state
+        updateFollow(id)
+            .then(data => {
+                if (data.resultCode === 0) { //follow in the api, and change items[id].follow in state
                     this.props.followUser(id);
                 }
             })
 
     }
-    
+
     unfollowUser(id) {
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "46863c0e-deef-4610-a2f3-880014e38f6f"
-            }
-        })
-        .then(response => this.props.unfollowUser(id))
+        deleteFollow(id)
+            .then(response => this.props.unfollowUser(id))
     }
 }
 

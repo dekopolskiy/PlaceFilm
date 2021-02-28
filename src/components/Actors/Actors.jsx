@@ -23,15 +23,16 @@ const Actors = (props) => {
                         {props.items.map(i => {
                             return (
                                 <div>
-                                    <NavLink to={`/account/${i.id}`}>
-                                        <div className={styles.every}>
+                                    <div className={styles.every}>
+                                        <NavLink to={`/account/${i.id}`}>
                                             <h3>{i.name}</h3>
+                                            <h5>{i.id}</h5>
                                             <img src={i.photos.large ? i.photos.large : defaultLogo} alt='' width={100} height={100} />
-                                        </div>
-                                    </NavLink>
-                                    {i.followed? //true unfollow, false follow
-                                        <button onClick={() => { props.unfollowUser(i.id) }}>UNFOLLOW</button> :
-                                        <button onClick={() => { props.followUser(i.id) }}>FOLLOW</button>}
+                                        </NavLink>
+                                        {i.followed ? //true unfollow, false follow
+                                            <button onClick={() => { props.unfollowUser(i.id) }}>UNFOLLOW</button> :
+                                            <button onClick={() => { props.followUser(i.id) }}>FOLLOW</button>}
+                                    </div>
                                 </div>
                             )
                         })}
