@@ -28,4 +28,5 @@ let withRouterURL = withRouter(AccountAPIContainer);//вызов возвращ�
 export default connect(mapStateToProps, mapDispatchToProps)(withRouterURL);
 //(при import`e этого файла в App.js) при изменении адреса в адресной строке
 //сработает вызов connect => из store подтянутся state и dispatch => соединит их с компонентой
-//withRouterURL(Копия AccountAPIContainer)  
+//withRouterURL(Копия AccountAPIContainer расширенная)  
+//но с функционалом распарсить url
