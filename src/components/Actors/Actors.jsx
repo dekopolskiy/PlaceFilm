@@ -29,9 +29,10 @@ const Actors = (props) => {
                                             <h5>{i.id}</h5>
                                             <img src={i.photos.large ? i.photos.large : defaultLogo} alt='' width={100} height={100} />
                                         </NavLink>
-                                        {i.followed ? //true unfollow, false follow
-                                            <button onClick={() => { props.unfollowUser(i.id) }}>UNFOLLOW</button> :
-                                            <button onClick={() => { props.followUser(i.id) }}>FOLLOW</button>}
+                                        {i.followed ? //follow on
+                                            <button disabled={props.idInFollowProgress.some(i => i == i.id)} onClick={() => { props.unfollowUser(i.id);}}>UNFOLLOW</button> :
+                                            <button disabled={props.idInFollowProgress.some(i => i == i.id)} onClick={() => { props.followUser(i.id)}}>FOLLOW</button>
+                                        }
                                     </div>
                                 </div>
                             )
