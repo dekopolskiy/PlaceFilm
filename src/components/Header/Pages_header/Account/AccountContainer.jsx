@@ -20,7 +20,10 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 let withRouterURL = withRouter(AccountAPIContainer);//вызов возвращает копию компоненты, но со способностью
-//парсить url
+//парсить url, как только произойдет переход на account/ то отрисуется
+//компонета Account, если account/id  то ничего не изменится
+//поэтому после того как выстрлится дом дерево, можно распарсить  url, и сделать запрос
+//к нужному аккаунту и отрисовать его
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouterURL);
 //(при import`e этого файла в App.js) при изменении адреса в адресной строке
