@@ -6,6 +6,8 @@ const initial = {
     pageSize: 100,
     totalCount: 0,
     preloader: true,
+    buttonDisable: false,
+    idInFollowProgress: [],
 }
 
 const actors_reducer = (state = initial, action) => {
@@ -55,6 +57,12 @@ const actors_reducer = (state = initial, action) => {
                     }
                     return i
                 })
+            }
+        case 'SET-DISABLE-BUTTON':
+            return {
+                ...state,
+                idInFollowProgress: action.isload? [...state.idInFollowProgress, action.id] 
+                : state.idInFollowProgress.filter((i)=> i != action.id)
             }
         default:
             return state;

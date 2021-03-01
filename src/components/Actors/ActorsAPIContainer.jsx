@@ -15,6 +15,7 @@ class ActorsAPIContainer extends React.Component {
     render() {
         return (
             <Actors
+                idInFollowProgress={this.props.idInFollowProgress}
                 followUser={this.followUser.bind(this)}
                 unfollowUser={this.unfollowUser.bind(this)}
                 preloader={this.props.preloader}
@@ -48,18 +49,22 @@ class ActorsAPIContainer extends React.Component {
     }
 
     followUser(id) {
+        this.props.setDisableButton(true, id);
         updateFollow(id)
             .then(data => {
                 if (data.resultCode === 0) { //follow in the api, and change items[id].follow in state
                     this.props.followUser(id);
                 }
+                this.props.setDisableButton(false, id);
             })
 
     }
 
     unfollowUser(id) {
+        this.props.setDisableButton(true, id);
         deleteFollow(id)
             .then(response => this.props.unfollowUser(id))
+            this.props.setDisableButton(false, id);
     }
 }
 

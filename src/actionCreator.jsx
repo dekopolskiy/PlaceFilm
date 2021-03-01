@@ -33,3 +33,10 @@ export let unfollowUser = (id) => {
     type: 'UNFOLLOW-USER', id: id
   }
 }
+
+
+export let setDisableButton = (isload, id) => {
+  return {
+    type: 'SET-DISABLE-BUTTON', isload: isload, id: id
+  }
+}
