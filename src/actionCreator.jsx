@@ -40,3 +40,6 @@ export let setDisableButton = (isload, id) => {
     type: 'SET-DISABLE-BUTTON', isload: isload, id: id
   }
 }
+
+
+

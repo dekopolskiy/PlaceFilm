@@ -2,11 +2,10 @@
 
 const initial = {
     items: [],
-    currentPage: 1,
-    pageSize: 100,
-    totalCount: 0,
+    currentPage: 1,//увеличить шрифт, по нажатию
+    pageSize: 100,//сколько на странице
+    totalCount: 0, //всего придет от запроса
     preloader: true,
-    buttonDisable: false,
     idInFollowProgress: [],
 }
 
@@ -59,23 +58,11 @@ const actors_reducer = (state = initial, action) => {
                 })
             }
         case 'SET-DISABLE-BUTTON':
-<<<<<<< HEAD
-            console.log(action.isload)
-            console.log(state.idInFollowProgress);
-            console.log( [...state.idInFollowProgress, action.id]);
-            console.log(state.idInFollowProgress.filter((i)=> i != action.id))
             return {
                 ...state,
                 idInFollowProgress: action.isload? [...state.idInFollowProgress, action.id] : state.idInFollowProgress.filter((i)=> i != action.id)
             }//if(true) {добавить id пользователя в массив}, как только запрос на серв кончится, и придет false
             //то удаляем из массива
-=======
-            return {
-                ...state,
-                idInFollowProgress: action.isload? [...state.idInFollowProgress, action.id] 
-                : state.idInFollowProgress.filter((i)=> i != action.id)
-            }
->>>>>>> a5fb32fed85bf90fee29751db412c5f1ed89bb8a
         default:
             return state;
     }
