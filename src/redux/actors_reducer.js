@@ -59,6 +59,7 @@ const actors_reducer = (state = initial, action) => {
                 })
             }
         case 'SET-DISABLE-BUTTON':
+<<<<<<< HEAD
             console.log(action.isload)
             console.log(state.idInFollowProgress);
             console.log( [...state.idInFollowProgress, action.id]);
@@ -68,6 +69,13 @@ const actors_reducer = (state = initial, action) => {
                 idInFollowProgress: action.isload? [...state.idInFollowProgress, action.id] : state.idInFollowProgress.filter((i)=> i != action.id)
             }//if(true) {добавить id пользователя в массив}, как только запрос на серв кончится, и придет false
             //то удаляем из массива
+=======
+            return {
+                ...state,
+                idInFollowProgress: action.isload? [...state.idInFollowProgress, action.id] 
+                : state.idInFollowProgress.filter((i)=> i != action.id)
+            }
+>>>>>>> a5fb32fed85bf90fee29751db412c5f1ed89bb8a
         default:
             return state;
     }
