@@ -29,36 +29,19 @@ class ActorsAPIContainer extends React.Component {
     }
 
     showNewPageUsers(page) {
-        this.props.getUsersThunk(page);
+        this.props.getUsersThunkPage(page);
     }
 
     componentDidMount() {//объект создали, отрендерили, добавили в dom дерево, это Mount
-        this.props.onloadPage(true);
-        getUsers(this.props.pageSize, this.props.currentPage)
-            .then(data => {
-                this.props.setActors(data);
-                this.props.onloadPage(false);
-                this.props.setTotalCount(data.totalCount);
-            })
+        this.props.getUsersThunk(this.props.pageSize, this.props.currentPage);
     }
 
     followUser(id) {
-        this.props.setDisableButton(true, id);
-        updateFollow(id)
-            .then(data => {
-                this.props.followUser(id)
-                this.props.setDisableButton(false, id);
-            })
-
+        this.props.follow(id)
     }
 
     unfollowUser(id) {
-        this.props.setDisableButton(true, id);
-        deleteFollow(id)
-            .then(response => {
-                this.props.unfollowUser(id)
-                this.props.setDisableButton(false, id);
-            })
+        this.props.unfollow(id);
     }
 }
 

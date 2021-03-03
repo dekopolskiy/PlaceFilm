@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ActorsAPIContainer from "./ActorsAPIContainer";
-import { setTotalCount, setActors, setCurrentPage, onloadPage, followUser, unfollowUser, setDisableButton, getUsersThunk } from "../../actionCreator"
+import { setTotalCount, setActors, setCurrentPage, onloadPage, followUser, unfollowUser, setDisableButton, getUsersThunkPage, getUsersThunk, follow, unfollow } from "../../actionCreator"
 
 
 const mapStateToProps = (state) => {
@@ -17,14 +17,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setTotalCount: (totalCount) => dispatch(setTotalCount(totalCount)),
-        onloadPage: (param) => dispatch(onloadPage(param)),
-        setCurrentPage: (page) => dispatch(setCurrentPage(page)),
-        setActors: (data) => dispatch(setActors(data)),
-        followUser: (id) => dispatch(followUser(id)),
-        unfollowUser: (id) => dispatch(unfollowUser(id)),
-        setDisableButton: (isload, id) => dispatch(setDisableButton(isload, id)),
-        getUsersThunk: (page) => dispatch(getUsersThunk(page))
+        follow: (id) => dispatch(follow(id)),
+        unfollow: (id) => dispatch(unfollow(id)),
+        getUsersThunkPage: (page) => dispatch(getUsersThunkPage(page)),
+        getUsersThunk: (count, page) => dispatch(getUsersThunk(count, page)),
     }
 }
 

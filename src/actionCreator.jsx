@@ -1,4 +1,4 @@
-import { getUsers } from "./DAL/axiosREST"
+import { deleteFollow, getUsers, updateFollow } from "./DAL/axiosREST"
 
 export let setActors = (data) => {
   return {
@@ -7,6 +7,7 @@ export let setActors = (data) => {
 }
 
 export let setCurrentPage = (page) => {
+  console.log(page)
   return {
     type: 'SET-CURRENT-PAGE', page: page
   }
@@ -44,17 +45,51 @@ export let setDisableButton = (isload, id) => {
 }
 
 
-export let getUsersThunk = (page) => {
+export let getUsersThunkPage = (page) => {
   return (dispatch) => {
     dispatch(setCurrentPage(page));
     dispatch(onloadPage(true));
-    getUsers(20, page).then(data => {
+    getUsers({page}).then(data => {
       dispatch(setActors(data));
       dispatch(onloadPage(false));
     })
   }
 }
 
+export let getUsersThunk = (count, page) => {
+  return (dispatch) => {
+    dispatch(onloadPage(true));
+    getUsers({count, page}).then(data => {
+      dispatch(setActors(data));
+      dispatch(onloadPage(false));
+      dispatch(setTotalCount(data.totalCount));
+    })
+  }
+}
+
+
+export let follow = (id) => {
+  return (dispatch) => {
+    dispatch(setDisableButton(true, id));
+    updateFollow(id)
+        .then(data => {
+            dispatch(followUser(id))
+            dispatch(setDisableButton(false, id));
+        })
+  }
+}
+
+
+export let unfollow = (id) => {
+  return (dispatch) => {
+    dispatch(setDisableButton(true, id));
+    deleteFollow(id)
+        .then(response => {
+            dispatch(unfollowUser(id));
+            dispatch(setDisableButton(false, id));
+        })
+  }
+}
 //Для чего функция возвращает функцию? можно же дописать сразу несколько параметров и делать без return
 //Но dispatch в ActorApiContainer ожидает функцию с одним параметром , и даст ей его и сам вызовет эту функцию
 //поэтому лучше сделать обертку 
