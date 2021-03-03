@@ -3,7 +3,7 @@
 const initial = {
     items: [],
     currentPage: 1,//увеличить шрифт, по нажатию
-    pageSize: 100,//сколько на странице
+    pageSize: 20,//сколько на странице
     totalCount: 0, //всего придет от запроса
     preloader: true,
     idInFollowProgress: [],
@@ -71,3 +71,4 @@ const actors_reducer = (state = initial, action) => {
 
 
 export default actors_reducer;
+

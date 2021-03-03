@@ -2,8 +2,9 @@ import all_films_reducer from "./all_films_reducer";
 import actors_reducer from "./actors_reducer";
 import account_reducer from "./account_reducer";
 import login_reducer from "./login_reducer";
+import thunk from 'redux-thunk';
 
-const { createStore, combineReducers } = require("redux");
+const { createStore, combineReducers, applyMiddleware } = require("redux");
 const { default: content_reducer } = require("./content_reducer");
 
 
@@ -16,7 +17,7 @@ let reducers = combineReducers({
 })
 
 
-let store = createStore(reducers); 
+let store = createStore(reducers, applyMiddleware(thunk)); 
 
 
 

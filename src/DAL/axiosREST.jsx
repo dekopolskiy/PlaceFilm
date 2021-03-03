@@ -6,11 +6,11 @@ const baseURL = 'https://social-network.samuraijs.com/api/1.0/';
 let instanse = axios.create({
     withCredentials: true,
     headers: {
-        "API-KEY": "e811390c-3dfa-4cdc-b8f9-fba476829b23"
+        "API-KEY": "46863c0e-deef-4610-a2f3-880014e38f6f"
     }
 })
 
-export const getUsers = (count, page) => {
+export const getUsers = (count = 20, page) => {
     return instanse(`${baseURL}users/?count=${count}&page=${page}`).then(response => response.data)
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { getUsers, updateFollow, deleteFollow } from "../../DAL/axiosREST";
-import { getUsersThunk } from '../../thunkCreator';
 import Actors from "./Actors";
 
 
@@ -16,21 +15,21 @@ class ActorsAPIContainer extends React.Component {
         return (
             <Actors
                 idInFollowProgress={this.props.idInFollowProgress}
-                followUser={this.followUser.bind(this)}
-                unfollowUser={this.unfollowUser.bind(this)}
+                followUser={this.followUser.bind(this)} //отрыв метода у объекта,  функция сама по себе 
+                unfollowUser={this.unfollowUser.bind(this)} //отрыв метода у объекта , функция сама по себе
                 preloader={this.props.preloader}
                 totalCount={this.props.totalCount}
                 pageSize={this.props.pageSize}
                 items={this.props.items}
                 currentPage={this.props.currentPage}
                 setCurrentPage={this.props.setCurrentPage}
-                showNewPageUsers={this.showNewPageUsers.bind(this)} //т.к. метод объекта, а без bind отрывается контекст
+                showNewPageUsers={this.showNewPageUsers.bind(this)} //отрыв метода у объекта, функция сама по себе
             />
         )
     }
 
     showNewPageUsers(page) {
-        getUsersThunk(page);
+        this.props.getUsersThunk(page);
     }
 
     componentDidMount() {//объект создали, отрендерили, добавили в dom дерево, это Mount

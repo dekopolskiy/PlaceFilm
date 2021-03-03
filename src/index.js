@@ -5,11 +5,12 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store';
 import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Provider store={store}>
+            <Provider store={store} >
                 <App />
             </Provider>
         </BrowserRouter>
