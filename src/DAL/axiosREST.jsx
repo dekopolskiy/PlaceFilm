@@ -22,6 +22,8 @@ export const deleteFollow = (id) => {
     return instanse.delete(`${baseURL}follow/${id}`).then(response => response.data)
 }
 
-
+export const authentification = () => {
+    return instanse(`${baseURL}auth/me`)
+}
 
 //DATA ACCESS LAYER - слой доступа к удаленным данным хранилища

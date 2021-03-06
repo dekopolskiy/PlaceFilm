@@ -2,20 +2,19 @@ import { connect } from "react-redux";
 import { actionLogin } from "../../../../redux/login_reducer";
 import Login from "./Login";
 import React from 'react'
-import axios from "axios";
+import { authentification } from "../../../../DAL/axiosREST";
 
 
 
 class LoginContainer extends React.Component {
     render() {
+        console.log('login')
         return <Login {...this.props}/>
     }
 
     componentDidMount() {
-        axios(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        })
-            .then(response => { this.props.actionLogin(response.data.data) })
+        authentification()
+        .then(response => { this.props.actionLogin(response.data.data) })
     }
 }
 

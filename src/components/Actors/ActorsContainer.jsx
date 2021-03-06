@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ActorsAPIContainer from "./ActorsAPIContainer";
-import { setTotalCount, setActors, setCurrentPage, onloadPage, followUser, unfollowUser, setDisableButton, getUsersThunkPage, getUsersThunk, follow, unfollow } from "../../actionCreator"
+import { getUsersThunkPage, getUsersThunk, follow, unfollow } from "../../actionCreator"
 
 
 const mapStateToProps = (state) => {

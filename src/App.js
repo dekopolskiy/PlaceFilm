@@ -7,6 +7,7 @@ import All_filmsContainer from './components/All_films/All_filmsContainer';
 import ActorsContainer from './components/Actors/ActorsContainer';
 import AccountContainer from './components/Header/Pages_header/Account/AccountContainer';
 import LoginContainer from './components/Header/Pages_header/Login/LoginContainer';
+import Registration from './components/Registration/Registration';
 
 /*Если где-то произойдет переход с помощью Navlink to='path'
           то Route отследит путь Navlink, соотнесет со своим,
@@ -26,6 +27,7 @@ const App = () => {
         render={() => <ActorsContainer />} />
       <Route path='/login' component={LoginContainer} />
       <Route path='/account/:userId' component={AccountContainer} />
+      <Route path='/registration' component={Registration}/>
       <Footer />
     </div>
   );

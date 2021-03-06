@@ -7,7 +7,7 @@ const UPDATE_SERIAL_POST = 'UPDATE-SERIAL-POST'
 
 
 let initial = {
-    mainPoster: { name: 'True Detective', img: "https://ya.clan.su/_ph/20/604017786.jpg?1609998627" },
+    mainPoster: { name: 'True Detective', img: "https://showsnob.com/files/2015/03/pLAbBJt.png" },
     listSerials: [
         { name: 'Game of Thrones', img: 'https://cs8.pikabu.ru/post_img/2016/02/26/5/1456467431143385925.jpg' },
         { name: 'Hannibal', img: 'https://i.pinimg.com/originals/a2/bb/1b/a2bb1baf7980f787120cb732176e2e57.png' },

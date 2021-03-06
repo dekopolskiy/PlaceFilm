@@ -1,10 +1,8 @@
-import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 import styles from './All_films.module.css'
 
 
 const All_films = (props) => {
-
     //Load users from Server
     if (props.all_films.length == 0) {
         props.setFilms({

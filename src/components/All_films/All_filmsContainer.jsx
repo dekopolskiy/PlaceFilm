@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import withRedirect from "../../hoc/hoc";
 import All_films from "./All_films";
 
 let mapStateToProps = state => {
@@ -7,6 +8,7 @@ let mapStateToProps = state => {
         all_films: state.all_filmsRDC.all_films,//отрисовка заново если меняется ссылка
         //сами выбираем, что будем видеть в этой компоненте, указывая нужный нам reducer из store.js
         cart: state.all_filmsRDC.cart,
+        isAuthorize: state.loginRDC.isAuthorize
     }
 }
 
@@ -24,6 +26,8 @@ let mapDispatchToProps = dispatch => {
     }
 }
 
-const All_filmsContainer = connect(mapStateToProps, mapDispatchToProps)(All_films);
+let withRedir = withRedirect(All_films);
+
+const All_filmsContainer = connect(mapStateToProps, mapDispatchToProps)(withRedir);
 
 export default All_filmsContainer;

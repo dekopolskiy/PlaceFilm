@@ -1,7 +1,8 @@
 .main_film{
+    margin-top: 5px;
     grid-column: 1 / -1;
     overflow: hidden;
-    height: 300px;
+    height: 400px;
 }
 
 
