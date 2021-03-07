@@ -1,10 +1,10 @@
 import React from "react";
 
-
+//this.props.status
 class ProfileStatus extends React.Component {
     state = {
         isChangedStatus: true,
-        start: this.props.status,
+        status: this.props.status,
     }
 
     changeStatus() {// setState({}) асинхронная функция 
@@ -22,17 +22,15 @@ class ProfileStatus extends React.Component {
     }
 
     insertLetter(e) {
-        setLocale({
-            start: e.target.value
-        })
+
     }
 
     render() {
         return (
             <div>
                 {this.state.isChangedStatus ?
-                    <span onClick={this.changeStatus.bind(this)} value={this.props.status}>hello world</span> :
-                    <input type='text' onBlur={this.statusToStart.bind(this)} onChange={this.insertLetter} value={this.state.start}/>
+                    <span onClick={this.changeStatus.bind(this)}>{this.state.status}</span> :
+                    <input type='text' onBlur={this.statusToStart.bind(this)} value={this.state.status}/>
                 }
             </div>
         )

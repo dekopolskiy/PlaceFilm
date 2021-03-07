@@ -4,6 +4,7 @@
 
 const initial = {
     account: null,
+    status: null,
 }
 
 
@@ -14,6 +15,11 @@ const account_reducer = (state = initial, action) => {
             return {
                 ...state,
                 account: {...action.obj},
+            }
+        case 'SET_STATUS':
+            return {
+                ...state,
+                status: action.status,
             }
         default:
             return state;

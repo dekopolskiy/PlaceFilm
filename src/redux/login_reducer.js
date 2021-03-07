@@ -25,9 +25,3 @@ const login_reducer = (state = initial, action) => {
 
 export default login_reducer;
 
-
-export let actionLogin = (data) => {
-    return {
-        type: 'LOGIN', data
-    }
-};

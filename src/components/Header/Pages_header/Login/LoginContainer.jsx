@@ -1,20 +1,17 @@
 import { connect } from "react-redux";
-import { actionLogin } from "../../../../redux/login_reducer";
 import Login from "./Login";
 import React from 'react'
-import { authentification } from "../../../../DAL/axiosREST";
+import { pass_auth } from "../../../../actionCreator";
 
 
 
 class LoginContainer extends React.Component {
     render() {
-        console.log('login')
         return <Login {...this.props}/>
     }
 
     componentDidMount() {
-        authentification()
-        .then(response => { this.props.actionLogin(response.data.data) })
+        this.props.pass_auth()
     }
 }
 
@@ -29,13 +26,16 @@ const mapStateToProps = (state) => {
 }
 
 
-/*const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        setLogin: () => dispatch(actionLogin)
+        pass_auth: () => dispatch(pass_auth()) 
+        //Внутри path_auth, http запрос,
+        //dispatch(actionCreator(что вернул http)) 
+        //dispatch вызывает каждый reducer и ищет свое соответсвие по полю type
     }
 }
-*/
-export default connect(mapStateToProps, {actionLogin})(LoginContainer)
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
 
 
 

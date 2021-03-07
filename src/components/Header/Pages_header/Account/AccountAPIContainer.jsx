@@ -1,5 +1,4 @@
 
-import axios from 'axios';
 import React from 'react'
 import Account from './Account';
 
@@ -9,16 +8,17 @@ class AccountAPIContainer extends React.Component {
     
     render() {
         return (
-            <Account account={this.props.account}/>
+            <Account 
+            account={this.props.account}
+            status={this.props.status}
+            />
         )
     }
 
     componentDidMount() {
         let id = this.props.match.params.userId;
-        axios(`https://social-network.samuraijs.com/api/1.0/profile/${id}`)
-        .then(response => {
-            this.props.setAccount(response.data);
-        })
+        this.props.get_profile_info_thunk(id);
+        this.props.get_profile_status_thunk(id);
     }
 }
 

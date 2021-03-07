@@ -1,21 +1,26 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { get_profile_info_thunk, get_status_thunk, setAccount } from "../../../../actionCreator";
 import AccountAPIContainer from "./AccountAPIContainer";
 
 
 
 const mapStateToProps = (state) => {
     return {
-        account: state.accountRDC.account,        
+        account: state.accountRDC.account,
+        status: state.accountRDC.status,        
     }
 }
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setAccount: (obj) => {
-            dispatch({type: 'SET-ACCOUNT', obj})
-        },        
+        get_profile_info_thunk: (id) => {
+            dispatch(get_profile_info_thunk(id))
+        },
+        get_profile_status_thunk: (id) => {
+            dispatch(get_status_thunk(id))
+        }        
     }
 }
 
