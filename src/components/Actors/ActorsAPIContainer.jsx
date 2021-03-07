@@ -1,5 +1,4 @@
 import React from 'react';
-import { getUsers, updateFollow, deleteFollow } from "../../DAL/axiosREST";
 import Actors from "./Actors";
 
 

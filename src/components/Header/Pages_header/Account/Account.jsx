@@ -1,6 +1,7 @@
 import preloader from '../../../../images/preloader.gif'
 import styles from './Account.module.css'
 import defaultLogo from '../../../../images/user1.png'
+import ProfileStatus from './ProfileStatus'
 
 const Account = (props) => {
 
@@ -13,7 +14,9 @@ const Account = (props) => {
     }
     return (
         <div className={styles.account}>
-            <div className={styles.name}><h2>{props.account.fullName}</h2>
+            <div className={styles.name}>
+                <h2>{props.account.fullName}</h2>
+                <ProfileStatus />
                 {Object.values(props.account.contacts).map((i) => {
                     if (!i) return null;
                     return (

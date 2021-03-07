@@ -99,3 +99,7 @@ export let unfollow = (id) => {
 //install https://github.com/reduxjs/redux-thunk
 //middleware между dispatch({}) и store, dispatch работает только с объектами(action), которые возвразают ActionCreator
 //библиотека призвана расширить функционал dispatch
+
+
+
+

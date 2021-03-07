@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import ActorsAPIContainer from "./ActorsAPIContainer";
 import { getUsersThunkPage, getUsersThunk, follow, unfollow } from "../../actionCreator"
+import { compose } from "redux";
 
 
 const mapStateToProps = (state) => {
@@ -25,10 +26,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const ActorsContainer = connect(mapStateToProps, mapDispatchToProps)(ActorsAPIContainer)
+export default compose(connect(mapStateToProps, mapDispatchToProps))(ActorsAPIContainer);
 
-
-export default ActorsContainer;
 
 
 

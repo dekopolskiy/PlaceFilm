@@ -1,5 +1,16 @@
+import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
+
+//isAuthorize, чтобы не дублировать указали здесь один раз
+//и через connect передали
+// итог: на вход компонента, обертка wrapper, в connect Wrapper вызывается как колбэк
+//и возвращается компонетна в UI
+const mapStateToPropsRedirect = (state) => {
+    return {
+        isAuthorize: state.loginRDC.isAuthorize,
+    }
+}
 
 function withRedirect(Component) {
     function Wrapper(props) {
@@ -10,7 +21,8 @@ function withRedirect(Component) {
         }
         return <Component {...props} />
     }
-    return Wrapper;
+    return connect(mapStateToPropsRedirect, null)(Wrapper);//Connect также возвращает Wrapper, только уже наделенный 
+    //дополнительными свойствами
 }
 
 export default withRedirect;
