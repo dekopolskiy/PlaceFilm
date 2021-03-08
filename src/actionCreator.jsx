@@ -88,6 +88,15 @@ export let get_status_thunk = (id) => {
       .then(response => dispatch(setStatus(response.data))) } //_________________________________________________
 }
 
+export let set_profile_status_thunk = (status) => {
+  return (dispatch) => {
+    profile.setProfileStatus(status)
+    .then(response => {
+      if(response.data.resultCode === 0) dispatch(setStatus(status));
+    })
+  }
+}
+
 export let get_profile_info_thunk = (id) => {
   return (dispatch) => { 
     profile.getProfileInfo(id)

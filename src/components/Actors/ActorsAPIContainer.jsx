@@ -33,8 +33,11 @@ class ActorsAPIContainer extends React.Component {
 
     componentDidMount() {//объект создали, отрендерили, добавили в dom дерево, это Mount
         this.props.getUsersThunk(this.props.pageSize, this.props.currentPage);
+        console.log('DidMount')
     }
-
+    componentDidUpdate(){
+        console.log('DidUpdate')
+    }
     followUser(id) {
         this.props.follow(id)
     }

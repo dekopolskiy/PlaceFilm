@@ -4,7 +4,7 @@
 
 const initial = {
     account: null,
-    status: null,
+    status: '',
 }
 
 

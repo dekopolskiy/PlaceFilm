@@ -27,8 +27,13 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default compose(connect(mapStateToProps, mapDispatchToProps))(ActorsAPIContainer);
-
-
+//возвращает return <Component {...props} />, при импорте соотвественно извлекается готовая компонента
+/*function connect(mstp,mdtp) {
+    props={mstp(), mdtp()}
+    return function(Component){
+        return Component(props)
+    }
+}
 
 
 //вместо второго параметра функции connect , mapDispatchtoProps, можно зарефакторить

@@ -1,36 +1,44 @@
 import React from "react";
+import styles from './ProfileStatus.module.css'
 
 //this.props.status
 class ProfileStatus extends React.Component {
-    state = {
-        isChangedStatus: true,
-        status: this.props.status,
+    constructor(props) {
+        super(props);
+        this.state = {
+            isChangedStatus: true,
+            status: '', //null т.к. запускается один раз, 1-ый инициализионный
+        }
     }
 
-    changeStatus() {// setState({}) асинхронная функция 
+    changeStatusLocal() {// setState({}) асинхронная функция 
         //меняет local state дает понять React заново перерендерить компоненту
         this.setState({
-            isChangedStatus: false
-        }) 
+            isChangedStatus: false,
+            status: this.props.status //по клику поменяй local state
+        })
     }
 
-    statusToStart() {
+    changeStatusInServer() {
         this.setState({
             isChangedStatus: true
         })
-        //http change status
+        this.props.set_profile_status_thunk(this.state.status)
     }
 
-    insertLetter(e) {
-
+    insertLetter(value) {
+        this.setState({
+            status: value
+        })
     }
 
     render() {
         return (
             <div>
                 {this.state.isChangedStatus ?
-                    <span onClick={this.changeStatus.bind(this)}>{this.state.status}</span> :
-                    <input type='text' onBlur={this.statusToStart.bind(this)} value={this.state.status}/>
+                    <span className={styles.span} onClick={this.changeStatusLocal.bind(this)}>{this.props.status? this.props.status: 'NOT STATUs'}</span> :
+                    <input type='text' onChange={(e) => this.insertLetter(e.target.value)}
+                        onBlur={this.changeStatusInServer.bind(this)} value={this.state.status} />
                 }
             </div>
         )
@@ -39,3 +47,6 @@ class ProfileStatus extends React.Component {
 
 
 export default ProfileStatus;
+
+
+//

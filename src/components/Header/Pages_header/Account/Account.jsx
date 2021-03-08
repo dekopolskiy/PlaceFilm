@@ -16,7 +16,7 @@ const Account = (props) => {
         <div className={styles.account}>
             <div className={styles.name}>
                 <h2>{props.account.fullName}</h2>
-                <ProfileStatus status={props.status}/>
+                <ProfileStatus status={props.status} set_profile_status_thunk={props.set_profile_status_thunk}/>
                 {Object.values(props.account.contacts).map((i) => {
                     if (!i) return null;
                     return (

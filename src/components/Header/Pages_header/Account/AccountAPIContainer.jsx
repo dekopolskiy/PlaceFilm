@@ -11,6 +11,7 @@ class AccountAPIContainer extends React.Component {
             <Account 
             account={this.props.account}
             status={this.props.status}
+            set_profile_status_thunk={this.props.set_profile_status_thunk}
             />
         )
     }

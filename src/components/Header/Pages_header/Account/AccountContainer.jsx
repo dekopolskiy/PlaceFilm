@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { get_profile_info_thunk, get_status_thunk, setAccount } from "../../../../actionCreator";
+import { get_profile_info_thunk, get_status_thunk, setAccount, set_profile_status_thunk } from "../../../../actionCreator";
 import AccountAPIContainer from "./AccountAPIContainer";
 
 
@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         get_profile_status_thunk: (id) => {
             dispatch(get_status_thunk(id))
+        },
+        set_profile_status_thunk: (status) => {
+            dispatch(set_profile_status_thunk(status))
         }        
     }
 }

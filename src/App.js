@@ -22,12 +22,12 @@ const App = () => {
       <Route path='/content'
         render={() => <ContentContainer />} />
       <Route path='/all_films'
-        render={() => <All_filmsContainer />} />
+        render={() => <All_filmsContainer/>} />
       <Route path='/Actors'
         render={() => <ActorsContainer />} />
       <Route path='/login' component={LoginContainer} />
       <Route path='/account/:userId' component={AccountContainer} />
-      <Route path='/registration' component={Registration}/>
+      <Route path='/registration' render={() => <Registration/>}/>
       <Footer />
     </div>
   );

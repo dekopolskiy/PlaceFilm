@@ -4,9 +4,10 @@ import axios from "axios"
 const baseURL = 'https://social-network.samuraijs.com/api/1.0/';
 
 let instanse = axios.create({
-    withCredentials: true,
+    withCredentials: true, //флаг сообщающий браузеру, что необходимо цепляь куки при CORS
     headers: {
-        "API-KEY": "e811390c-3dfa-4cdc-b8f9-fba476829b23"
+        "API-KEY": "46863c0e-deef-4610-a2f3-880014e38f6f" //все запросы кроме GET требуют этого ключа
+        //дополнительная безопастность
     }
 })
 
@@ -36,7 +37,9 @@ export const profile = {
     getProfileStatus: (id) => {
         return instanse(`${baseURL}profile/status/${id}`)
     },
-
+    setProfileStatus: (status) => {
+        return instanse.put(`${baseURL}profile/status`, {status: status})
+    }
 }
 
 

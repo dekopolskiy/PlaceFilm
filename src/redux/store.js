@@ -3,6 +3,7 @@ import actors_reducer from "./actors_reducer";
 import account_reducer from "./account_reducer";
 import login_reducer from "./login_reducer";
 import thunk from 'redux-thunk';
+import {reducer as formReducer} from 'redux-form';
 
 const { createStore, combineReducers, applyMiddleware } = require("redux");
 const { default: content_reducer } = require("./content_reducer");
@@ -14,6 +15,7 @@ let reducers = combineReducers({
     actorsRDC: actors_reducer,//{items:,currentPage:,pageSize:,}//каждый редьюсер отвечает за отдельную часть state
     accountRDC: account_reducer,//{acount: null}
     loginRDC: login_reducer, //{data: {login:,id:,email:,}}
+    form: formReducer,// {state.form.}
 })
 
 
