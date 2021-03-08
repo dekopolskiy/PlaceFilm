@@ -42,6 +42,14 @@ export const profile = {
     }
 }
 
+export const registration = {
+    log_into_account: (email, password, rememberMe) => {
+        return instanse.post(`${baseURL}auth/login`, {email, password, rememberMe})
+    },
+    log_out_account: () => {
+        return instanse.delete(`${baseURL}auth/login`)
+    },
+}
 
 
 //DATA ACCESS LAYER - слой доступа к удаленным данным хранилища

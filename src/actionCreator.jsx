@@ -1,4 +1,4 @@
-import {  login, profile, users } from "./DAL/axiosREST"
+import {  login, profile, registration, users } from "./DAL/axiosREST"
 /*________________ACTION_CREATOR_____________ */
 export let setActors = (data) => {
   return { type: 'SET-ACTORS', data: data }
@@ -110,6 +110,13 @@ export let pass_auth = () => {
       dispatch(actionLogin(response.data.data)))
   }
 }
+
+
+/*export let log_into_account = (login, password, rememberMe) => {
+  return (dispatch) => {
+      registration.log_into_account(login, password, rememberMe).then(data => console.log(data))
+  }
+} */
 //Для чего функция возвращает функцию? можно же дописать сразу несколько параметров и делать без return
 //Но dispatch в ActorApiContainer ожидает функцию с одним параметром , и даст ей его и сам вызовет эту функцию
 //поэтому лучше сделать обертку 

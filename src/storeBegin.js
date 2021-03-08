@@ -89,8 +89,5 @@ export let actionUpdateMessage = (symb) => {
     return { type: 'UPDATE-MESSAGE', value: symb }
 }
 
-export let actionUpdateSerialPost = (symb) => {
-    return { type: 'UPDATE-SERIAL-POST', value: symb }
-}
 
 

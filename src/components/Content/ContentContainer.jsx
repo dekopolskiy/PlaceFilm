@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import { compose } from "redux"
-import { actionAddSerialPost, actionUpdateSerialPost } from "../../storeBegin"
+import { actionAddSerialPost } from "../../storeBegin"
 import Content from "./Content"
 
 
@@ -16,7 +16,6 @@ let mapStateToProps = state => {
 let mapDispatchToProps = dispatch => {
     return {
         addOneSerial: (name, value) => dispatch(actionAddSerialPost(name, value)), //dispatch запускает reducers, они обновляют state и отрисовывает UI заново
-        updateForDrawing: onesymbol => dispatch(actionUpdateSerialPost(onesymbol)), //dispatch запускает reducers, и отрисовывает UI
     }
 }
 

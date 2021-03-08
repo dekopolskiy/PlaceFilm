@@ -1,7 +1,5 @@
-import { act } from "react-dom/test-utils";
 
 const ADD_SERIAL_POST = 'ADD-SERIAL-POST';
-const UPDATE_SERIAL_POST = 'UPDATE-SERIAL-POST'
 
 //store.getState().pageContent.listSerials
 
@@ -15,7 +13,6 @@ let initial = {
         { name: 'Sons of Anarchy', img: 'https://st.kp.yandex.net/im/poster/1/3/3/kinopoisk.ru-Sons-of-Anarchy-1335951.jpg' },
         { name: 'Vikings', img: 'https://st.kp.yandex.net/im/poster/3/4/2/kinopoisk.ru-Vikings-3427081.jpg' }
     ],
-    newPosterBody: 'https://www.kinopoisk.ru/im/poster/3/3/1/kinopoisk.ru-The-Sopranos-3311800--o--.jpg',
 }
 
 //initial? redux запускает reducers без нашего ведома первый раз автоматом
@@ -29,12 +26,6 @@ const content_reducer = (state = initial, action) => {//initial это PageConte
             return {
                 ...state, //раскукоживается, и по приориету следующие значения перетерирают первоначальные
                 listSerials: [...state.listSerials, { name: action.key, img: action.value } ],
-                newPosterBody : '',
-            }
-        case UPDATE_SERIAL_POST:
-            return {
-                ...state,
-                newPosterBody : action.value,
             }
         default:
             return state;
