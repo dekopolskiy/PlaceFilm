@@ -17,7 +17,7 @@ import Registration from './components/Registration/Registration';
 
 const App = () => {
   return (
-    <div>
+    <div className='mainWrapper'>
       <Header />
       <Route path='/content'
         render={() => <ContentContainer />} />

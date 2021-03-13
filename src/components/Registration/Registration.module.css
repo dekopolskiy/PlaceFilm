@@ -1,4 +1,17 @@
 
-.login{
+.form_login{
+    display: grid;
+    grid-gap: 5px;
     
+}
+
+.login{
+    min-height: 100%;
+}
+.login span{
+    color: red;
+}
+
+.inputColor{
+    border: 1px solid red;
 }

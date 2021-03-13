@@ -35,7 +35,6 @@ class ActorsAPIContainer extends React.Component {
         this.props.getUsersThunk(this.props.pageSize, this.props.currentPage);
     }
     componentDidUpdate(prevProps){
-        debugger
     }
     followUser(id) {
         this.props.follow(id)
