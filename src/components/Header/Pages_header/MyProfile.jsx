@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router";
 import InfoProfile from "./InfoProfile";
 import styles from "./MyProfile.module.css";
-import FormProfile from "./FormProfile"
+import FormProfile from "./FormProfile";
 
 export class MyProfile extends React.Component {
   constructor(props) {
@@ -23,7 +23,12 @@ export class MyProfile extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.profile !== this.props.profile) {
       this.setState({ load: false });
+      this.setState({formDisable: true})
     }
+  }
+
+  proccesingForm(formData) {
+    this.props.setProfile(formData);
   }
 
   render() {
@@ -41,11 +46,16 @@ export class MyProfile extends React.Component {
               <img src={this.props.profile.photos.large} />
             </div>
             <div className={styles.status}>status</div>
-            <button onClick={() => this.setState({formDisable: false})}>editChange</button>
-            <button onClick={() => this.setState({formDisable: true})}>send</button>
+            <button onClick={() => this.setState({ formDisable: false })}>
+              editChange
+            </button>
           </div>
           <div className={styles.info}>
-            {this.state.formDisable ? <InfoProfile {...this.props.profile}/> : <FormProfile />} 
+            {this.state.formDisable ? (
+              <InfoProfile {...this.props.profile} />
+            ) : (
+              <FormProfile onSubmit={this.proccesingForm.bind(this)} />
+            )}
           </div>
         </div>
       </div>

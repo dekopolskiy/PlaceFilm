@@ -1,15 +1,7 @@
 
-.my_profile{
-    background: black;
-    width: 100%;
-    position: relative;
-}
 
 .wrapper{
-    position: absolute;
     width: 750px;
-    margin-top:5%;
-    margin-left: 20%;
     height: 400px;
     grid-template-columns: 1fr 1fr;
     display: grid;

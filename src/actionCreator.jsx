@@ -112,6 +112,14 @@ export let get_profile_info_thunk = (id) => {
   }
 }
 
+export let set_profile_info_thunk = (user) => {
+  return (dispatch) => {
+    profile.setProfileInfo(user).then( data => {
+      dispatch(setAccount(user))
+    });
+  }
+}
+
 export let pass_auth = () => { //5 Если не залогинен на samurai, то соотвестенно придет пустой объект
   return (dispatch) => {
     login.authentification() //6.дождаться ответа от сервака, всё это время приложение ждет

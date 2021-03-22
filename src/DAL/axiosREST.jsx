@@ -6,7 +6,7 @@ const baseURL = 'https://social-network.samuraijs.com/api/1.0/';
 let instanse = axios.create({
     withCredentials: true, //флаг сообщающий браузеру, что необходимо цепляь куки при CORS
     headers: {
-        "API-KEY": "e811390c-3dfa-4cdc-b8f9-fba476829b23" //все запросы кроме GET требуют этого ключа
+        "API-KEY": "3291f849-da91-4ce9-9921-6650bf28d2d0" //все запросы кроме GET требуют этого ключа
         //дополнительная безопастность
     }
 })
@@ -33,6 +33,10 @@ export const login = {
 export const profile = {
     getProfileInfo: (id) => {
         return instanse(`${baseURL}profile/${id}`)
+    },
+    setProfileInfo: (user) => {
+        debugger
+        return instanse.put(`${baseURL}profile`, user)
     },
     getProfileStatus: (id) => {
         return instanse(`${baseURL}profile/status/${id}`)
