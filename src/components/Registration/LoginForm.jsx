@@ -5,6 +5,7 @@ import styles from './Registration.module.css'
 import {required} from './Input'
 
 const LoginForm = (props) => {
+    console.log(props.error)
     return (
         <div>
             <form onSubmit={props.handleSubmit} className={styles.form_login}>
@@ -25,7 +26,7 @@ const LoginForm = (props) => {
                     <button type='submit'>LOGIN</button>
                     <button type='button' onClick={registration.log_out_account}>LOGOUT</button>
                     <button type='reset' onClick={props.reset}>RESET</button>
-
+                    <div className={styles.error}>{props.error}</div>
                 </div>
             </form>
         </div>

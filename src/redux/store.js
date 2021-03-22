@@ -4,17 +4,19 @@ import account_reducer from "./account_reducer";
 import login_reducer from "./login_reducer";
 import thunk from 'redux-thunk';
 import {reducer as formReducer} from 'redux-form';
+import app_reducer from "./app_reducer";
 
 const { createStore, combineReducers, applyMiddleware } = require("redux");
 const { default: content_reducer } = require("./content_reducer");
 
 
 let reducers = combineReducers({ 
-    contentRDC: content_reducer, //{mainPoster:, listSerials:, newPosterBody}//запускается store, запускается каждый reducer, возвращает state 
-    all_filmsRDC: all_films_reducer, //{all_films: []} //заполняет this._state 
-    actorsRDC: actors_reducer,//{items:,currentPage:,pageSize:,}//каждый редьюсер отвечает за отдельную часть state
-    accountRDC: account_reducer,//{acount: null}
-    loginRDC: login_reducer, //{data: {login:,id:,email:,}}
+    contentRDC: content_reducer, //state:{contentRDC : {mainPoster:, listSerials:, newPosterBody}//запускается store, запускается каждый reducer, возвращает state 
+    all_filmsRDC: all_films_reducer, //state:{allFilmsRDC : {all_films: []} //заполняет this._state 
+    actorsRDC: actors_reducer,//state:{actorsRDC : {items:,currentPage:,pageSize:,}//каждый редьюсер отвечает за отдельную часть state
+    accountRDC: account_reducer,//state:{accountRDC : {acount: null}
+    loginRDC: login_reducer, //state:{loginRDC : {data: {login:,id:,email:,}}
+    appRDC: app_reducer,
     form: formReducer,// {state.form.}
 })
 
@@ -29,6 +31,7 @@ export default store;
 /*
 1)Запуск store
 2)Запуск reducers
+)Запуск dispatch({}) и запуск редюсеров
 3)Запуск content_reducers, dialogs_reducers
 4)pageContent, PageDialogs проиинициализорваны объектами, state заполнен
 5)передача state через функционал react-redux функции map и connect

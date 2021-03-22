@@ -32,6 +32,7 @@ const actors_reducer = (state = initial, action) => {
                 preloader: action.param,
             }
         case 'FOLLOW-USER':
+            
             return {
                 ...state,
                 items: [...state.items].map(i => {
@@ -45,6 +46,7 @@ const actors_reducer = (state = initial, action) => {
                 })
             }
         case 'UNFOLLOW-USER':
+
             return {
                 ...state,
                 items: [...state.items].map( i => {

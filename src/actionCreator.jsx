@@ -1,4 +1,5 @@
-import {  login, profile, registration, users } from "./DAL/axiosREST"
+import { stopSubmit } from "redux-form"
+import { login, profile, registration, users } from "./DAL/axiosREST"
 /*________________ACTION_CREATOR_____________ */
 export let setActors = (data) => {
   return { type: 'SET-ACTORS', data: data }
@@ -28,8 +29,8 @@ export let setDisableButton = (isload, id) => {
   return { type: 'SET-DISABLE-BUTTON', isload: isload, id: id }
 }
 
-export let setAccount = (obj) => {
-  return { type: 'SET-ACCOUNT', obj }
+export let setAccount = (data) => {
+  return { type: 'SET-ACCOUNT', data }
 }
 
 export let actionLogin = (data) => {
@@ -37,80 +38,111 @@ export let actionLogin = (data) => {
 }
 
 export let setStatus = (status) => {
-  return { type: 'SET_STATUS', status}
+  return { type: 'SET_STATUS', status }
 }
 
+export let load_authdata_is_done = () => {
+  return { type: 'LOAD_IS_DONE' }
+}
+
+function refactorGetUsers(page, count=20, dispatch) {
+  dispatch(onloadPage(true));
+  return users.getUsers(page, count).then(data => {
+    dispatch(setActors(data));
+    dispatch(onloadPage(false));
+    return data
+  })
+}
 
 /*_________________THUNK_CREATOR________________ */
-export let getUsersThunkPage = (page) => {
-  return (dispatch) => { 
+export let getUsersThunkPage = (page) => { //для подгрузки из-за перехода по страницам
+  return (dispatch) => {
     dispatch(setCurrentPage(page));
-    dispatch(onloadPage(true));
-    users.getUsers({ page }).then(data => {   
-      dispatch(setActors(data));
-      dispatch(onloadPage(false));
-    }) }
+    refactorGetUsers(page, 0, dispatch)
+  }
 }
 
-export let getUsersThunk = (count, page) => {
-  return (dispatch) => { 
-    dispatch(onloadPage(true));
-    users.getUsers({ count, page }).then(data => {   
-      dispatch(setActors(data));
-      dispatch(onloadPage(false));
-      dispatch(setTotalCount(data.totalCount));
-    }) }
+export let getUsersThunk = (count, page) => { //1-ый запуск
+  return (dispatch) => {
+    refactorGetUsers(count, page, dispatch).then(data => dispatch(setTotalCount(data.totalCount)))
+  }
 }
 
+function updateOrDelete(dispatch, id, updateDeleteMethod, followOrUnfollow) {
+  dispatch(setDisableButton(true, id));
+  updateDeleteMethod(id).then(data => {
+        dispatch(followOrUnfollow(id))
+        dispatch(setDisableButton(false, id))
+  })
+}
+
+//thunkcreator return thunk refact
 export let follow = (id) => {
-  return (dispatch) => { 
-    dispatch(setDisableButton(true, id));
-    users.updateFollow(id)
-      .then(data => {     
-        dispatch(followUser(id))
-        dispatch(setDisableButton(false, id));
-      }) }
+  return (dispatch) => {
+    updateOrDelete(dispatch, id, users.updateFollow.bind(users), followUser.bind(this))
+  }
 }
 
 export let unfollow = (id) => {
-  return (dispatch) => { 
-    dispatch(setDisableButton(true, id));
-    users.deleteFollow(id)
-      .then(response => {     
-        dispatch(unfollowUser(id));
-        dispatch(setDisableButton(false, id));
-      }) }
+  return (dispatch) => {
+    updateOrDelete(dispatch, id, users.deleteFollow.bind(users), unfollowUser.bind(this))
+  }
 }
 
 export let get_status_thunk = (id) => {
-  return (dispatch) => { 
+  return (dispatch) => {
     profile.getProfileStatus(id)
-      .then(response => dispatch(setStatus(response.data))) } //_________________________________________________
+      .then(response => dispatch(setStatus(response.data)))
+  } //_________________________________________________
 }
 
 export let set_profile_status_thunk = (status) => {
   return (dispatch) => {
     profile.setProfileStatus(status)
-    .then(response => {
-      if(response.data.resultCode === 0) dispatch(setStatus(status));
-    })
+      .then(response => {
+        if (response.data.resultCode === 0) dispatch(setStatus(status));
+      })
   }
 }
 
 export let get_profile_info_thunk = (id) => {
-  return (dispatch) => { 
-    profile.getProfileInfo(id)
-      .then(response => dispatch(setAccount(response.data))) }
-}
-
-export let pass_auth = () => {
   return (dispatch) => {
-    login.authentification()
-    .then(response => 
-      dispatch(actionLogin(response.data.data)))
+    profile.getProfileInfo(id)
+      .then(response => dispatch(setAccount(response.data)))
   }
 }
 
+export let pass_auth = () => { //5 Если не залогинен на samurai, то соотвестенно придет пустой объект
+  return (dispatch) => {
+    login.authentification() //6.дождаться ответа от сервака, всё это время приложение ждет
+      .then(response => {
+        dispatch(actionLogin(response.data.data)) //7.ответ получили 
+        dispatch(load_authdata_is_done()) //8.данные пришли - отрисовка
+      })
+  }
+}
+
+
+export const login_samurai_thunk = (dataLoginForSend) => {
+  return (dispatch) => {
+    registration.log_into_account(dataLoginForSend).then(data => {
+      if (data.data.resultCode === 0) {
+        login.authentification()
+          .then(response => dispatch(actionLogin(response.data.data)))
+      } else {
+        let action = stopSubmit('login', { _error: `${data.data.messages}` });
+        dispatch(action);
+      }
+    })
+  }
+}
+
+
+export const logout_samurai_thunk = () => {
+  return (dispatch) => {
+    registration.log_out_account().then(() => dispatch(actionLogin({ id: null, login: null, email: null })))
+  }
+}
 
 /*export let log_into_account = (login, password, rememberMe) => {
   return (dispatch) => {
@@ -128,6 +160,5 @@ export let pass_auth = () => {
 //библиотека призвана расширить функционал dispatch
 //Thunk меняет архитектуру приложения, ui => dal => bll => ui
 //Thunk ===> ui => bll => dll => ui 
-
 
 

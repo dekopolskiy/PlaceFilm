@@ -1,3 +1,4 @@
+import { SubmissionError } from 'redux-form';
 import styles from './Registration.module.css'
 
 export const required = (data) => {
@@ -11,6 +12,7 @@ const Input = (props) => {
     return (
         <div>
             <input {...input} type={rest.type} placeholder={rest.placeholder} className={meta.touched&&meta.error&&styles.inputColor}/>
+            <br></br>
             {meta.touched&&meta.error? <span>{meta.error}</span>: null}
         </div>
     )
@@ -18,3 +20,8 @@ const Input = (props) => {
 
 
 export default Input;
+
+
+export const mySubmit = (e) => {
+    console.log(e)
+}

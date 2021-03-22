@@ -1,48 +1,26 @@
-import React from "react";
 import styles from './ProfileStatus.module.css'
+import React, { useEffect, useState } from 'react'
 
-//this.props.status
-class ProfileStatus extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isChangedStatus: true,
-            status: '', //null т.к. запускается один раз, 1-ый инициализионный
-        }
-    }
 
-    changeStatusLocal() {// setState({}) асинхронная функция 
-        //меняет local state дает понять React заново перерендерить компоненту
-        this.setState({
-            isChangedStatus: false,
-            status: this.props.status //по клику поменяй local state
-        })
-    }
 
-    changeStatusInServer() {
-        this.setState({
-            isChangedStatus: true
-        })
-        this.props.set_profile_status_thunk(this.state.status)
-    }
+const ProfileStatus = (props) => {
+    const [status, setStatus] = useState(props.status);
+    const [editMode, setEditMode] = useState(false)
 
-    insertLetter(value) {
-        this.setState({
-            status: value
-        })
-    }
+    const sendStatusOnServer = () => {
+        setEditMode(false);
+        props.set_profile_status_thunk(status)
+    } 
 
-    render() {
-        return (
-            <div>
-                {this.state.isChangedStatus ?
-                    <span className={styles.span} onClick={this.changeStatusLocal.bind(this)}>{this.props.status? this.props.status: 'NOT STATUs'}</span> :
-                    <input type='text' onChange={(e) => this.insertLetter(e.target.value)}
-                        onBlur={this.changeStatusInServer.bind(this)} value={this.state.status} />
-                }
-            </div>
-        )
-    }
+    return editMode ?
+       /* <textarea 
+        onChange={(event) => setStatus(event.target.value)} 
+        onBlur={sendStatusOnServer}
+        autoFocus
+        value={status}></textarea> */
+        null
+        :(<div onClick={() => setEditMode(true)}>{status}</div>)
+
 }
 
 

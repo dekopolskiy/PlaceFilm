@@ -23,3 +23,13 @@
 }
 
 
+.preloader{
+    position: absolute;
+    left: 45%;
+    top: 45%;
+}
+
+.wrap_preloader{
+    height: 100%;
+    position: relative;
+}

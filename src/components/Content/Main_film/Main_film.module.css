@@ -1,12 +1,31 @@
 .main_film{
-    margin-top: 5px;
     grid-column: 1 / -1;
     overflow: hidden;
     height: 380px;
+    color:white;
+    position: relative;
 }
 
 
 .main_film img{
     width: 100%;
+    opacity: 30%;
+    position: absolute;
 }
 
+.wrapper_text{
+    color: white;
+    position: absolute;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.text{
+    text-align: center;
+    padding-top: 80px;
+    grid-column: 2;
+}
+.wrapper_text h1{
+    font-size: 4em;
+    text-align: center;
+}

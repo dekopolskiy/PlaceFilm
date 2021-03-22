@@ -6,14 +6,14 @@ const baseURL = 'https://social-network.samuraijs.com/api/1.0/';
 let instanse = axios.create({
     withCredentials: true, //флаг сообщающий браузеру, что необходимо цепляь куки при CORS
     headers: {
-        "API-KEY": "46863c0e-deef-4610-a2f3-880014e38f6f" //все запросы кроме GET требуют этого ключа
+        "API-KEY": "e811390c-3dfa-4cdc-b8f9-fba476829b23" //все запросы кроме GET требуют этого ключа
         //дополнительная безопастность
     }
 })
 
 
 export const users = {
-    getUsers: ({ count = 20, page }) => {
+    getUsers: (count, page ) => {
         return instanse(`${baseURL}users/?count=${count}&page=${page}`).then(response => response.data)
     },
     updateFollow: (id) => {
@@ -43,7 +43,8 @@ export const profile = {
 }
 
 export const registration = {
-    log_into_account: (email, password, rememberMe) => {
+    log_into_account: (loginDataforSend) => {
+        let {login:email, password, checkbox: rememberMe = false} = loginDataforSend;
         return instanse.post(`${baseURL}auth/login`, {email, password, rememberMe})
     },
     log_out_account: () => {

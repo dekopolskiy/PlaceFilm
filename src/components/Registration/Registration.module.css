@@ -2,11 +2,13 @@
 .form_login{
     display: grid;
     grid-gap: 5px;
-    
+    text-align: center;
 }
 
 .login{
     min-height: 100%;
+    background: silver;
+    color: white;
 }
 .login span{
     color: red;
@@ -14,4 +16,14 @@
 
 .inputColor{
     border: 1px solid red;
+}
+
+.login h1{
+    text-align: center;
+    padding-top: 200px;
+}
+
+.error{
+    color: black;
+    background: pink;
 }

@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 70px 1fr 1fr 1fr 1fr 1fr 1fr 70px;
     grid-gap:15px;
+    height: 100%;
 }
 
 .listSerials{

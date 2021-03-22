@@ -1,32 +1,38 @@
 header{
-    background: #0E0E0E;
-    color:white;
     display: grid;
-    grid-template-columns: 1fr 8fr repeat(3, 1fr);
-    grid-template-rows: 40px;
-    border-bottom: 1px solid rgb(168, 163, 163);
-}
-
-header div{
-    text-align: center;
-    padding-top: 12px;
+    grid-template-columns: 1fr 8fr 1fr;
+    background: #2b2c2b;
 }
 header a{
-    color: white;
+    color:white;
     text-decoration: none;
-}
-.comments{
-    grid-column: 3;
-}
-
-.selected{
-    color: #446611;
-    text-shadow: 1px 1px 5px #446611;
 }
 
 .logo{
+    grid-column: 1;
+    width: 170px;
+    text-align: center;
+}
+
+.nav{
+    height: 50px;
+    grid-column: 3;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.nav div{
+    padding-top: 15px;
+    width: 120px;
     text-align: center;
 }
 
 .log_in{
+    background: skyblue;
 }
+
+.log_out{
+    cursor: pointer;
+    color: rgb(212, 194, 24);
+}
+

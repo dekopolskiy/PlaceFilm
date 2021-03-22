@@ -16,7 +16,7 @@ const login_reducer = (state = initial, action) => {
             return {
                 ...state,
                 data: {...action.data},
-                isAuthorize: Object.values(action.data).every(i => i === undefined)? false : true,
+                isAuthorize: Object.values(action.data).every(i => i === undefined || i === null)? false : true,
             }
         default:
             return state;

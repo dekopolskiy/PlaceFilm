@@ -1,8 +1,8 @@
 import styles from './Registration.module.css'
 import React from 'react'
-import { registration } from "../../DAL/axiosREST"
 import ContainerRegistrationForm from './LoginForm';
-
+import { Redirect } from 'react-router';
+import { withIsAuth } from '../../hoc/hoc';
 
 
 
@@ -12,23 +12,27 @@ class Registration extends React.Component {
     }
 
     processFields(e) {
-        let {login: email, password, rememberMe=false} = e;
-        registration.log_into_account(email, password, rememberMe) 
+        this.props.login_samurai_thunk(e)
     }
 
     render() {
         return (
             <div class={styles.login}>
                 <h1>LOGIN</h1>
-                <ContainerRegistrationForm onSubmit={this.processFields.bind(this)} />{
-                /*дейтсвие по умолчанию отменено, его необходимо обработать поэтому сами имеем доступ к этому методу */}
+                {this.props.isAuthorize ?
+                    <Redirect to='/content' /> :
+                    <ContainerRegistrationForm onSubmit={this.processFields.bind(this)} />
+                }
             </div>
+
         )
     }
 }
 
 
 
+{
+    /*дейтсвие по умолчанию отменено, его необходимо обработать поэтому сами имеем доступ к этому методу */}
 
-
-export default Registration;
+export default withIsAuth(Registration);
+//return function(props) {return <Registration ...props/>}

@@ -5,7 +5,11 @@ import Content from "./Content"
 
 
 let mapStateToProps = state => {
-    //state приходит целиком, со всеми reducers
+    //state приходит целиком каждый раз как только что-то диспатчим
+    //все mstp запускаются после того как отработает dispatch(action) { }
+    //и сравниваются предыдущие значения с настоящими, если ничего не изменилось то отрисовка не происходит
+    //listSerial сравнивается с тем, что в state.contentRDC.listSerials и т.д., перерисуется только та компонента
+    //у которой была изменена ссылка key на value, то есть если создали копию
     return {
         listSerials: state.contentRDC.listSerials,//отрисовка заново если меняется ссылка
         newPosterBody: state.contentRDC.newPosterBody,//отрисовка заново если меняется значение

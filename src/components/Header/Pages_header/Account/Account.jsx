@@ -7,8 +7,8 @@ const Account = (props) => {
 
     if (!props.account) {
         return (
-            <div>
-                <img src={preloader} />
+            <div className={styles.wrap_preloader}>
+                <img src={preloader} className={styles.preloader}/>
             </div>
         )
     }
