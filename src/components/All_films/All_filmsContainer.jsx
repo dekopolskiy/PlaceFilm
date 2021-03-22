@@ -10,7 +10,6 @@ let mapStateToProps = state => {
         cart: state.all_filmsRDC.cart,
     }
 }
-
 let mapDispatchToProps = dispatch => {
     return {
         addToCart: (id) => {

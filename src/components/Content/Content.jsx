@@ -29,10 +29,10 @@ const Content = (props) => {
     return (
         <div className={styles.content}>
             <Main_film film={props.mainPoster} />
-            <div className={styles.listSerials}>
+            {/* <div className={styles.listSerials}>
              {/*   {mapPics} */}
-            </div>
-            <ContainerFormContent onSubmit={processPost} />
+            {/* </div> */}
+            {/* <ContainerFormContent onSubmit={processPost} /> */} */}
         </div>
     )
 }

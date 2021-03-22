@@ -1,6 +1,8 @@
 import React from "react";
 import { Redirect } from "react-router";
+import InfoProfile from "./InfoProfile";
 import styles from "./MyProfile.module.css";
+import FormProfile from "./FormProfile"
 
 export class MyProfile extends React.Component {
   constructor(props) {
@@ -8,7 +10,7 @@ export class MyProfile extends React.Component {
     this.state = {
       load: true,
       value: 0,
-      formDisable: false,
+      formDisable: true,
     };
   }
 
@@ -32,16 +34,18 @@ export class MyProfile extends React.Component {
       return <Redirect to="/registration" />;
     }
     return (
-      <div className={styles.my_profile}>
+      <div className={styles.myProfileWrap}>
         <div className={styles.wrapper}>
           <div className={styles.photo_status}>
             <div className={styles.photo}>
               <img src={this.props.profile.photos.large} />
             </div>
             <div className={styles.status}>status</div>
+            <button onClick={() => this.setState({formDisable: false})}>editChange</button>
+            <button onClick={() => this.setState({formDisable: true})}>send</button>
           </div>
-          <button onClick={this.setState({formDisable: true})}>edit info</button>
-          <div className={styles.info}>info
+          <div className={styles.info}>
+            {this.state.formDisable ? <InfoProfile {...this.props.profile}/> : <FormProfile />} 
           </div>
         </div>
       </div>

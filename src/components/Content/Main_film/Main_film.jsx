@@ -4,7 +4,7 @@ import logo from '../../../images/jeremy.jpg'
 const Main_film = (props) => {
     return (
         <div className={styles.main_film}>
-            <img src={logo} height={400} className={styles.img} />
+            {/* <img src={logo} height={400} className={styles.img} /> */}
             <div className={styles.wrapper_text}>
                 <div className={styles.text}>
                     <h1>Paramount.</h1>

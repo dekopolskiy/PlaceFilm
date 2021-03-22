@@ -7,10 +7,10 @@
 
 .wrapper{
     position: absolute;
-    width: 650px;
+    width: 750px;
     margin-top:5%;
-    margin-left: 30%;
-    height: 500px;
+    margin-left: 20%;
+    height: 400px;
     grid-template-columns: 1fr 1fr;
     display: grid;
 }
