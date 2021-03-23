@@ -3,7 +3,7 @@ import { Redirect } from "react-router";
 import InfoProfile from "./InfoProfile";
 import styles from "./MyProfile.module.css";
 import FormProfile from "./FormProfile";
-
+//Component every run after http , setProfile in state, all methods run again
 export class MyProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -13,30 +13,32 @@ export class MyProfile extends React.Component {
       formDisable: true,
     };
   }
-
+  //3.component load and load profile and set
   componentDidMount() {
     if (this.props.login.isAuthorize) {
       this.props.getProfile(this.props.login.data.id);
     }
   }
-
+  //4.not first run, prevProps: null, this.props {name: DanteAligheri}
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.profile !== this.props.profile) {
-      this.setState({ load: false });
-      this.setState({formDisable: true})
+      this.setState({ load: false }); //Load false
+      this.setState({ formDisable: true });
     }
   }
-
+  //putProfile and again setProfile in State, againd CPDM, CMPDU
   proccesingForm(formData) {
     this.props.setProfile(formData);
   }
 
   render() {
-    if (this.state.load) {
-      return <div>LOading...</div>;
-    }
+    //1.Not authorize --- exit
     if (!this.props.login.isAuthorize) {
       return <Redirect to="/registration" />;
+    }
+    //2.not data from getPRofile and not set in state --- exit
+    if (this.state.load) {
+      return <div>LOading...</div>;
     }
     return (
       <div className={styles.myProfileWrap}>
@@ -45,18 +47,21 @@ export class MyProfile extends React.Component {
             <div className={styles.photo}>
               <img src={this.props.profile.photos.large} />
             </div>
-            <div className={styles.status}>status</div>
-            <button onClick={() => this.setState({ formDisable: false })}>
-              editChange
-            </button>
+            {/* <div className={styles.status}>status</div> */}
           </div>
           <div className={styles.info}>
             {this.state.formDisable ? (
               <InfoProfile {...this.props.profile} />
             ) : (
-              <FormProfile onSubmit={this.proccesingForm.bind(this)} />
+              <FormProfile
+                onSubmit={this.proccesingForm.bind(this)}
+                initialValues={this.props.profile}
+              />
             )}
           </div>
+          <div onClick={() => this.setState({ formDisable: false })} className={styles.buttonDiv}>
+              edit form
+            </div>
         </div>
       </div>
     );

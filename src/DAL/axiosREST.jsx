@@ -35,7 +35,6 @@ export const profile = {
         return instanse(`${baseURL}profile/${id}`)
     },
     setProfileInfo: (user) => {
-        debugger
         return instanse.put(`${baseURL}profile`, user)
     },
     getProfileStatus: (id) => {

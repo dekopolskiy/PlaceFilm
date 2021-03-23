@@ -6,7 +6,6 @@ import defaultLogo from '../../images/user1.png'
 
 
 const Actors = (props) => {
-    debugger
     let totalCountElements = parseInt(props.totalCount);
     let totalCountPages = Math.ceil(totalCountElements / props.pageSize);
 

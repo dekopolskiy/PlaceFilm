@@ -1,156 +1,188 @@
-import { stopSubmit } from "redux-form"
-import { login, profile, registration, users } from "./DAL/axiosREST"
+import { SubmissionError } from "redux-form";
+import { stopSubmit } from "redux-form";
+import { login, profile, registration, users } from "./DAL/axiosREST";
 /*________________ACTION_CREATOR_____________ */
 export let setActors = (data) => {
-  return { type: 'SET-ACTORS', data: data }
-}
+  return { type: "SET-ACTORS", data: data };
+};
 
 export let setCurrentPage = (page) => {
-  return { type: 'SET-CURRENT-PAGE', page: page }
-}
+  return { type: "SET-CURRENT-PAGE", page: page };
+};
 
 export let setTotalCount = (totalCount) => {
-  return { type: 'SET-TOTAL-COUNT', totalCount: totalCount }
-}
+  return { type: "SET-TOTAL-COUNT", totalCount: totalCount };
+};
 
 export let onloadPage = (param) => {
-  return { type: 'SET-PRELOADER', param: param }
-}
+  return { type: "SET-PRELOADER", param: param };
+};
 
 export let followUser = (id) => {
-  return { type: 'FOLLOW-USER', id: id }
-}
+  return { type: "FOLLOW-USER", id: id };
+};
 
 export let unfollowUser = (id) => {
-  return { type: 'UNFOLLOW-USER', id: id }
-}
+  return { type: "UNFOLLOW-USER", id: id };
+};
 
 export let setDisableButton = (isload, id) => {
-  return { type: 'SET-DISABLE-BUTTON', isload: isload, id: id }
-}
+  return { type: "SET-DISABLE-BUTTON", isload: isload, id: id };
+};
 
 export let setAccount = (data) => {
-  return { type: 'SET-ACCOUNT', data }
-}
+  return { type: "SET-ACCOUNT", data };
+};
 
 export let actionLogin = (data) => {
-  return { type: 'LOGIN', data }
-}
+  return { type: "LOGIN", data };
+};
 
 export let setStatus = (status) => {
-  return { type: 'SET_STATUS', status }
-}
+  return { type: "SET_STATUS", status };
+};
 
 export let load_authdata_is_done = () => {
-  return { type: 'LOAD_IS_DONE' }
-}
+  return { type: "LOAD_IS_DONE" };
+};
 
-function refactorGetUsers(page, count=20, dispatch) {
+function refactorGetUsers(page, count = 20, dispatch) {
   dispatch(onloadPage(true));
-  return users.getUsers(page, count).then(data => {
+  return users.getUsers(page, count).then((data) => {
     dispatch(setActors(data));
     dispatch(onloadPage(false));
-    return data
-  })
+    return data;
+  });
 }
 
 /*_________________THUNK_CREATOR________________ */
-export let getUsersThunkPage = (page) => { //для подгрузки из-за перехода по страницам
+export let getUsersThunkPage = (page) => {
+  //для подгрузки из-за перехода по страницам
   return (dispatch) => {
     dispatch(setCurrentPage(page));
-    refactorGetUsers(page, 0, dispatch)
-  }
-}
+    refactorGetUsers(page, 0, dispatch);
+  };
+};
 
-export let getUsersThunk = (count, page) => { //1-ый запуск
+export let getUsersThunk = (count, page) => {
+  //1-ый запуск
   return (dispatch) => {
-    refactorGetUsers(count, page, dispatch).then(data => dispatch(setTotalCount(data.totalCount)))
-  }
-}
+    refactorGetUsers(count, page, dispatch).then((data) =>
+      dispatch(setTotalCount(data.totalCount))
+    );
+  };
+};
 
 function updateOrDelete(dispatch, id, updateDeleteMethod, followOrUnfollow) {
   dispatch(setDisableButton(true, id));
-  updateDeleteMethod(id).then(data => {
-        dispatch(followOrUnfollow(id))
-        dispatch(setDisableButton(false, id))
-  })
+  updateDeleteMethod(id).then((data) => {
+    dispatch(followOrUnfollow(id));
+    dispatch(setDisableButton(false, id));
+  });
 }
 
 //thunkcreator return thunk refact
 export let follow = (id) => {
   return (dispatch) => {
-    updateOrDelete(dispatch, id, users.updateFollow.bind(users), followUser.bind(this))
-  }
-}
+    updateOrDelete(
+      dispatch,
+      id,
+      users.updateFollow.bind(users),
+      followUser.bind(this)
+    );
+  };
+};
 
 export let unfollow = (id) => {
   return (dispatch) => {
-    updateOrDelete(dispatch, id, users.deleteFollow.bind(users), unfollowUser.bind(this))
-  }
-}
+    updateOrDelete(
+      dispatch,
+      id,
+      users.deleteFollow.bind(users),
+      unfollowUser.bind(this)
+    );
+  };
+};
 
 export let get_status_thunk = (id) => {
   return (dispatch) => {
-    profile.getProfileStatus(id)
-      .then(response => dispatch(setStatus(response.data)))
-  } //_________________________________________________
-}
+    profile
+      .getProfileStatus(id)
+      .then((response) => dispatch(setStatus(response.data)));
+  }; //_________________________________________________
+};
 
 export let set_profile_status_thunk = (status) => {
   return (dispatch) => {
-    profile.setProfileStatus(status)
-      .then(response => {
-        if (response.data.resultCode === 0) dispatch(setStatus(status));
-      })
-  }
-}
+    profile.setProfileStatus(status).then((response) => {
+      if (response.data.resultCode === 0) dispatch(setStatus(status));
+    });
+  };
+};
 
 export let get_profile_info_thunk = (id) => {
   return (dispatch) => {
-    profile.getProfileInfo(id)
-      .then(response => dispatch(setAccount(response.data)))
-  }
-}
+    profile
+      .getProfileInfo(id)
+      .then((response) => dispatch(setAccount(response.data)));
+  };
+};
 
 export let set_profile_info_thunk = (user) => {
   return (dispatch) => {
-    profile.setProfileInfo(user).then( data => {
-      dispatch(setAccount(user))
+    profile.setProfileInfo(user).then((data) => {
+      if (data.data.resultCode === 1) {
+        let regexp = data.data.messages[0]
+          .match(/->([a-z]+)/i)[1]
+          .toLowerCase();
+        let action = stopSubmit("profile_form", {
+          contacts: { [regexp]: data.data.messages[0] },
+        });
+        console.log(action)
+        dispatch(action);
+      } else {
+        dispatch(setAccount(user));
+      }
     });
-  }
-}
+  };
+};
 
-export let pass_auth = () => { //5 Если не залогинен на samurai, то соотвестенно придет пустой объект
+export let pass_auth = () => {
+  //5 Если не залогинен на samurai, то соотвестенно придет пустой объект
   return (dispatch) => {
-    login.authentification() //6.дождаться ответа от сервака, всё это время приложение ждет
-      .then(response => {
-        dispatch(actionLogin(response.data.data)) //7.ответ получили 
-        dispatch(load_authdata_is_done()) //8.данные пришли - отрисовка
-      })
-  }
-}
-
+    login
+      .authentification() //6.дождаться ответа от сервака, всё это время приложение ждет
+      .then((response) => {
+        dispatch(actionLogin(response.data.data)); //7.ответ получили
+        dispatch(load_authdata_is_done()); //8.данные пришли - отрисовка
+      });
+  };
+};
 
 export const login_samurai_thunk = (dataLoginForSend) => {
   return (dispatch) => {
-    registration.log_into_account(dataLoginForSend).then(data => {
+    registration.log_into_account(dataLoginForSend).then((data) => {
       if (data.data.resultCode === 0) {
-        login.authentification()
-          .then(response => dispatch(actionLogin(response.data.data)))
+        login
+          .authentification()
+          .then((response) => dispatch(actionLogin(response.data.data)));
       } else {
-        let action = stopSubmit('login', { _error: `${data.data.messages}` });
+        let action = stopSubmit("login", { _error: `${data.data.messages}` });
         dispatch(action);
       }
-    })
-  }
-}
-
+    });
+  };
+};
 
 export const logout_samurai_thunk = () => {
   return (dispatch) => {
-    registration.log_out_account().then(() => dispatch(actionLogin({ id: null, login: null, email: null })))
-  }
-}
+    registration
+      .log_out_account()
+      .then(() =>
+        dispatch(actionLogin({ id: null, login: null, email: null }))
+      );
+  };
+};
 
 /*export let log_into_account = (login, password, rememberMe) => {
   return (dispatch) => {
@@ -159,7 +191,7 @@ export const logout_samurai_thunk = () => {
 } */
 //Для чего функция возвращает функцию? можно же дописать сразу несколько параметров и делать без return
 //Но dispatch в ActorApiContainer ожидает функцию с одним параметром , и даст ей его и сам вызовет эту функцию
-//поэтому лучше сделать обертку 
+//поэтому лучше сделать обертку
 
 //Что это Thunk ? функция возвращающая функцию с параметром dispatch, которая может множество раз использовать dispatch.
 //предназначение для асинхронных запросов
@@ -167,6 +199,4 @@ export const logout_samurai_thunk = () => {
 //middleware между dispatch({}) и store, dispatch работает только с объектами(action), которые возвразают ActionCreator
 //библиотека призвана расширить функционал dispatch
 //Thunk меняет архитектуру приложения, ui => dal => bll => ui
-//Thunk ===> ui => bll => dll => ui 
-
-
+//Thunk ===> ui => bll => dll => ui

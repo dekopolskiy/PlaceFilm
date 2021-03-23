@@ -1,35 +1,58 @@
-
+.myProfileWrap{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
 
 .wrapper{
-    width: 750px;
-    height: 400px;
-    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
     display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-left: 100px;
+    margin-top: 20px;
 }
 
-.info{
-    border: 1px solid black;
+.buttonDiv{
+    background: rgb(24, 98, 121);
+    width: 27.5%;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    grid-column: 2;
 }
 .status{
-    border: 1px solid black;
-
+    background: black;
+    color: white;
+    text-align: center;
+    width: 50%;
+    transition: all 1s ease;
 }
-.photo{
-    height: 70%;
-    margin-bottom: 10px;
+.status:hover{
+    background: rgb(31, 30, 30);
 }
-
-.photo_status{
-    height: 100%;
-    width: 300px;
+.info{
+    grid-column: 2;
 }
-
-.photo img{
-    width: 100%;
-    height: 100%;
-    transition: transform 450ms;
+.error{
+    color: red;
 }
 
-.photo img:hover{
-    transform: scaleY(1.02);
+.inputError{
+    border: 1px solid red;
+}
+
+.formError{
+    border: 1px solid red;
+}
+
+.contentForm{
+    width:500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.infoProfile{
+}
+
+.infoProfile div{
 }

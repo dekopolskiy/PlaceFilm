@@ -32,7 +32,7 @@ const Content = (props) => {
             {/* <div className={styles.listSerials}>
              {/*   {mapPics} */}
             {/* </div> */}
-            {/* <ContainerFormContent onSubmit={processPost} /> */} */}
+            {/* <ContainerFormContent onSubmit={processPost} /> */} 
         </div>
     )
 }

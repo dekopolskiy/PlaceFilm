@@ -5,7 +5,6 @@ import styles from './Registration.module.css'
 import {required} from './Input'
 
 const LoginForm = (props) => {
-    console.log(props.error)
     return (
         <div>
             <form onSubmit={props.handleSubmit} className={styles.form_login}>

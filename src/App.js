@@ -3,7 +3,6 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ContentContainer from "./components/Content/ContentContainer";
-import All_filmsContainer from "./components/All_films/All_filmsContainer";
 import ActorsContainer from "./components/Actors/ActorsContainer";
 import AccountContainer from "./components/Header/Pages_header/Account/AccountContainer";
 import RegistrationContainer from "./components/Registration/RegistrationContainer";
@@ -40,7 +39,6 @@ class App extends React.Component {
         <main>
           <Route path="/content" render={() => <ContentContainer />} />
           <Route path="/myprofile" render={() => <MyProfileContainer />} />
-          <Route path="/all_films" render={() => <All_filmsContainer />} />
           <Route path="/Actors" render={() => <ActorsContainer />} />
           <Route path="/account/:userId" component={AccountContainer} />
           <Route

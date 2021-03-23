@@ -22,11 +22,6 @@ const Header = (props) => {
             Actors
           </NavLink>
         </div>
-        <div className={styles.all_films}>
-          <NavLink to="/all_films" activeClassName={styles.selected}>
-            Movies
-          </NavLink>
-        </div>
         {props.isAuthorize ? (
           <div className={styles.log_out} onClick={props.logout}>
             Logout

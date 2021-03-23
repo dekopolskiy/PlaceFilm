@@ -7,8 +7,8 @@ import AccountAPIContainer from "./AccountAPIContainer";
 
 const mapStateToProps = (state) => {
     return {
-        account: state.accountRDC.account,
-        status: state.accountRDC.status,        
+        profile: state.accountRDC,
+        // status: state.accountRDC.status,        
     }
 }
 
