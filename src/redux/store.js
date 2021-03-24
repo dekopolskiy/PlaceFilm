@@ -5,8 +5,9 @@ import login_reducer from "./login_reducer";
 import thunk from 'redux-thunk';
 import {reducer as formReducer} from 'redux-form';
 import app_reducer from "./app_reducer";
+import { captcha_reducer } from "./captcha_reducer";
 
-const { createStore, combineReducers, applyMiddleware } = require("redux");
+const { createStore, combineReducers, applyMiddleware, compose } = require("redux");
 const { default: content_reducer } = require("./content_reducer");
 
 
@@ -17,11 +18,13 @@ let reducers = combineReducers({
     accountRDC: account_reducer,//state:{accountRDC : {acount: null}
     loginRDC: login_reducer, //state:{loginRDC : {data: {login:,id:,email:,}}
     appRDC: app_reducer,
-    form: formReducer,// {state.form.}
+    captcha: captcha_reducer,
+    form: formReducer,// {state.form.},
 })
 
-
-let store = createStore(reducers, applyMiddleware(thunk)); 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)),
+); 
 
 
 

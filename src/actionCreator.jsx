@@ -1,6 +1,6 @@
 import { SubmissionError } from "redux-form";
 import { stopSubmit } from "redux-form";
-import { login, profile, registration, users } from "./DAL/axiosREST";
+import { get_captcha, login, profile, registration, users } from "./DAL/axiosREST";
 /*________________ACTION_CREATOR_____________ */
 export let setActors = (data) => {
   return { type: "SET-ACTORS", data: data };
@@ -45,6 +45,10 @@ export let setStatus = (status) => {
 export let load_authdata_is_done = () => {
   return { type: "LOAD_IS_DONE" };
 };
+
+export let set_captcha = (captcha) => {
+  return {type: 'SET_CAPTCHA', captcha}
+}
 
 function refactorGetUsers(page, count = 20, dispatch) {
   dispatch(onloadPage(true));
@@ -138,7 +142,6 @@ export let set_profile_info_thunk = (user) => {
         let action = stopSubmit("profile_form", {
           contacts: { [regexp]: data.data.messages[0] },
         });
-        console.log(action)
         dispatch(action);
       } else {
         dispatch(setAccount(user));
@@ -165,8 +168,14 @@ export const login_samurai_thunk = (dataLoginForSend) => {
       if (data.data.resultCode === 0) {
         login
           .authentification()
-          .then((response) => dispatch(actionLogin(response.data.data)));
+          .then((response) => {
+            dispatch(actionLogin(response.data.data))
+            dispatch(set_captcha(''))
+          });
       } else {
+        if(data.data.resultCode === 10) {
+          get_captcha().then( response => dispatch(set_captcha(response.data.url)))
+        }
         let action = stopSubmit("login", { _error: `${data.data.messages}` });
         dispatch(action);
       }

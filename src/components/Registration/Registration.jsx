@@ -16,12 +16,13 @@ class Registration extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div class={styles.login}>
                 <h1>LOGIN</h1>
                 {this.props.isAuthorize ?
                     <Redirect to='/myprofile' /> :
-                    <ContainerRegistrationForm onSubmit={this.processFields.bind(this)} />
+                    <ContainerRegistrationForm onSubmit={this.processFields.bind(this)} captcha={this.props.captcha} />
                 }
             </div>
 

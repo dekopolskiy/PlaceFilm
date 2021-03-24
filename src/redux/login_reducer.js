@@ -8,8 +8,6 @@ let initial = {
     isAuthorize: false,
 }
 
-
-
 const login_reducer = (state = initial, action) => {
     switch (action.type) {
         case 'LOGIN':

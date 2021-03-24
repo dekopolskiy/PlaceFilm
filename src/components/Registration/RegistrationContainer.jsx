@@ -3,7 +3,11 @@ import { login_samurai_thunk } from "../../actionCreator";
 import Registration from "./Registration";
 
 
-
+const mapStatetoProps = (state) => {
+    return {
+        captcha: state.captcha.captcha
+    }
+}
 
 const mapDispatchtoProps = (dispatch) => {
     return {
@@ -15,6 +19,6 @@ const mapDispatchtoProps = (dispatch) => {
 
 
 
-export default connect(null, mapDispatchtoProps)(Registration);
+export default connect(mapStatetoProps, mapDispatchtoProps)(Registration);
 
 //return class extends { return <Registration {...props}}

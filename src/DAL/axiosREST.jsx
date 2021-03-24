@@ -47,12 +47,17 @@ export const profile = {
 
 export const registration = {
     log_into_account: (loginDataforSend) => {
-        let {login:email, password, checkbox: rememberMe = false} = loginDataforSend;
-        return instanse.post(`${baseURL}auth/login`, {email, password, rememberMe})
+        let {login:email, password, checkbox: rememberMe = false, captcha = ''} = loginDataforSend;
+        return instanse.post(`${baseURL}auth/login`, {email, password, rememberMe, captcha})
     },
     log_out_account: () => {
         return instanse.delete(`${baseURL}auth/login`)
     },
+}
+
+
+export const get_captcha = () => {
+    return instanse.get(`${baseURL}security/get-captcha-url`)
 }
 
 

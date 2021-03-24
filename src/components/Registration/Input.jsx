@@ -21,7 +21,3 @@ const Input = (props) => {
 
 export default Input;
 
-
-export const mySubmit = (e) => {
-    console.log(e)
-}
