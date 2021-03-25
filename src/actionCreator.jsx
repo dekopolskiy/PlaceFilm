@@ -50,9 +50,9 @@ export let set_captcha = (captcha) => {
   return {type: 'SET_CAPTCHA', captcha}
 }
 
-function refactorGetUsers(page, count = 20, dispatch) {
+function refactorGetUsers({count=20, page, dispatch}) {
   dispatch(onloadPage(true));
-  return users.getUsers(page, count).then((data) => {
+  return users.getUsers(count, page).then((data) => {
     dispatch(setActors(data));
     dispatch(onloadPage(false));
     return data;
@@ -63,15 +63,15 @@ function refactorGetUsers(page, count = 20, dispatch) {
 export let getUsersThunkPage = (page) => {
   //для подгрузки из-за перехода по страницам
   return (dispatch) => {
-    dispatch(setCurrentPage(page));
-    refactorGetUsers(page, 0, dispatch);
+    dispatch(setCurrentPage(page.page));
+    refactorGetUsers({page, dispatch});
   };
 };
 
-export let getUsersThunk = (count, page) => {
+export let getUsersThunk = ({count, page}) => {
   //1-ый запуск
   return (dispatch) => {
-    refactorGetUsers(count, page, dispatch).then((data) =>
+    refactorGetUsers({count, page, dispatch}).then((data) =>
       dispatch(setTotalCount(data.totalCount))
     );
   };

@@ -9,18 +9,22 @@
     text-decoration: none;
 }
 .pages{
-    width: 500px;
-    height: 100px;
-    overflow-x: scroll;
-    overflow-y: scroll;
-    margin: 0 auto;
-    border: 1px solid black;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    color: white;
+    display: flex;
+    justify-content: center;
 }
 
-.pages div{
-    border: 1px solid rgb(122, 95, 95);
+.wrapper_page{
+    max-width: 500px;
+    min-width: 500px;
+    display: flex;
+    justify-content:space-between;
+}
+.wrapper_page div{
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    padding: 5px;
 }
 
 .grid_actors div{

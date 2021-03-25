@@ -15,23 +15,36 @@ export class MyProfile extends React.Component {
   }
   //3.component load and load profile and set
   componentDidMount() {
+    console.log("DidMout");
     if (this.props.login.isAuthorize) {
       this.props.getProfile(this.props.login.data.id);
     }
   }
   //4.not first run, prevProps: null, this.props {name: DanteAligheri}
   componentDidUpdate(prevProps, prevState) {
+    console.log("DidUpdate");
     if (prevProps.profile !== this.props.profile) {
-      this.setState({ load: false }); //Load false
-      this.setState({ formDisable: true });
+      this.setState((prevState, prevProp) => {
+        console.log(prevState, prevProp);
+        return { load: false };
+      }); //Load false
+      this.setState((prevState, prevProp) => {
+        console.log(prevState, prevProp);
+        return { formDisable: true };
+      });
     }
   }
+  componentWillMount() {
+    console.log('willUnmout')
+  }
+  
   //putProfile and again setProfile in State, againd CPDM, CMPDU
   proccesingForm(formData) {
     this.props.setProfile(formData);
   }
 
   render() {
+    console.log('render')
     //1.Not authorize --- exit
     if (!this.props.login.isAuthorize) {
       return <Redirect to="/registration" />;
@@ -59,9 +72,12 @@ export class MyProfile extends React.Component {
               />
             )}
           </div>
-          <div onClick={() => this.setState({ formDisable: false })} className={styles.buttonDiv}>
-              edit form
-            </div>
+          <div
+            onClick={() => this.setState({ formDisable: false })}
+            className={styles.buttonDiv}
+          >
+            edit form
+          </div>
         </div>
       </div>
     );
