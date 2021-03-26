@@ -1,7 +1,7 @@
 header{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     background: #2b2c2b;
+    display: flex;
+    justify-content: space-between;
 }
 header a{
     color:white;
@@ -9,22 +9,20 @@ header a{
 }
 
 .logo{
-    grid-column: 1;
     width: 170px;
     text-align: center;
 }
 
 .nav{
     height: 50px;
-    grid-column: 3;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-direction: row;
 }
 
 .nav div{
-    padding-top: 15px;
-    width: 120px;
     text-align: center;
+    padding-top: 10px;
+    width: 120px;
 }
 
 .log_in{

@@ -23,6 +23,7 @@ const initial = {
 };
 
 const account_reducer = (state = initial, action) => {
+  console.log(action)
   switch (action.type) {
     case "SET-ACCOUNT":
       return {

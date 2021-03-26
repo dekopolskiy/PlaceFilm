@@ -1,16 +1,15 @@
 import styles from "./Actors.module.css";
-import React from "react";
-import preloader from "../../images/preloader.gif";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import defaultLogo from "../../images/user1.png";
 import { Paginator } from "./Paginator";
 
 const Actors = (props) => {
   return (
-      <div className={styles.wrapper_preload}>
-        {props.preloader ? (
-          <img src={preloader} className={styles.image} />
-        ) : null}
+    <div className={styles.wrapper_preload}>
+      <div> 
+      {`With photo on page :${props.itemsWithPhoto}`}
+      </div>
       <div className={styles.actors}>
         <div className={styles.grid_actors}>
           {props.items.map((user) => {
@@ -19,19 +18,13 @@ const Actors = (props) => {
                 <NavLink to={`/account/${user.id}`}>
                   <h4>{user.name}</h4>
                   <h5>{user.id}</h5>
-                  <img
-                    src={user.photos.large ? user.photos.large : defaultLogo}
-                    alt=""
-                    width={70}
-                    height={70}
-                  />
+                  <img src={user.photos.large ? user.photos.large : defaultLogo} alt="" width={70} height={70} />
                 </NavLink>
                 <br></br>
                 {user.followed ? (
-                  <button
-                    disabled={props.idInFollowProgress.some(
-                      (i) => i == user.id
-                    )}
+                  <button disabled={props.idInFollowProgress.some(
+                    (i) => i == user.id
+                  )}
                     onClick={() => {
                       props.unfollowUser(user.id);
                     }}
@@ -54,11 +47,11 @@ const Actors = (props) => {
             );
           })}
         </div>
-        <Paginator totalCount={props.totalCount} pageSize={props.pageSize} showNewPageUsers={props.showNewPageUsers}/>
+        <Paginator totalCount={props.totalCount} pageSize={props.pageSize} showNewPageUsers={props.showNewPageUsers} />
       </div>
-  </div>
+    </div>
 
-);
+  );
 };
 
 export default Actors;

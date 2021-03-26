@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -22,7 +22,12 @@ class App extends React.Component {
   componentDidMount() {
     this.props.isCurrentUser(); // 2.получить данные аутентификации 3.то есть зареганы ли мы на сайте?
     //если да, то actioncreator`ом установить свои данные пользователя, и управлять приложением отталкиваясь от них
+    // document.body.addEventListener('mousedown',function(e){ 
+    //   e.preventDefault(); 
+    // })
+
   }
+  
 
   render() {
     if (!this.props.loadAuthisDone) {
@@ -37,14 +42,15 @@ class App extends React.Component {
       <div className="wrapped_main">
         <Header />
         <main>
-          <Route path="/content" render={() => <ContentContainer />} />
+          <Switch>{/*Отлавливает первое совпадение, важно ставить /content/something/234 первым
+          а потом /content, иначе отработает /content, без switch отработают оба*/}
+          <Route path="/content" render={() => <ContentContainer/>} />
+          <Route path="/content/767" render={() => <div>hello</div>} />
           <Route path="/myprofile" render={() => <MyProfileContainer />} />
           <Route path="/Actors" render={() => <ActorsContainer />} />
           <Route path="/account/:userId" component={AccountContainer} />
-          <Route
-            path="/registration"
-            render={() => <RegistrationContainer />}
-          />
+          <Route path="/registration" render={() => <RegistrationContainer />}/>
+          </Switch>
         </main>
         <Footer />
       </div>

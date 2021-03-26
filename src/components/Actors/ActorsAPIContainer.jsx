@@ -16,23 +16,24 @@ class ActorsAPIContainer extends React.Component {
                 idInFollowProgress={this.props.idInFollowProgress}
                 followUser={this.followUser.bind(this)} //отрыв метода у объекта,  функция сама по себе 
                 unfollowUser={this.unfollowUser.bind(this)} //отрыв метода у объекта , функция сама по себе
-                preloader={this.props.preloader}
                 totalCount={this.props.totalCount}
                 pageSize={this.props.pageSize}
                 items={this.props.items}
                 currentPage={this.props.currentPage}
                 setCurrentPage={this.props.setCurrentPage}
                 showNewPageUsers={this.showNewPageUsers.bind(this)} //отрыв метода у объекта, функция сама по себе
+                itemsWithPhoto={this.props.itemsWithPhoto}
             />
         )
     }
 
-    showNewPageUsers(page) {
-        this.props.getUsersThunkPage(page);
+    showNewPageUsers({page}) {//{}
+        this.props.getUsersThunkPage({page});//{page}
     }
 
     componentDidMount() {//объект создали, отрендерили, добавили в dom дерево, это Mount
         this.props.getUsersThunk({count: this.props.pageSize, page:this.props.currentPage});
+
     }
     componentDidUpdate(prevProps){
     }

@@ -1,44 +1,24 @@
-import { Field, reduxForm } from 'redux-form'
-import Block_film from './Block_film/Block_film'
+import React from 'react'
 import styles from './Content.module.css'
-import Greetings from './Greetings/Greetings'
-import Main_film from './Main_film/Main_film'
+import NavBar from './NavBar/NavBar';
+import ActorsContainer from '../Actors/ActorsContainer'
 
-{/* массив может быть из компонент, соответсвенно может быть обработан как массив 
-    соответсвенно в массив компонент можно преобразовать простой массив
-*/}
-const ContentFormAddPost = (props) => {
-    return (
-        <form className={styles.add} onSubmit={props.handleSubmit}>
-            <Field component='input' name='key' type='text' />
-            <button type='submit'>ADD SERIAL</button>
-        </form>
-    )
-}
-//Form убирает надобность обрабатывать каждый символ
-
-const Content = (props) => {
-
-    let mapPics = props.listSerials.map((item) => {
-        return <Block_film name={item.name} pics={item.img} />
-    });
-
-    function processPost(e) {
-        props.addOneSerial('sherlock', e.key)
-    }
+const Content = () => {
     return (
         <div className={styles.content}>
-            <Main_film film={props.mainPoster} />
-            {/* <div className={styles.listSerials}>
-             {/*   {mapPics} */}
-            {/* </div> */}
-            {/* <ContainerFormContent onSubmit={processPost} /> */} 
+            <NavBar />
+            <div className={styles.main_film}>
+                <h1>Paramount.</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+                    molestias aspernatur ex nostrum ducimus nemo, cumque ipsam
+                    incidunt voluptate, repudiandae eos commodi, beatae quibusdam
+                    fugiat repellendus nobis? Inventore, facilis eveniet.
+                </p>
+            </div>
         </div>
     )
 }
-
-
-let ContainerFormContent = reduxForm({ form: 'contentFormAddPost' })(ContentFormAddPost)
 
 export default Content;
 

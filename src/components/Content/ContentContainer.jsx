@@ -4,7 +4,7 @@ import { actionAddSerialPost } from "../../storeBegin"
 import Content from "./Content"
 
 
-let mapStateToProps = state => {
+let mapStateToProps = (state) => {
     //state приходит целиком каждый раз как только что-то диспатчим
     //все mstp запускаются после того как отработает dispatch(action) { }
     //и сравниваются предыдущие значения с настоящими, если ничего не изменилось то отрисовка не происходит

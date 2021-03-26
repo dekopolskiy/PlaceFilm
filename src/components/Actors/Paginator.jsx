@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Actors.module.css";
 
 export const Paginator = (props) => {
@@ -25,7 +25,7 @@ export const Paginator = (props) => {
           left
         </div>
         {arr.slice(step.start, step.end).map((i) => {
-          return <div onClick={() => props.showNewPageUsers({page:i})}>{i}</div>;
+          return <div className={styles.everyPage} onClick={() => props.showNewPageUsers({ page: i })}>{i}</div>;
         })}
         <div
           onClick={() => {

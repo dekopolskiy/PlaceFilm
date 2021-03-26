@@ -2,15 +2,16 @@ import { connect } from "react-redux";
 import ActorsAPIContainer from "./ActorsAPIContainer";
 import { getUsersThunkPage, getUsersThunk, follow, unfollow } from "../../actionCreator"
 import { compose } from "redux";
+import { getUsers, getUsersWithPhoto } from "../../selectors";
 
 
 const mapStateToProps = (state) => {
     return {
-        items: state.actorsRDC.items,
+        items: getUsers(state),
+        itemsWithPhoto: getUsersWithPhoto(state), 
         currentPage: state.actorsRDC.currentPage,
         pageSize: state.actorsRDC.pageSize,
         totalCount: state.actorsRDC.totalCount,
-        preloader: state.actorsRDC.preloader,
         idInFollowProgress: state.actorsRDC.idInFollowProgress,
     }
 }

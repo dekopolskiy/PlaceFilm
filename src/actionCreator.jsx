@@ -60,10 +60,10 @@ function refactorGetUsers({count=20, page, dispatch}) {
 }
 
 /*_________________THUNK_CREATOR________________ */
-export let getUsersThunkPage = (page) => {
+export let getUsersThunkPage = ({page}) => {
   //для подгрузки из-за перехода по страницам
   return (dispatch) => {
-    dispatch(setCurrentPage(page.page));
+    dispatch(setCurrentPage(page));
     refactorGetUsers({page, dispatch});
   };
 };
