@@ -163,6 +163,7 @@ export let pass_auth = () => {
 };
 
 export const login_samurai_thunk = (dataLoginForSend) => {
+  debugger
   return (dispatch) => {
     registration.log_into_account(dataLoginForSend).then((data) => {
       if (data.data.resultCode === 0) {

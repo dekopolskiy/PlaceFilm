@@ -5,12 +5,12 @@ import Header from "./components/Header/Header";
 import ContentContainer from "./components/Content/ContentContainer";
 import ActorsContainer from "./components/Actors/ActorsContainer";
 import AccountContainer from "./components/Header/Pages_header/Account/AccountContainer";
-import RegistrationContainer from "./components/Registration/RegistrationContainer";
 import React from "react";
 import { connect } from "react-redux";
 import { pass_auth } from "./actionCreator";
 import logo from "./images/max.gif";
 import MyProfileContainer from "./components/Header/Pages_header/MyProfileContainer";
+import RegistrationContainer from "./components/Registration/RegistrationContainer";
 
 /*Если где-то произойдет переход с помощью Navlink to='path'
           то Route отследит путь Navlink, соотнесет со своим,
